@@ -1,0 +1,176 @@
+// Copyright (C) 2018  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel FPGA IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Intel and sold by Intel or its authorized distributors.  Please
+// refer to the applicable agreement for further details.
+
+// PROGRAM		"Quartus Prime"
+// VERSION		"Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
+// CREATED		"Thu May 28 01:30:01 2026"
+
+module tx(
+	data_ready,
+	clk,
+	reset,
+	data_in,
+	tx_bit_cnt,
+	tx_serial
+);
+
+
+input wire	data_ready;
+input wire	clk;
+input wire	reset;
+input wire	[7:0] data_in;
+input wire	[2:0] tx_bit_cnt;
+output wire	tx_serial;
+
+wire	tx_bit_7;
+reg	[7:0] tx_reg;
+wire	tx_reg_clk;
+wire	[1:0] tx_sel;
+wire	SYNTHESIZED_WIRE_0;
+wire	SYNTHESIZED_WIRE_1;
+wire	SYNTHESIZED_WIRE_2;
+wire	[2:0] SYNTHESIZED_WIRE_3;
+wire	SYNTHESIZED_WIRE_4;
+wire	SYNTHESIZED_WIRE_5;
+wire	SYNTHESIZED_WIRE_6;
+wire	SYNTHESIZED_WIRE_7;
+
+assign	SYNTHESIZED_WIRE_4 = 1;
+assign	SYNTHESIZED_WIRE_5 = 0;
+assign	SYNTHESIZED_WIRE_7 = 1;
+
+
+
+
+tx_fsm	b2v_inst(
+	
+	
+	
+	
+	.tx_bit_7(tx_bit_7),
+	.tx_load_data(SYNTHESIZED_WIRE_2),
+	.tx_clear_bit(SYNTHESIZED_WIRE_0),
+	.tx_count_en(SYNTHESIZED_WIRE_1),
+	
+	.tx_state_start(tx_sel[0]),
+	.tx_state_data(tx_sel[1])
+	);
+	defparam	b2v_inst.DATA = 1;
+	defparam	b2v_inst.IDLE = 2;
+	defparam	b2v_inst.START = 0;
+	defparam	b2v_inst.STOP = 3;
+
+
+lpm_counter_3	b2v_inst1(
+	.sclr(SYNTHESIZED_WIRE_0),
+	.clock(clk),
+	.cnt_en(SYNTHESIZED_WIRE_1),
+	.aclr(reset),
+	.q(SYNTHESIZED_WIRE_3));
+
+
+always@(posedge tx_reg_clk)
+begin
+	begin
+	tx_reg[1] <= data_in[1];
+	end
+end
+
+assign	tx_bit_7 = tx_bit_cnt[0] & tx_bit_cnt[1] & tx_bit_cnt[2];
+
+
+always@(posedge tx_reg_clk)
+begin
+	begin
+	tx_reg[2] <= data_in[2];
+	end
+end
+
+
+always@(posedge tx_reg_clk)
+begin
+	begin
+	tx_reg[3] <= data_in[3];
+	end
+end
+
+
+always@(posedge tx_reg_clk)
+begin
+	begin
+	tx_reg[4] <= data_in[4];
+	end
+end
+
+
+always@(posedge tx_reg_clk)
+begin
+	begin
+	tx_reg[5] <= data_in[5];
+	end
+end
+
+
+always@(posedge tx_reg_clk)
+begin
+	begin
+	tx_reg[6] <= data_in[6];
+	end
+end
+
+
+always@(posedge tx_reg_clk)
+begin
+	begin
+	tx_reg[7] <= data_in[7];
+	end
+end
+
+assign	tx_reg_clk = SYNTHESIZED_WIRE_2 & data_ready;
+
+
+lpm_mux_8	b2v_inst41(
+	.data7(tx_reg[7]),
+	.data6(tx_reg[6]),
+	.data5(tx_reg[5]),
+	.data4(tx_reg[4]),
+	.data3(tx_reg[3]),
+	.data2(tx_reg[2]),
+	.data1(tx_reg[1]),
+	.data0(tx_reg[0]),
+	.sel(SYNTHESIZED_WIRE_3),
+	.result(SYNTHESIZED_WIRE_6));
+
+
+lpm_mux_4to1	b2v_inst43(
+	.data3(SYNTHESIZED_WIRE_4),
+	.data2(SYNTHESIZED_WIRE_5),
+	.data1(SYNTHESIZED_WIRE_6),
+	.data0(SYNTHESIZED_WIRE_7),
+	.sel(tx_sel),
+	.result(tx_serial));
+
+
+
+
+
+always@(posedge tx_reg_clk)
+begin
+	begin
+	tx_reg[0] <= data_in[0];
+	end
+end
+
+
+endmodule

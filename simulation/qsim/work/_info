@@ -1,0 +1,94 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Projects/dc-UART/simulation/qsim
+vtop
+Z1 !s110 1779899258
+!i10b 1
+!s100 :f5VJ3cXTLNbiiFA;H;3z0
+I?9P=m@Rg4G=C=_EhKjllQ3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1779899257
+Z3 8uart.vo
+Z4 Fuart.vo
+Z5 L0 31
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1779899258.000000
+Z8 !s107 uart.vo|
+Z9 !s90 -work|work|uart.vo|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+vtop_vlg_vec_tst
+R1
+!i10b 1
+!s100 e8_Dkeo?YLBjiQOaCThC[1
+IfIDSm3NdH4>`1zlB^1^963
+R2
+R0
+w1779899256
+Z12 8Waveform.vwf.vt
+Z13 FWaveform.vwf.vt
+Z14 L0 29
+R6
+r1
+!s85 0
+31
+R7
+!s107 Waveform.vwf.vt|
+Z15 !s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R10
+R11
+vtx
+Z16 !s110 1779898981
+!i10b 1
+!s100 aJ2YF4:08gdh4LoO5;8l>0
+Ik9cLB0C>T99KhO]lD2I8?1
+R2
+R0
+w1779898977
+R3
+R4
+R5
+R6
+r1
+!s85 0
+31
+Z17 !s108 1779898981.000000
+R8
+R9
+!i113 1
+R10
+R11
+vtx_vlg_vec_tst
+R16
+!i10b 1
+!s100 7Ueg_YG0`I2WlfTd]N3Qz0
+I0@fEVj0MAW@EQlNVZ=3>N3
+R2
+R0
+w1779898975
+R12
+R13
+R14
+R6
+r1
+!s85 0
+31
+R17
+!s107 Waveform.vwf.vt|
+R15
+!i113 1
+R10
+R11
