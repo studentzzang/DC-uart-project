@@ -14,7 +14,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
-// CREATED		"Thu May 28 01:30:52 2026"
+// CREATED		"Sun May 31 05:29:31 2026"
 
 module baud_gen_(
 	clk,
@@ -42,9 +42,12 @@ wire	SYNTHESIZED_WIRE_10;
 wire	SYNTHESIZED_WIRE_11;
 wire	SYNTHESIZED_WIRE_12;
 wire	SYNTHESIZED_WIRE_13;
+wire	SYNTHESIZED_WIRE_16;
 
 
 
+
+assign	SYNTHESIZED_WIRE_13 =  ~reset;
 
 assign	SYNTHESIZED_WIRE_5 =  ~q[4];
 
@@ -68,20 +71,20 @@ assign	SYNTHESIZED_WIRE_10 = q[3] & SYNTHESIZED_WIRE_0 & q[0] & SYNTHESIZED_WIRE
 
 assign	SYNTHESIZED_WIRE_12 = SYNTHESIZED_WIRE_6 & SYNTHESIZED_WIRE_7 & SYNTHESIZED_WIRE_8 & SYNTHESIZED_WIRE_9;
 
-assign	SYNTHESIZED_WIRE_13 = SYNTHESIZED_WIRE_10 & SYNTHESIZED_WIRE_11 & SYNTHESIZED_WIRE_12;
+assign	SYNTHESIZED_WIRE_16 = SYNTHESIZED_WIRE_10 & SYNTHESIZED_WIRE_11 & SYNTHESIZED_WIRE_12;
 
 assign	SYNTHESIZED_WIRE_0 =  ~q[1];
 
 
-always@(posedge clk or negedge reset)
+always@(posedge clk or negedge SYNTHESIZED_WIRE_13)
 begin
-if (!reset)
+if (!SYNTHESIZED_WIRE_13)
 	begin
 	baud_tick <= 0;
 	end
 else
 	begin
-	baud_tick <= SYNTHESIZED_WIRE_13;
+	baud_tick <= SYNTHESIZED_WIRE_16;
 	end
 end
 
@@ -89,6 +92,7 @@ assign	SYNTHESIZED_WIRE_1 =  ~q[2];
 
 
 lpm_counter_13	b2v_lpm_counter_13(
+	.sclr(SYNTHESIZED_WIRE_16),
 	.clock(clk),
 	.aclr(reset),
 	.q(q));

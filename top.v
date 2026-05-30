@@ -14,13 +14,12 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
-// CREATED		"Thu May 28 01:29:30 2026"
+// CREATED		"Sun May 31 05:45:14 2026"
 
 module top(
 	clk,
 	reset,
 	data_ready,
-	rx_serial,
 	data_in,
 	tx_serial,
 	data_out
@@ -30,13 +29,14 @@ module top(
 input wire	clk;
 input wire	reset;
 input wire	data_ready;
-input wire	rx_serial;
 input wire	[7:0] data_in;
 output wire	tx_serial;
 output wire	[7:0] data_out;
 
-wire	[2:0] gdfx_temp0;
+wire	SYNTHESIZED_WIRE_3;
+wire	SYNTHESIZED_WIRE_1;
 
+assign	tx_serial = SYNTHESIZED_WIRE_1;
 
 
 
@@ -44,22 +44,23 @@ wire	[2:0] gdfx_temp0;
 baud_gen_	b2v_inst(
 	.clk(clk),
 	.reset(reset),
-	.baud_tick(gdfx_temp0[2]));
+	.baud_tick(SYNTHESIZED_WIRE_3));
 
 
-tx	b2v_inst1(
+tx	b2v_inst6(
+	.clk(clk),
+	.reset(reset),
+	.baud_tick(SYNTHESIZED_WIRE_3),
 	.data_ready(data_ready),
-	.clk(clk),
-	.reset(reset),
 	.data_in(data_in),
-	.tx_bit_cnt(gdfx_temp0),
-	.tx_serial(tx_serial));
+	.tx_serial(SYNTHESIZED_WIRE_1));
 
 
-rx	b2v_inst3(
+rx	b2v_inst7(
 	.clk(clk),
-	.rx_serial(rx_serial),
+	.rx_serial(SYNTHESIZED_WIRE_1),
 	.reset(reset),
+	.baud_tick(SYNTHESIZED_WIRE_3),
 	.data_out(data_out));
 
 

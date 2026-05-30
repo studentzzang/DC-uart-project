@@ -39,10 +39,12 @@
 module lpm_counter_13 (
 	aclr,
 	clock,
+	sclr,
 	q);
 
 	input	  aclr;
 	input	  clock;
+	input	  sclr;
 	output	[12:0]  q;
 
 	wire [12:0] sub_wire0;
@@ -51,6 +53,7 @@ module lpm_counter_13 (
 	lpm_counter	LPM_COUNTER_component (
 				.aclr (aclr),
 				.clock (clock),
+				.sclr (sclr),
 				.q (sub_wire0),
 				.aload (1'b0),
 				.aset (1'b0),
@@ -60,7 +63,6 @@ module lpm_counter_13 (
 				.cout (),
 				.data ({13{1'b0}}),
 				.eq (),
-				.sclr (1'b0),
 				.sload (1'b0),
 				.sset (1'b0),
 				.updown (1'b1));
@@ -88,7 +90,7 @@ endmodule
 // Retrieval info: PRIVATE: INTENDED_DEVICE_FAMILY STRING "MAX II"
 // Retrieval info: PRIVATE: ModulusCounter NUMERIC "0"
 // Retrieval info: PRIVATE: ModulusValue NUMERIC "0"
-// Retrieval info: PRIVATE: SCLR NUMERIC "0"
+// Retrieval info: PRIVATE: SCLR NUMERIC "1"
 // Retrieval info: PRIVATE: SLOAD NUMERIC "0"
 // Retrieval info: PRIVATE: SSET NUMERIC "0"
 // Retrieval info: PRIVATE: SSET_ALL1 NUMERIC "1"
@@ -103,8 +105,10 @@ endmodule
 // Retrieval info: USED_PORT: aclr 0 0 0 0 INPUT NODEFVAL "aclr"
 // Retrieval info: USED_PORT: clock 0 0 0 0 INPUT NODEFVAL "clock"
 // Retrieval info: USED_PORT: q 0 0 13 0 OUTPUT NODEFVAL "q[12..0]"
+// Retrieval info: USED_PORT: sclr 0 0 0 0 INPUT NODEFVAL "sclr"
 // Retrieval info: CONNECT: @aclr 0 0 0 0 aclr 0 0 0 0
 // Retrieval info: CONNECT: @clock 0 0 0 0 clock 0 0 0 0
+// Retrieval info: CONNECT: @sclr 0 0 0 0 sclr 0 0 0 0
 // Retrieval info: CONNECT: q 0 0 13 0 @q 0 0 13 0
 // Retrieval info: GEN_FILE: TYPE_NORMAL lpm_counter_13.v TRUE
 // Retrieval info: GEN_FILE: TYPE_NORMAL lpm_counter_13.inc FALSE

@@ -14,14 +14,14 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
-// CREATED		"Thu May 28 01:30:01 2026"
+// CREATED		"Sun May 31 05:49:43 2026"
 
 module tx(
 	data_ready,
 	clk,
 	reset,
+	baud_tick,
 	data_in,
-	tx_bit_cnt,
 	tx_serial
 );
 
@@ -29,39 +29,40 @@ module tx(
 input wire	data_ready;
 input wire	clk;
 input wire	reset;
+input wire	baud_tick;
 input wire	[7:0] data_in;
-input wire	[2:0] tx_bit_cnt;
 output wire	tx_serial;
 
 wire	tx_bit_7;
+wire	[2:0] tx_bit_cnt;
 reg	[7:0] tx_reg;
 wire	tx_reg_clk;
 wire	[1:0] tx_sel;
 wire	SYNTHESIZED_WIRE_0;
 wire	SYNTHESIZED_WIRE_1;
 wire	SYNTHESIZED_WIRE_2;
-wire	[2:0] SYNTHESIZED_WIRE_3;
+wire	SYNTHESIZED_WIRE_3;
 wire	SYNTHESIZED_WIRE_4;
 wire	SYNTHESIZED_WIRE_5;
 wire	SYNTHESIZED_WIRE_6;
 wire	SYNTHESIZED_WIRE_7;
 
 assign	SYNTHESIZED_WIRE_4 = 1;
-assign	SYNTHESIZED_WIRE_5 = 0;
+assign	SYNTHESIZED_WIRE_6 = 0;
 assign	SYNTHESIZED_WIRE_7 = 1;
 
 
 
 
 tx_fsm	b2v_inst(
-	
-	
-	
-	
+	.reset(reset),
+	.clock(clk),
+	.baud_tick(baud_tick),
+	.data_ready(data_ready),
 	.tx_bit_7(tx_bit_7),
-	.tx_load_data(SYNTHESIZED_WIRE_2),
+	.tx_load_data(SYNTHESIZED_WIRE_3),
 	.tx_clear_bit(SYNTHESIZED_WIRE_0),
-	.tx_count_en(SYNTHESIZED_WIRE_1),
+	.tx_count_en(SYNTHESIZED_WIRE_2),
 	
 	.tx_state_start(tx_sel[0]),
 	.tx_state_data(tx_sel[1])
@@ -77,7 +78,7 @@ lpm_counter_3	b2v_inst1(
 	.clock(clk),
 	.cnt_en(SYNTHESIZED_WIRE_1),
 	.aclr(reset),
-	.q(SYNTHESIZED_WIRE_3));
+	.q(tx_bit_cnt));
 
 
 always@(posedge tx_reg_clk)
@@ -87,7 +88,7 @@ begin
 	end
 end
 
-assign	tx_bit_7 = tx_bit_cnt[0] & tx_bit_cnt[1] & tx_bit_cnt[2];
+assign	tx_bit_7 = tx_bit_cnt[2] & tx_bit_cnt[1] & tx_bit_cnt[0];
 
 
 always@(posedge tx_reg_clk)
@@ -114,6 +115,7 @@ begin
 end
 
 
+
 always@(posedge tx_reg_clk)
 begin
 	begin
@@ -137,7 +139,9 @@ begin
 	end
 end
 
-assign	tx_reg_clk = SYNTHESIZED_WIRE_2 & data_ready;
+assign	SYNTHESIZED_WIRE_1 = SYNTHESIZED_WIRE_2 & baud_tick;
+
+assign	tx_reg_clk = SYNTHESIZED_WIRE_3 & data_ready;
 
 
 lpm_mux_8	b2v_inst41(
@@ -149,8 +153,8 @@ lpm_mux_8	b2v_inst41(
 	.data2(tx_reg[2]),
 	.data1(tx_reg[1]),
 	.data0(tx_reg[0]),
-	.sel(SYNTHESIZED_WIRE_3),
-	.result(SYNTHESIZED_WIRE_6));
+	.sel(tx_bit_cnt),
+	.result(SYNTHESIZED_WIRE_5));
 
 
 lpm_mux_4to1	b2v_inst43(
@@ -160,7 +164,6 @@ lpm_mux_4to1	b2v_inst43(
 	.data0(SYNTHESIZED_WIRE_7),
 	.sel(tx_sel),
 	.result(tx_serial));
-
 
 
 

@@ -1,5 +1,5 @@
 Assembler report for uart
-Thu May 28 01:30:24 2026
+Sun May 31 05:59:48 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -37,9 +37,9 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Thu May 28 01:30:24 2026 ;
+; Assembler Status      ; Successful - Sun May 31 05:59:48 2026 ;
 ; Revision Name         ; uart                                  ;
-; Top-level Entity Name ; rx                                    ;
+; Top-level Entity Name ; top                                   ;
 ; Family                ; MAX II                                ;
 ; Device                ; EPM240T100C3                          ;
 +-----------------------+---------------------------------------+
@@ -66,8 +66,8 @@ refer to the applicable agreement for further details.
 +----------------+----------------------------------------------------+
 ; Option         ; Setting                                            ;
 +----------------+----------------------------------------------------+
-; JTAG usercode  ; 0x00193401                                         ;
-; Checksum       ; 0x00193979                                         ;
+; JTAG usercode  ; 0x00188443                                         ;
+; Checksum       ; 0x001888CB                                         ;
 +----------------+----------------------------------------------------+
 
 
@@ -77,15 +77,15 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu May 28 01:30:23 2026
+    Info: Processing started: Sun May 31 05:59:48 2026
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off uart -c uart
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4661 megabytes
-    Info: Processing ended: Thu May 28 01:30:24 2026
-    Info: Elapsed time: 00:00:01
+    Info: Processing ended: Sun May 31 05:59:48 2026
+    Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:01
 
 
