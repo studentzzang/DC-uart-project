@@ -2,10 +2,10 @@
 tx_serial <= tx:inst8.tx_serial
 clk => tx:inst8.clk
 clk => baud_gen_:inst.clk
-clk => rx:inst9.clk
+clk => rx:inst1.clk
 reset => tx:inst8.reset
 reset => baud_gen_:inst.reset
-reset => rx:inst9.reset
+reset => rx:inst1.reset
 data_ready => tx:inst8.data_ready
 data_in[0] => tx:inst8.data_in[0]
 data_in[1] => tx:inst8.data_in[1]
@@ -15,14 +15,14 @@ data_in[4] => tx:inst8.data_in[4]
 data_in[5] => tx:inst8.data_in[5]
 data_in[6] => tx:inst8.data_in[6]
 data_in[7] => tx:inst8.data_in[7]
-data_out[0] <= rx:inst9.data_out[0]
-data_out[1] <= rx:inst9.data_out[1]
-data_out[2] <= rx:inst9.data_out[2]
-data_out[3] <= rx:inst9.data_out[3]
-data_out[4] <= rx:inst9.data_out[4]
-data_out[5] <= rx:inst9.data_out[5]
-data_out[6] <= rx:inst9.data_out[6]
-data_out[7] <= rx:inst9.data_out[7]
+data_out[0] <= rx:inst1.data_out[0]
+data_out[1] <= rx:inst1.data_out[1]
+data_out[2] <= rx:inst1.data_out[2]
+data_out[3] <= rx:inst1.data_out[3]
+data_out[4] <= rx:inst1.data_out[4]
+data_out[5] <= rx:inst1.data_out[5]
+data_out[6] <= rx:inst1.data_out[6]
+data_out[7] <= rx:inst1.data_out[7]
 
 
 |top|tx:inst8
@@ -397,13 +397,13 @@ sclr => counter_cella11.SCLR
 sclr => counter_cella12.SCLR
 
 
-|top|rx:inst9
+|top|rx:inst1
 data_out[0] <= inst29.DB_MAX_OUTPUT_PORT_TYPE
-data_out[1] <= <GND>
+data_out[1] <= inst30.DB_MAX_OUTPUT_PORT_TYPE
 data_out[2] <= inst31.DB_MAX_OUTPUT_PORT_TYPE
 data_out[3] <= inst32.DB_MAX_OUTPUT_PORT_TYPE
 data_out[4] <= inst33.DB_MAX_OUTPUT_PORT_TYPE
-data_out[5] <= <GND>
+data_out[5] <= inst34.DB_MAX_OUTPUT_PORT_TYPE
 data_out[6] <= inst35.DB_MAX_OUTPUT_PORT_TYPE
 data_out[7] <= inst36.DB_MAX_OUTPUT_PORT_TYPE
 reset => rx_fsm:inst.reset
@@ -412,22 +412,26 @@ clk => rx_fsm:inst.clock
 clk => lpm_counter_3:inst26.clock
 rx_serial => rx_fsm:inst.rx_serial
 rx_serial => inst29.DATAIN
+rx_serial => inst30.DATAIN
 rx_serial => inst31.DATAIN
 rx_serial => inst32.DATAIN
 rx_serial => inst33.DATAIN
 rx_serial => inst35.DATAIN
 rx_serial => inst36.DATAIN
+rx_serial => inst34.DATAIN
 baud_tick => rx_fsm:inst.baud_tick
 baud_tick => inst2.IN0
 baud_tick => inst3.IN1
+baud_tick => inst4.IN1
 baud_tick => inst5.IN1
 baud_tick => inst6.IN1
 baud_tick => inst7.IN1
 baud_tick => inst9.IN1
 baud_tick => inst10.IN1
+baud_tick => inst8.IN1
 
 
-|top|rx:inst9|lpm_decode_3:inst28
+|top|rx:inst1|lpm_decode_3:inst28
 data[0] => data[0].IN1
 data[1] => data[1].IN1
 data[2] => data[2].IN1
@@ -441,7 +445,7 @@ eq6 <= lpm_decode:LPM_DECODE_component.eq
 eq7 <= lpm_decode:LPM_DECODE_component.eq
 
 
-|top|rx:inst9|lpm_decode_3:inst28|lpm_decode:LPM_DECODE_component
+|top|rx:inst1|lpm_decode_3:inst28|lpm_decode:LPM_DECODE_component
 data[0] => decode_lpe:auto_generated.data[0]
 data[1] => decode_lpe:auto_generated.data[1]
 data[2] => decode_lpe:auto_generated.data[2]
@@ -459,7 +463,7 @@ eq[6] <= decode_lpe:auto_generated.eq[6]
 eq[7] <= decode_lpe:auto_generated.eq[7]
 
 
-|top|rx:inst9|lpm_decode_3:inst28|lpm_decode:LPM_DECODE_component|decode_lpe:auto_generated
+|top|rx:inst1|lpm_decode_3:inst28|lpm_decode:LPM_DECODE_component|decode_lpe:auto_generated
 data[0] => w_anode19w[1].IN1
 data[0] => w_anode1w[1].IN0
 data[0] => w_anode30w[1].IN0
@@ -494,7 +498,7 @@ eq[6] <= w_anode74w[3].DB_MAX_OUTPUT_PORT_TYPE
 eq[7] <= w_anode85w[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|top|rx:inst9|lpm_counter_3:inst26
+|top|rx:inst1|lpm_counter_3:inst26
 aclr => aclr.IN1
 clock => clock.IN1
 cnt_en => cnt_en.IN1
@@ -504,7 +508,7 @@ q[1] <= lpm_counter:LPM_COUNTER_component.q
 q[2] <= lpm_counter:LPM_COUNTER_component.q
 
 
-|top|rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component
+|top|rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component
 clock => cntr_toi:auto_generated.clock
 clk_en => ~NO_FANOUT~
 cnt_en => cntr_toi:auto_generated.cnt_en
@@ -543,7 +547,7 @@ eq[14] <= <GND>
 eq[15] <= <GND>
 
 
-|top|rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated
+|top|rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated
 aclr => counter_cella0.ACLR
 aclr => counter_cella1.ACLR
 aclr => counter_cella2.ACLR
@@ -561,7 +565,7 @@ sclr => counter_cella1.SCLR
 sclr => counter_cella2.SCLR
 
 
-|top|rx:inst9|rx_fsm:inst
+|top|rx:inst1|rx_fsm:inst
 reset => reg_fstate.IDLE.OUTPUTSELECT
 reset => reg_fstate.START.OUTPUTSELECT
 reset => reg_fstate.DATA.OUTPUTSELECT

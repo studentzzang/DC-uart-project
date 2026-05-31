@@ -1514,10 +1514,6 @@ refer to the applicable agreement for further details.
 	(pt 1152 344)
 )
 (connector
-	(pt 1216 96)
-	(pt 1288 96)
-)
-(connector
 	(pt 1080 200)
 	(pt 1152 200)
 )
@@ -1538,36 +1534,8 @@ refer to the applicable agreement for further details.
 	(pt 1072 280)
 )
 (connector
-	(pt 1296 0)
-	(pt 1296 384)
-)
-(connector
-	(pt 1272 328)
-	(pt 1272 704)
-)
-(connector
-	(pt 1288 96)
-	(pt 1288 488)
-)
-(connector
-	(pt 1280 200)
-	(pt 1280 592)
-)
-(connector
 	(pt 1312 184)
 	(pt 1448 184)
-)
-(connector
-	(pt 1296 384)
-	(pt 1448 384)
-)
-(connector
-	(pt 1280 592)
-	(pt 1448 592)
-)
-(connector
-	(pt 1272 704)
-	(pt 1456 704)
 )
 (connector
 	(pt 1088 112)
@@ -1680,10 +1648,6 @@ refer to the applicable agreement for further details.
 (connector
 	(pt 968 304)
 	(pt 1000 304)
-)
-(connector
-	(pt 1288 488)
-	(pt 1448 488)
 )
 (connector
 	(text "data_out[7..0]" (rect 1632 24 1698 41)(font "Intel Clear" ))
@@ -1964,6 +1928,15 @@ refer to the applicable agreement for further details.
 (connector
 	(pt 256 32)
 	(pt 256 168)
+)
+(connector
+	(pt 1072 96)
+	(pt 1064 96)
+)
+(connector
+	(text "data_out[5]" (rect 1251 80 1306 97)(font "Intel Clear" ))
+	(pt 1216 96)
+	(pt 1288 96)
 )
 (junction (pt 128 40))
 (junction (pt 984 8))

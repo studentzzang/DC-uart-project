@@ -197,7 +197,7 @@ refer to the applicable agreement for further details.
 (symbol
 	(rect 1168 320 1368 448)
 	(text "rx" (rect 5 0 15 19)(font "Intel Clear" (font_size 8)))
-	(text "inst9" (rect 8 107 30 124)(font "Intel Clear" ))
+	(text "inst1" (rect 8 107 30 124)(font "Intel Clear" ))
 	(port
 		(pt 0 32)
 		(input)

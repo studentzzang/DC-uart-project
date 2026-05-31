@@ -1,5 +1,5 @@
 Timing Analyzer report for uart
-Sun May 31 05:59:51 2026
+Sun May 31 22:30:14 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -10,18 +10,18 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   2. Timing Analyzer Summary
   3. Parallel Compilation
   4. Clocks
-  5. Fmax Summary
-  6. Setup Summary
-  7. Hold Summary
-  8. Recovery Summary
-  9. Removal Summary
- 10. Minimum Pulse Width Summary
- 11. Setup: 'clk'
- 12. Setup: 'reset'
- 13. Hold: 'reset'
- 14. Hold: 'clk'
- 15. Recovery: 'clk'
- 16. Removal: 'clk'
+  5. Slow Model Fmax Summary
+  6. Slow Model Setup Summary
+  7. Slow Model Hold Summary
+  8. Slow Model Recovery Summary
+  9. Slow Model Removal Summary
+ 10. Slow Model Minimum Pulse Width Summary
+ 11. Fast Model Setup Summary
+ 12. Fast Model Hold Summary
+ 13. Fast Model Recovery Summary
+ 14. Fast Model Removal Summary
+ 15. Fast Model Minimum Pulse Width Summary
+ 16. Multicorner Timing Analysis Summary
  17. Setup Transfers
  18. Hold Transfers
  19. Recovery Transfers
@@ -66,7 +66,7 @@ refer to the applicable agreement for further details.
 ; Device Family         ; MAX II                                              ;
 ; Device Name           ; EPM240T100C3                                        ;
 ; Timing Models         ; Final                                               ;
-; Delay Model           ; Slow Model                                          ;
+; Delay Model           ; Combined                                            ;
 ; Rise/Fall Delays      ; Unavailable                                         ;
 +-----------------------+-----------------------------------------------------+
 
@@ -98,39 +98,39 @@ refer to the applicable agreement for further details.
 +------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------+
 
 
-+-----------------------------------------------------------------------------------------------------------+
-; Fmax Summary                                                                                              ;
-+------------+-----------------+------------+---------------------------------------------------------------+
-; Fmax       ; Restricted Fmax ; Clock Name ; Note                                                          ;
-+------------+-----------------+------------+---------------------------------------------------------------+
-; 204.21 MHz ; 204.21 MHz      ; clk        ;                                                               ;
-; 357.78 MHz ; 304.04 MHz      ; reset      ; limit due to minimum period restriction (max I/O toggle rate) ;
-+------------+-----------------+------------+---------------------------------------------------------------+
++--------------------------------------------------+
+; Slow Model Fmax Summary                          ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 210.44 MHz ; 210.44 MHz      ; clk        ;      ;
+; 288.35 MHz ; 288.35 MHz      ; reset      ;      ;
++------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
 +--------------------------------+
-; Setup Summary                  ;
+; Slow Model Setup Summary       ;
 +-------+--------+---------------+
 ; Clock ; Slack  ; End Point TNS ;
 +-------+--------+---------------+
-; clk   ; -4.939 ; -83.149       ;
-; reset ; -1.795 ; -8.772        ;
+; clk   ; -4.829 ; -83.422       ;
+; reset ; -2.339 ; -14.228       ;
 +-------+--------+---------------+
 
 
 +--------------------------------+
-; Hold Summary                   ;
+; Slow Model Hold Summary        ;
 +-------+--------+---------------+
 ; Clock ; Slack  ; End Point TNS ;
 +-------+--------+---------------+
-; reset ; -1.307 ; -2.965        ;
-; clk   ; 1.084  ; 0.000         ;
+; reset ; -1.137 ; -1.635        ;
+; clk   ; 0.807  ; 0.000         ;
 +-------+--------+---------------+
 
 
 +--------------------------------+
-; Recovery Summary               ;
+; Slow Model Recovery Summary    ;
 +-------+--------+---------------+
 ; Clock ; Slack  ; End Point TNS ;
 +-------+--------+---------------+
@@ -139,7 +139,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 
 
 +-------------------------------+
-; Removal Summary               ;
+; Slow Model Removal Summary    ;
 +-------+-------+---------------+
 ; Clock ; Slack ; End Point TNS ;
 +-------+-------+---------------+
@@ -147,522 +147,76 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+-------+---------------+
 
 
++----------------------------------------+
+; Slow Model Minimum Pulse Width Summary ;
++-------+--------+-----------------------+
+; Clock ; Slack  ; End Point TNS         ;
++-------+--------+-----------------------+
+; clk   ; -2.289 ; -2.289                ;
+; reset ; -2.289 ; -2.289                ;
++-------+--------+-----------------------+
+
+
 +--------------------------------+
-; Minimum Pulse Width Summary    ;
+; Fast Model Setup Summary       ;
 +-------+--------+---------------+
 ; Clock ; Slack  ; End Point TNS ;
 +-------+--------+---------------+
-; clk   ; -2.289 ; -2.289        ;
-; reset ; -2.289 ; -2.289        ;
+; clk   ; -2.402 ; -29.960       ;
+; reset ; -0.897 ; -4.610        ;
 +-------+--------+---------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Setup: 'clk'                                                                                                                                                                                                                                                                                                         ;
-+--------+-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node                                                                                                         ; To Node                                                                                                           ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; -4.939 ; tx:inst8|inst25                                                                                                   ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; reset        ; clk         ; 1.000        ; -1.785     ; 3.946      ;
-; -4.935 ; tx:inst8|inst25                                                                                                   ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; reset        ; clk         ; 1.000        ; -1.785     ; 3.942      ;
-; -4.794 ; tx:inst8|inst39                                                                                                   ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; reset        ; clk         ; 1.000        ; -1.785     ; 3.801      ;
-; -4.790 ; tx:inst8|inst39                                                                                                   ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; reset        ; clk         ; 1.000        ; -1.785     ; 3.797      ;
-; -4.618 ; tx:inst8|inst37                                                                                                   ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; reset        ; clk         ; 1.000        ; -1.785     ; 3.625      ;
-; -4.614 ; tx:inst8|inst37                                                                                                   ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; reset        ; clk         ; 1.000        ; -1.785     ; 3.621      ;
-; -4.217 ; tx:inst8|inst21                                                                                                   ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; reset        ; clk         ; 1.000        ; -1.785     ; 3.224      ;
-; -4.213 ; tx:inst8|inst21                                                                                                   ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; reset        ; clk         ; 1.000        ; -1.785     ; 3.220      ;
-; -4.191 ; tx:inst8|inst6                                                                                                    ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; reset        ; clk         ; 1.000        ; -1.785     ; 3.198      ;
-; -4.187 ; tx:inst8|inst6                                                                                                    ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; reset        ; clk         ; 1.000        ; -1.785     ; 3.194      ;
-; -4.044 ; tx:inst8|inst38                                                                                                   ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; reset        ; clk         ; 1.000        ; -1.785     ; 3.051      ;
-; -4.040 ; tx:inst8|inst38                                                                                                   ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; reset        ; clk         ; 1.000        ; -1.785     ; 3.047      ;
-; -3.897 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                  ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; clk          ; clk         ; 1.000        ; 0.000      ; 4.689      ;
-; -3.893 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                  ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.685      ;
-; -3.859 ; tx:inst8|inst20                                                                                                   ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; reset        ; clk         ; 1.000        ; -1.785     ; 2.866      ;
-; -3.855 ; tx:inst8|inst20                                                                                                   ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; reset        ; clk         ; 1.000        ; -1.785     ; 2.862      ;
-; -3.822 ; reset                                                                                                             ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; reset        ; clk         ; 0.500        ; 2.093      ; 6.207      ;
-; -3.818 ; reset                                                                                                             ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; reset        ; clk         ; 0.500        ; 2.093      ; 6.203      ;
-; -3.809 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                  ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; clk          ; clk         ; 1.000        ; 0.000      ; 4.601      ;
-; -3.805 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                  ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.597      ;
-; -3.543 ; tx:inst8|inst19                                                                                                   ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; reset        ; clk         ; 1.000        ; -1.785     ; 2.550      ;
-; -3.539 ; tx:inst8|inst19                                                                                                   ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; reset        ; clk         ; 1.000        ; -1.785     ; 2.546      ;
-; -3.393 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.185      ;
-; -3.393 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.185      ;
-; -3.393 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.185      ;
-; -3.393 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.185      ;
-; -3.393 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 4.185      ;
-; -3.393 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 4.185      ;
-; -3.393 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 4.185      ;
-; -3.322 ; reset                                                                                                             ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; reset        ; clk         ; 1.000        ; 2.093      ; 6.207      ;
-; -3.318 ; reset                                                                                                             ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; reset        ; clk         ; 1.000        ; 2.093      ; 6.203      ;
-; -3.300 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.092      ;
-; -3.300 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.092      ;
-; -3.300 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.092      ;
-; -3.300 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.092      ;
-; -3.300 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 4.092      ;
-; -3.300 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 4.092      ;
-; -3.300 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 4.092      ;
-; -3.272 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.064      ;
-; -3.272 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.064      ;
-; -3.272 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.064      ;
-; -3.272 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.064      ;
-; -3.272 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 4.064      ;
-; -3.272 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 4.064      ;
-; -3.272 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 4.064      ;
-; -3.197 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.989      ;
-; -3.197 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.989      ;
-; -3.197 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.989      ;
-; -3.197 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.989      ;
-; -3.197 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.989      ;
-; -3.197 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.989      ;
-; -3.197 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.989      ;
-; -3.170 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.962      ;
-; -3.170 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.962      ;
-; -3.170 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.962      ;
-; -3.170 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.962      ;
-; -3.170 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.962      ;
-; -3.170 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.962      ;
-; -3.170 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.962      ;
-; -3.168 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.960      ;
-; -3.168 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.960      ;
-; -3.168 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.960      ;
-; -3.168 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.960      ;
-; -3.168 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.960      ;
-; -3.168 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.960      ;
-; -3.168 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.960      ;
-; -3.150 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.942      ;
-; -3.150 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.942      ;
-; -3.150 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.942      ;
-; -3.150 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.942      ;
-; -3.150 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.942      ;
-; -3.150 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[5]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.942      ;
-; -3.082 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.874      ;
-; -3.082 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.874      ;
-; -3.082 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.874      ;
-; -3.082 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.874      ;
-; -3.082 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.874      ;
-; -3.082 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.874      ;
-; -3.082 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.874      ;
-; -3.066 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.858      ;
-; -3.066 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.858      ;
-; -3.066 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.858      ;
-; -3.066 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.858      ;
-; -3.066 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.858      ;
-; -3.066 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.858      ;
-; -3.066 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.858      ;
-; -3.057 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.849      ;
-; -3.057 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.849      ;
-; -3.057 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.849      ;
-; -3.057 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.849      ;
-; -3.057 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.849      ;
-; -3.057 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[5]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.849      ;
-; -3.029 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.821      ;
-; -3.029 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.821      ;
-; -3.029 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.821      ;
-; -3.029 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.821      ;
-; -3.029 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.821      ;
-; -3.029 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[5]  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.821      ;
-; -3.001 ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                                  ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; clk          ; clk         ; 1.000        ; 0.000      ; 3.793      ;
-; -2.997 ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                                  ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.789      ;
-+--------+-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
++--------------------------------+
+; Fast Model Hold Summary        ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; reset ; -0.968 ; -2.601        ;
+; clk   ; 0.405  ; 0.000         ;
++-------+--------+---------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Setup: 'reset'                                                                                                                                                                                    ;
-+--------+--------------------------------------------------------------------------------------------------+-----------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node                                                                                        ; To Node         ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+--------------------------------------------------------------------------------------------------+-----------------+--------------+-------------+--------------+------------+------------+
-; -1.795 ; tx:inst8|inst25                                                                                  ; rx:inst9|inst33 ; reset        ; reset       ; 1.000        ; 1.618      ; 4.205      ;
-; -1.789 ; tx:inst8|inst25                                                                                  ; rx:inst9|inst35 ; reset        ; reset       ; 1.000        ; 1.614      ; 4.195      ;
-; -1.650 ; tx:inst8|inst39                                                                                  ; rx:inst9|inst33 ; reset        ; reset       ; 1.000        ; 1.618      ; 4.060      ;
-; -1.644 ; tx:inst8|inst39                                                                                  ; rx:inst9|inst35 ; reset        ; reset       ; 1.000        ; 1.614      ; 4.050      ;
-; -1.528 ; tx:inst8|inst25                                                                                  ; rx:inst9|inst29 ; reset        ; reset       ; 1.000        ; 1.617      ; 3.937      ;
-; -1.508 ; tx:inst8|inst25                                                                                  ; rx:inst9|inst32 ; reset        ; reset       ; 1.000        ; 1.900      ; 4.200      ;
-; -1.474 ; tx:inst8|inst37                                                                                  ; rx:inst9|inst33 ; reset        ; reset       ; 1.000        ; 1.618      ; 3.884      ;
-; -1.468 ; tx:inst8|inst37                                                                                  ; rx:inst9|inst35 ; reset        ; reset       ; 1.000        ; 1.614      ; 3.874      ;
-; -1.467 ; tx:inst8|inst25                                                                                  ; rx:inst9|inst31 ; reset        ; reset       ; 1.000        ; 2.013      ; 4.272      ;
-; -1.383 ; tx:inst8|inst39                                                                                  ; rx:inst9|inst29 ; reset        ; reset       ; 1.000        ; 1.617      ; 3.792      ;
-; -1.363 ; tx:inst8|inst39                                                                                  ; rx:inst9|inst32 ; reset        ; reset       ; 1.000        ; 1.900      ; 4.055      ;
-; -1.322 ; tx:inst8|inst39                                                                                  ; rx:inst9|inst31 ; reset        ; reset       ; 1.000        ; 2.013      ; 4.127      ;
-; -1.207 ; tx:inst8|inst37                                                                                  ; rx:inst9|inst29 ; reset        ; reset       ; 1.000        ; 1.617      ; 3.616      ;
-; -1.187 ; tx:inst8|inst37                                                                                  ; rx:inst9|inst32 ; reset        ; reset       ; 1.000        ; 1.900      ; 3.879      ;
-; -1.146 ; tx:inst8|inst37                                                                                  ; rx:inst9|inst31 ; reset        ; reset       ; 1.000        ; 2.013      ; 3.951      ;
-; -1.073 ; tx:inst8|inst21                                                                                  ; rx:inst9|inst33 ; reset        ; reset       ; 1.000        ; 1.618      ; 3.483      ;
-; -1.067 ; tx:inst8|inst21                                                                                  ; rx:inst9|inst35 ; reset        ; reset       ; 1.000        ; 1.614      ; 3.473      ;
-; -1.047 ; tx:inst8|inst6                                                                                   ; rx:inst9|inst33 ; reset        ; reset       ; 1.000        ; 1.618      ; 3.457      ;
-; -1.041 ; tx:inst8|inst6                                                                                   ; rx:inst9|inst35 ; reset        ; reset       ; 1.000        ; 1.614      ; 3.447      ;
-; -0.900 ; tx:inst8|inst38                                                                                  ; rx:inst9|inst33 ; reset        ; reset       ; 1.000        ; 1.618      ; 3.310      ;
-; -0.894 ; tx:inst8|inst38                                                                                  ; rx:inst9|inst35 ; reset        ; reset       ; 1.000        ; 1.614      ; 3.300      ;
-; -0.806 ; tx:inst8|inst21                                                                                  ; rx:inst9|inst29 ; reset        ; reset       ; 1.000        ; 1.617      ; 3.215      ;
-; -0.786 ; tx:inst8|inst21                                                                                  ; rx:inst9|inst32 ; reset        ; reset       ; 1.000        ; 1.900      ; 3.478      ;
-; -0.780 ; tx:inst8|inst6                                                                                   ; rx:inst9|inst29 ; reset        ; reset       ; 1.000        ; 1.617      ; 3.189      ;
-; -0.760 ; tx:inst8|inst6                                                                                   ; rx:inst9|inst32 ; reset        ; reset       ; 1.000        ; 1.900      ; 3.452      ;
-; -0.753 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0] ; rx:inst9|inst33 ; clk          ; reset       ; 1.000        ; 3.403      ; 4.948      ;
-; -0.747 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0] ; rx:inst9|inst35 ; clk          ; reset       ; 1.000        ; 3.399      ; 4.938      ;
-; -0.745 ; tx:inst8|inst21                                                                                  ; rx:inst9|inst31 ; reset        ; reset       ; 1.000        ; 2.013      ; 3.550      ;
-; -0.719 ; tx:inst8|inst6                                                                                   ; rx:inst9|inst31 ; reset        ; reset       ; 1.000        ; 2.013      ; 3.524      ;
-; -0.715 ; tx:inst8|inst20                                                                                  ; rx:inst9|inst33 ; reset        ; reset       ; 1.000        ; 1.618      ; 3.125      ;
-; -0.709 ; tx:inst8|inst20                                                                                  ; rx:inst9|inst35 ; reset        ; reset       ; 1.000        ; 1.614      ; 3.115      ;
-; -0.685 ; tx:inst8|inst25                                                                                  ; rx:inst9|inst36 ; reset        ; reset       ; 1.000        ; 1.545      ; 3.022      ;
-; -0.678 ; reset                                                                                            ; rx:inst9|inst33 ; reset        ; reset       ; 0.500        ; 5.496      ; 6.466      ;
-; -0.672 ; reset                                                                                            ; rx:inst9|inst35 ; reset        ; reset       ; 0.500        ; 5.492      ; 6.456      ;
-; -0.665 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1] ; rx:inst9|inst33 ; clk          ; reset       ; 1.000        ; 3.403      ; 4.860      ;
-; -0.659 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1] ; rx:inst9|inst35 ; clk          ; reset       ; 1.000        ; 3.399      ; 4.850      ;
-; -0.633 ; tx:inst8|inst38                                                                                  ; rx:inst9|inst29 ; reset        ; reset       ; 1.000        ; 1.617      ; 3.042      ;
-; -0.613 ; tx:inst8|inst38                                                                                  ; rx:inst9|inst32 ; reset        ; reset       ; 1.000        ; 1.900      ; 3.305      ;
-; -0.572 ; tx:inst8|inst38                                                                                  ; rx:inst9|inst31 ; reset        ; reset       ; 1.000        ; 2.013      ; 3.377      ;
-; -0.540 ; tx:inst8|inst39                                                                                  ; rx:inst9|inst36 ; reset        ; reset       ; 1.000        ; 1.545      ; 2.877      ;
-; -0.486 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0] ; rx:inst9|inst29 ; clk          ; reset       ; 1.000        ; 3.402      ; 4.680      ;
-; -0.466 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0] ; rx:inst9|inst32 ; clk          ; reset       ; 1.000        ; 3.685      ; 4.943      ;
-; -0.448 ; tx:inst8|inst20                                                                                  ; rx:inst9|inst29 ; reset        ; reset       ; 1.000        ; 1.617      ; 2.857      ;
-; -0.428 ; tx:inst8|inst20                                                                                  ; rx:inst9|inst32 ; reset        ; reset       ; 1.000        ; 1.900      ; 3.120      ;
-; -0.425 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0] ; rx:inst9|inst31 ; clk          ; reset       ; 1.000        ; 3.798      ; 5.015      ;
-; -0.411 ; reset                                                                                            ; rx:inst9|inst29 ; reset        ; reset       ; 0.500        ; 5.495      ; 6.198      ;
-; -0.399 ; tx:inst8|inst19                                                                                  ; rx:inst9|inst33 ; reset        ; reset       ; 1.000        ; 1.618      ; 2.809      ;
-; -0.398 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1] ; rx:inst9|inst29 ; clk          ; reset       ; 1.000        ; 3.402      ; 4.592      ;
-; -0.393 ; tx:inst8|inst19                                                                                  ; rx:inst9|inst35 ; reset        ; reset       ; 1.000        ; 1.614      ; 2.799      ;
-; -0.391 ; reset                                                                                            ; rx:inst9|inst32 ; reset        ; reset       ; 0.500        ; 5.778      ; 6.461      ;
-; -0.387 ; tx:inst8|inst20                                                                                  ; rx:inst9|inst31 ; reset        ; reset       ; 1.000        ; 2.013      ; 3.192      ;
-; -0.378 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1] ; rx:inst9|inst32 ; clk          ; reset       ; 1.000        ; 3.685      ; 4.855      ;
-; -0.364 ; tx:inst8|inst37                                                                                  ; rx:inst9|inst36 ; reset        ; reset       ; 1.000        ; 1.545      ; 2.701      ;
-; -0.350 ; reset                                                                                            ; rx:inst9|inst31 ; reset        ; reset       ; 0.500        ; 5.891      ; 6.533      ;
-; -0.337 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1] ; rx:inst9|inst31 ; clk          ; reset       ; 1.000        ; 3.798      ; 4.927      ;
-; -0.178 ; reset                                                                                            ; rx:inst9|inst33 ; reset        ; reset       ; 1.000        ; 5.496      ; 6.466      ;
-; -0.172 ; reset                                                                                            ; rx:inst9|inst35 ; reset        ; reset       ; 1.000        ; 5.492      ; 6.456      ;
-; -0.132 ; tx:inst8|inst19                                                                                  ; rx:inst9|inst29 ; reset        ; reset       ; 1.000        ; 1.617      ; 2.541      ;
-; -0.112 ; tx:inst8|inst19                                                                                  ; rx:inst9|inst32 ; reset        ; reset       ; 1.000        ; 1.900      ; 2.804      ;
-; -0.071 ; tx:inst8|inst19                                                                                  ; rx:inst9|inst31 ; reset        ; reset       ; 1.000        ; 2.013      ; 2.876      ;
-; 0.037  ; tx:inst8|inst21                                                                                  ; rx:inst9|inst36 ; reset        ; reset       ; 1.000        ; 1.545      ; 2.300      ;
-; 0.063  ; tx:inst8|inst6                                                                                   ; rx:inst9|inst36 ; reset        ; reset       ; 1.000        ; 1.545      ; 2.274      ;
-; 0.089  ; reset                                                                                            ; rx:inst9|inst29 ; reset        ; reset       ; 1.000        ; 5.495      ; 6.198      ;
-; 0.109  ; reset                                                                                            ; rx:inst9|inst32 ; reset        ; reset       ; 1.000        ; 5.778      ; 6.461      ;
-; 0.143  ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                 ; rx:inst9|inst33 ; clk          ; reset       ; 1.000        ; 3.403      ; 4.052      ;
-; 0.149  ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                 ; rx:inst9|inst35 ; clk          ; reset       ; 1.000        ; 3.399      ; 4.042      ;
-; 0.150  ; reset                                                                                            ; rx:inst9|inst31 ; reset        ; reset       ; 1.000        ; 5.891      ; 6.533      ;
-; 0.210  ; tx:inst8|inst38                                                                                  ; rx:inst9|inst36 ; reset        ; reset       ; 1.000        ; 1.545      ; 2.127      ;
-; 0.357  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0] ; rx:inst9|inst36 ; clk          ; reset       ; 1.000        ; 3.330      ; 3.765      ;
-; 0.395  ; tx:inst8|inst20                                                                                  ; rx:inst9|inst36 ; reset        ; reset       ; 1.000        ; 1.545      ; 1.942      ;
-; 0.410  ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                 ; rx:inst9|inst29 ; clk          ; reset       ; 1.000        ; 3.402      ; 3.784      ;
-; 0.430  ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                 ; rx:inst9|inst32 ; clk          ; reset       ; 1.000        ; 3.685      ; 4.047      ;
-; 0.445  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1] ; rx:inst9|inst36 ; clk          ; reset       ; 1.000        ; 3.330      ; 3.677      ;
-; 0.471  ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                 ; rx:inst9|inst31 ; clk          ; reset       ; 1.000        ; 3.798      ; 4.119      ;
-; 0.508  ; reset                                                                                            ; rx:inst9|inst36 ; reset        ; reset       ; 0.500        ; 5.423      ; 5.207      ;
-; 0.711  ; tx:inst8|inst19                                                                                  ; rx:inst9|inst36 ; reset        ; reset       ; 1.000        ; 1.545      ; 1.626      ;
-; 0.778  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2] ; rx:inst9|inst33 ; clk          ; reset       ; 1.000        ; 3.403      ; 3.417      ;
-; 0.784  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2] ; rx:inst9|inst35 ; clk          ; reset       ; 1.000        ; 3.399      ; 3.407      ;
-; 0.808  ; tx:inst8|tx_fsm:inst|fstate.START                                                                ; rx:inst9|inst33 ; clk          ; reset       ; 1.000        ; 3.403      ; 3.387      ;
-; 0.814  ; tx:inst8|tx_fsm:inst|fstate.START                                                                ; rx:inst9|inst35 ; clk          ; reset       ; 1.000        ; 3.399      ; 3.377      ;
-; 1.008  ; reset                                                                                            ; rx:inst9|inst36 ; reset        ; reset       ; 1.000        ; 5.423      ; 5.207      ;
-; 1.045  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2] ; rx:inst9|inst29 ; clk          ; reset       ; 1.000        ; 3.402      ; 3.149      ;
-; 1.065  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2] ; rx:inst9|inst32 ; clk          ; reset       ; 1.000        ; 3.685      ; 3.412      ;
-; 1.075  ; tx:inst8|tx_fsm:inst|fstate.START                                                                ; rx:inst9|inst29 ; clk          ; reset       ; 1.000        ; 3.402      ; 3.119      ;
-; 1.095  ; tx:inst8|tx_fsm:inst|fstate.START                                                                ; rx:inst9|inst32 ; clk          ; reset       ; 1.000        ; 3.685      ; 3.382      ;
-; 1.106  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2] ; rx:inst9|inst31 ; clk          ; reset       ; 1.000        ; 3.798      ; 3.484      ;
-; 1.136  ; tx:inst8|tx_fsm:inst|fstate.START                                                                ; rx:inst9|inst31 ; clk          ; reset       ; 1.000        ; 3.798      ; 3.454      ;
-; 1.253  ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                 ; rx:inst9|inst36 ; clk          ; reset       ; 1.000        ; 3.330      ; 2.869      ;
-; 1.888  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2] ; rx:inst9|inst36 ; clk          ; reset       ; 1.000        ; 3.330      ; 2.234      ;
-; 1.961  ; tx:inst8|tx_fsm:inst|fstate.START                                                                ; rx:inst9|inst36 ; clk          ; reset       ; 1.000        ; 3.330      ; 2.161      ;
-+--------+--------------------------------------------------------------------------------------------------+-----------------+--------------+-------------+--------------+------------+------------+
++-------------------------------+
+; Fast Model Recovery Summary   ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 0.168 ; 0.000         ;
++-------+-------+---------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Hold: 'reset'                                                                                                                                                                                     ;
-+--------+--------------------------------------------------------------------------------------------------+-----------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node                                                                                        ; To Node         ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+--------------------------------------------------------------------------------------------------+-----------------+--------------+-------------+--------------+------------+------------+
-; -1.307 ; tx:inst8|tx_fsm:inst|fstate.START                                                                ; rx:inst9|inst36 ; clk          ; reset       ; 0.000        ; 3.330      ; 2.161      ;
-; -1.234 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2] ; rx:inst9|inst36 ; clk          ; reset       ; 0.000        ; 3.330      ; 2.234      ;
-; -0.780 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0] ; rx:inst9|inst36 ; clk          ; reset       ; 0.000        ; 3.330      ; 2.688      ;
-; -0.599 ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                 ; rx:inst9|inst36 ; clk          ; reset       ; 0.000        ; 3.330      ; 2.869      ;
-; -0.551 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1] ; rx:inst9|inst36 ; clk          ; reset       ; 0.000        ; 3.330      ; 2.917      ;
-; -0.482 ; tx:inst8|tx_fsm:inst|fstate.START                                                                ; rx:inst9|inst31 ; clk          ; reset       ; 0.000        ; 3.798      ; 3.454      ;
-; -0.452 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2] ; rx:inst9|inst31 ; clk          ; reset       ; 0.000        ; 3.798      ; 3.484      ;
-; -0.441 ; tx:inst8|tx_fsm:inst|fstate.START                                                                ; rx:inst9|inst32 ; clk          ; reset       ; 0.000        ; 3.685      ; 3.382      ;
-; -0.421 ; tx:inst8|tx_fsm:inst|fstate.START                                                                ; rx:inst9|inst29 ; clk          ; reset       ; 0.000        ; 3.402      ; 3.119      ;
-; -0.411 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2] ; rx:inst9|inst32 ; clk          ; reset       ; 0.000        ; 3.685      ; 3.412      ;
-; -0.391 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2] ; rx:inst9|inst29 ; clk          ; reset       ; 0.000        ; 3.402      ; 3.149      ;
-; -0.354 ; reset                                                                                            ; rx:inst9|inst36 ; reset        ; reset       ; 0.000        ; 5.423      ; 5.207      ;
-; -0.160 ; tx:inst8|tx_fsm:inst|fstate.START                                                                ; rx:inst9|inst35 ; clk          ; reset       ; 0.000        ; 3.399      ; 3.377      ;
-; -0.154 ; tx:inst8|tx_fsm:inst|fstate.START                                                                ; rx:inst9|inst33 ; clk          ; reset       ; 0.000        ; 3.403      ; 3.387      ;
-; -0.130 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2] ; rx:inst9|inst35 ; clk          ; reset       ; 0.000        ; 3.399      ; 3.407      ;
-; -0.124 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2] ; rx:inst9|inst33 ; clk          ; reset       ; 0.000        ; 3.403      ; 3.417      ;
-; -0.057 ; tx:inst8|inst19                                                                                  ; rx:inst9|inst36 ; reset        ; reset       ; 0.000        ; 1.545      ; 1.626      ;
-; 0.002  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0] ; rx:inst9|inst31 ; clk          ; reset       ; 0.000        ; 3.798      ; 3.938      ;
-; 0.043  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0] ; rx:inst9|inst32 ; clk          ; reset       ; 0.000        ; 3.685      ; 3.866      ;
-; 0.063  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0] ; rx:inst9|inst29 ; clk          ; reset       ; 0.000        ; 3.402      ; 3.603      ;
-; 0.146  ; reset                                                                                            ; rx:inst9|inst36 ; reset        ; reset       ; -0.500       ; 5.423      ; 5.207      ;
-; 0.183  ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                 ; rx:inst9|inst31 ; clk          ; reset       ; 0.000        ; 3.798      ; 4.119      ;
-; 0.224  ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                 ; rx:inst9|inst32 ; clk          ; reset       ; 0.000        ; 3.685      ; 4.047      ;
-; 0.231  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1] ; rx:inst9|inst31 ; clk          ; reset       ; 0.000        ; 3.798      ; 4.167      ;
-; 0.244  ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                 ; rx:inst9|inst29 ; clk          ; reset       ; 0.000        ; 3.402      ; 3.784      ;
-; 0.259  ; tx:inst8|inst20                                                                                  ; rx:inst9|inst36 ; reset        ; reset       ; 0.000        ; 1.545      ; 1.942      ;
-; 0.272  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1] ; rx:inst9|inst32 ; clk          ; reset       ; 0.000        ; 3.685      ; 4.095      ;
-; 0.292  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1] ; rx:inst9|inst29 ; clk          ; reset       ; 0.000        ; 3.402      ; 3.832      ;
-; 0.324  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0] ; rx:inst9|inst35 ; clk          ; reset       ; 0.000        ; 3.399      ; 3.861      ;
-; 0.330  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0] ; rx:inst9|inst33 ; clk          ; reset       ; 0.000        ; 3.403      ; 3.871      ;
-; 0.444  ; tx:inst8|inst38                                                                                  ; rx:inst9|inst36 ; reset        ; reset       ; 0.000        ; 1.545      ; 2.127      ;
-; 0.504  ; reset                                                                                            ; rx:inst9|inst31 ; reset        ; reset       ; 0.000        ; 5.891      ; 6.533      ;
-; 0.505  ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                 ; rx:inst9|inst35 ; clk          ; reset       ; 0.000        ; 3.399      ; 4.042      ;
-; 0.511  ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                 ; rx:inst9|inst33 ; clk          ; reset       ; 0.000        ; 3.403      ; 4.052      ;
-; 0.545  ; reset                                                                                            ; rx:inst9|inst32 ; reset        ; reset       ; 0.000        ; 5.778      ; 6.461      ;
-; 0.553  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1] ; rx:inst9|inst35 ; clk          ; reset       ; 0.000        ; 3.399      ; 4.090      ;
-; 0.559  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1] ; rx:inst9|inst33 ; clk          ; reset       ; 0.000        ; 3.403      ; 4.100      ;
-; 0.565  ; reset                                                                                            ; rx:inst9|inst29 ; reset        ; reset       ; 0.000        ; 5.495      ; 6.198      ;
-; 0.591  ; tx:inst8|inst6                                                                                   ; rx:inst9|inst36 ; reset        ; reset       ; 0.000        ; 1.545      ; 2.274      ;
-; 0.617  ; tx:inst8|inst21                                                                                  ; rx:inst9|inst36 ; reset        ; reset       ; 0.000        ; 1.545      ; 2.300      ;
-; 0.725  ; tx:inst8|inst19                                                                                  ; rx:inst9|inst31 ; reset        ; reset       ; 0.000        ; 2.013      ; 2.876      ;
-; 0.766  ; tx:inst8|inst19                                                                                  ; rx:inst9|inst32 ; reset        ; reset       ; 0.000        ; 1.900      ; 2.804      ;
-; 0.786  ; tx:inst8|inst19                                                                                  ; rx:inst9|inst29 ; reset        ; reset       ; 0.000        ; 1.617      ; 2.541      ;
-; 0.826  ; reset                                                                                            ; rx:inst9|inst35 ; reset        ; reset       ; 0.000        ; 5.492      ; 6.456      ;
-; 0.832  ; reset                                                                                            ; rx:inst9|inst33 ; reset        ; reset       ; 0.000        ; 5.496      ; 6.466      ;
-; 1.004  ; reset                                                                                            ; rx:inst9|inst31 ; reset        ; reset       ; -0.500       ; 5.891      ; 6.533      ;
-; 1.018  ; tx:inst8|inst37                                                                                  ; rx:inst9|inst36 ; reset        ; reset       ; 0.000        ; 1.545      ; 2.701      ;
-; 1.041  ; tx:inst8|inst20                                                                                  ; rx:inst9|inst31 ; reset        ; reset       ; 0.000        ; 2.013      ; 3.192      ;
-; 1.045  ; reset                                                                                            ; rx:inst9|inst32 ; reset        ; reset       ; -0.500       ; 5.778      ; 6.461      ;
-; 1.047  ; tx:inst8|inst19                                                                                  ; rx:inst9|inst35 ; reset        ; reset       ; 0.000        ; 1.614      ; 2.799      ;
-; 1.053  ; tx:inst8|inst19                                                                                  ; rx:inst9|inst33 ; reset        ; reset       ; 0.000        ; 1.618      ; 2.809      ;
-; 1.065  ; reset                                                                                            ; rx:inst9|inst29 ; reset        ; reset       ; -0.500       ; 5.495      ; 6.198      ;
-; 1.082  ; tx:inst8|inst20                                                                                  ; rx:inst9|inst32 ; reset        ; reset       ; 0.000        ; 1.900      ; 3.120      ;
-; 1.102  ; tx:inst8|inst20                                                                                  ; rx:inst9|inst29 ; reset        ; reset       ; 0.000        ; 1.617      ; 2.857      ;
-; 1.194  ; tx:inst8|inst39                                                                                  ; rx:inst9|inst36 ; reset        ; reset       ; 0.000        ; 1.545      ; 2.877      ;
-; 1.226  ; tx:inst8|inst38                                                                                  ; rx:inst9|inst31 ; reset        ; reset       ; 0.000        ; 2.013      ; 3.377      ;
-; 1.267  ; tx:inst8|inst38                                                                                  ; rx:inst9|inst32 ; reset        ; reset       ; 0.000        ; 1.900      ; 3.305      ;
-; 1.287  ; tx:inst8|inst38                                                                                  ; rx:inst9|inst29 ; reset        ; reset       ; 0.000        ; 1.617      ; 3.042      ;
-; 1.326  ; reset                                                                                            ; rx:inst9|inst35 ; reset        ; reset       ; -0.500       ; 5.492      ; 6.456      ;
-; 1.332  ; reset                                                                                            ; rx:inst9|inst33 ; reset        ; reset       ; -0.500       ; 5.496      ; 6.466      ;
-; 1.339  ; tx:inst8|inst25                                                                                  ; rx:inst9|inst36 ; reset        ; reset       ; 0.000        ; 1.545      ; 3.022      ;
-; 1.363  ; tx:inst8|inst20                                                                                  ; rx:inst9|inst35 ; reset        ; reset       ; 0.000        ; 1.614      ; 3.115      ;
-; 1.369  ; tx:inst8|inst20                                                                                  ; rx:inst9|inst33 ; reset        ; reset       ; 0.000        ; 1.618      ; 3.125      ;
-; 1.373  ; tx:inst8|inst6                                                                                   ; rx:inst9|inst31 ; reset        ; reset       ; 0.000        ; 2.013      ; 3.524      ;
-; 1.399  ; tx:inst8|inst21                                                                                  ; rx:inst9|inst31 ; reset        ; reset       ; 0.000        ; 2.013      ; 3.550      ;
-; 1.414  ; tx:inst8|inst6                                                                                   ; rx:inst9|inst32 ; reset        ; reset       ; 0.000        ; 1.900      ; 3.452      ;
-; 1.434  ; tx:inst8|inst6                                                                                   ; rx:inst9|inst29 ; reset        ; reset       ; 0.000        ; 1.617      ; 3.189      ;
-; 1.440  ; tx:inst8|inst21                                                                                  ; rx:inst9|inst32 ; reset        ; reset       ; 0.000        ; 1.900      ; 3.478      ;
-; 1.460  ; tx:inst8|inst21                                                                                  ; rx:inst9|inst29 ; reset        ; reset       ; 0.000        ; 1.617      ; 3.215      ;
-; 1.548  ; tx:inst8|inst38                                                                                  ; rx:inst9|inst35 ; reset        ; reset       ; 0.000        ; 1.614      ; 3.300      ;
-; 1.554  ; tx:inst8|inst38                                                                                  ; rx:inst9|inst33 ; reset        ; reset       ; 0.000        ; 1.618      ; 3.310      ;
-; 1.695  ; tx:inst8|inst6                                                                                   ; rx:inst9|inst35 ; reset        ; reset       ; 0.000        ; 1.614      ; 3.447      ;
-; 1.701  ; tx:inst8|inst6                                                                                   ; rx:inst9|inst33 ; reset        ; reset       ; 0.000        ; 1.618      ; 3.457      ;
-; 1.721  ; tx:inst8|inst21                                                                                  ; rx:inst9|inst35 ; reset        ; reset       ; 0.000        ; 1.614      ; 3.473      ;
-; 1.727  ; tx:inst8|inst21                                                                                  ; rx:inst9|inst33 ; reset        ; reset       ; 0.000        ; 1.618      ; 3.483      ;
-; 1.800  ; tx:inst8|inst37                                                                                  ; rx:inst9|inst31 ; reset        ; reset       ; 0.000        ; 2.013      ; 3.951      ;
-; 1.841  ; tx:inst8|inst37                                                                                  ; rx:inst9|inst32 ; reset        ; reset       ; 0.000        ; 1.900      ; 3.879      ;
-; 1.861  ; tx:inst8|inst37                                                                                  ; rx:inst9|inst29 ; reset        ; reset       ; 0.000        ; 1.617      ; 3.616      ;
-; 1.976  ; tx:inst8|inst39                                                                                  ; rx:inst9|inst31 ; reset        ; reset       ; 0.000        ; 2.013      ; 4.127      ;
-; 2.017  ; tx:inst8|inst39                                                                                  ; rx:inst9|inst32 ; reset        ; reset       ; 0.000        ; 1.900      ; 4.055      ;
-; 2.037  ; tx:inst8|inst39                                                                                  ; rx:inst9|inst29 ; reset        ; reset       ; 0.000        ; 1.617      ; 3.792      ;
-; 2.121  ; tx:inst8|inst25                                                                                  ; rx:inst9|inst31 ; reset        ; reset       ; 0.000        ; 2.013      ; 4.272      ;
-; 2.122  ; tx:inst8|inst37                                                                                  ; rx:inst9|inst35 ; reset        ; reset       ; 0.000        ; 1.614      ; 3.874      ;
-; 2.128  ; tx:inst8|inst37                                                                                  ; rx:inst9|inst33 ; reset        ; reset       ; 0.000        ; 1.618      ; 3.884      ;
-; 2.162  ; tx:inst8|inst25                                                                                  ; rx:inst9|inst32 ; reset        ; reset       ; 0.000        ; 1.900      ; 4.200      ;
-; 2.182  ; tx:inst8|inst25                                                                                  ; rx:inst9|inst29 ; reset        ; reset       ; 0.000        ; 1.617      ; 3.937      ;
-; 2.298  ; tx:inst8|inst39                                                                                  ; rx:inst9|inst35 ; reset        ; reset       ; 0.000        ; 1.614      ; 4.050      ;
-; 2.304  ; tx:inst8|inst39                                                                                  ; rx:inst9|inst33 ; reset        ; reset       ; 0.000        ; 1.618      ; 4.060      ;
-; 2.443  ; tx:inst8|inst25                                                                                  ; rx:inst9|inst35 ; reset        ; reset       ; 0.000        ; 1.614      ; 4.195      ;
-; 2.449  ; tx:inst8|inst25                                                                                  ; rx:inst9|inst33 ; reset        ; reset       ; 0.000        ; 1.618      ; 4.205      ;
-+--------+--------------------------------------------------------------------------------------------------+-----------------+--------------+-------------+--------------+------------+------------+
++--------------------------------+
+; Fast Model Removal Summary     ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; clk   ; -0.014 ; -0.280        ;
++-------+--------+---------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Hold: 'clk'                                                                                                                                                                                                                                                                                                         ;
-+-------+-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack ; From Node                                                                                                         ; To Node                                                                                                           ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+-------+-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; 1.084 ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                 ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.222      ;
-; 1.200 ; reset                                                                                                             ; tx:inst8|tx_fsm:inst|fstate.IDLE                                                                                  ; reset        ; clk         ; 0.000        ; 2.093      ; 3.431      ;
-; 1.200 ; rx:inst9|rx_fsm:inst|fstate.STOP                                                                                  ; rx:inst9|rx_fsm:inst|fstate.STOP                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.338      ;
-; 1.206 ; tx:inst8|tx_fsm:inst|fstate.IDLE                                                                                  ; tx:inst8|tx_fsm:inst|fstate.START                                                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.344      ;
-; 1.279 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; clk          ; clk         ; 0.000        ; 0.000      ; 1.417      ;
-; 1.317 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.455      ;
-; 1.325 ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; rx:inst9|rx_fsm:inst|fstate.DATA                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.463      ;
-; 1.329 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.467      ;
-; 1.334 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.472      ;
-; 1.334 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.472      ;
-; 1.335 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[5]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[5]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.473      ;
-; 1.340 ; reset                                                                                                             ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; reset        ; clk         ; 0.000        ; 2.093      ; 3.571      ;
-; 1.345 ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.483      ;
-; 1.349 ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.487      ;
-; 1.395 ; tx:inst8|tx_fsm:inst|fstate.STOP                                                                                  ; tx:inst8|tx_fsm:inst|fstate.STOP                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.533      ;
-; 1.395 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.533      ;
-; 1.400 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.538      ;
-; 1.405 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.543      ;
-; 1.407 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.545      ;
-; 1.410 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.548      ;
-; 1.412 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.550      ;
-; 1.412 ; rx:inst9|rx_fsm:inst|fstate.DATA                                                                                  ; rx:inst9|rx_fsm:inst|fstate.DATA                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.550      ;
-; 1.416 ; rx:inst9|rx_fsm:inst|fstate.DATA                                                                                  ; rx:inst9|rx_fsm:inst|fstate.STOP                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.554      ;
-; 1.424 ; reset                                                                                                             ; tx:inst8|tx_fsm:inst|fstate.START                                                                                 ; reset        ; clk         ; 0.000        ; 2.093      ; 3.655      ;
-; 1.467 ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                                  ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.605      ;
-; 1.472 ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                                  ; tx:inst8|tx_fsm:inst|fstate.STOP                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.610      ;
-; 1.570 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; clk          ; clk         ; 0.000        ; 0.000      ; 1.708      ;
-; 1.582 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.720      ;
-; 1.627 ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                 ; rx:inst9|rx_fsm:inst|fstate.DATA                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.765      ;
-; 1.633 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; clk          ; clk         ; 0.000        ; 0.000      ; 1.771      ;
-; 1.640 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; baud_gen_:inst|inst8                                                                                              ; clk          ; clk         ; 0.000        ; 0.000      ; 1.778      ;
-; 1.645 ; tx:inst8|tx_fsm:inst|fstate.START                                                                                 ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.783      ;
-; 1.646 ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                 ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.784      ;
-; 1.690 ; reset                                                                                                             ; rx:inst9|rx_fsm:inst|fstate.DATA                                                                                  ; reset        ; clk         ; 0.000        ; 2.093      ; 3.921      ;
-; 1.690 ; reset                                                                                                             ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; reset        ; clk         ; 0.000        ; 2.093      ; 3.921      ;
-; 1.690 ; reset                                                                                                             ; rx:inst9|rx_fsm:inst|fstate.STOP                                                                                  ; reset        ; clk         ; 0.000        ; 2.093      ; 3.921      ;
-; 1.693 ; reset                                                                                                             ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                 ; reset        ; clk         ; 0.000        ; 2.093      ; 3.924      ;
-; 1.693 ; reset                                                                                                             ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                 ; reset        ; clk         ; 0.000        ; 2.093      ; 3.924      ;
-; 1.693 ; reset                                                                                                             ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                 ; reset        ; clk         ; 0.000        ; 2.093      ; 3.924      ;
-; 1.700 ; reset                                                                                                             ; tx:inst8|tx_fsm:inst|fstate.IDLE                                                                                  ; reset        ; clk         ; -0.500       ; 2.093      ; 3.431      ;
-; 1.720 ; reset                                                                                                             ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                  ; reset        ; clk         ; 0.000        ; 2.093      ; 3.951      ;
-; 1.721 ; reset                                                                                                             ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                  ; reset        ; clk         ; 0.000        ; 2.093      ; 3.952      ;
-; 1.721 ; reset                                                                                                             ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                  ; reset        ; clk         ; 0.000        ; 2.093      ; 3.952      ;
-; 1.837 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.975      ;
-; 1.840 ; reset                                                                                                             ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; reset        ; clk         ; -0.500       ; 2.093      ; 3.571      ;
-; 1.849 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.987      ;
-; 1.851 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; baud_gen_:inst|inst8                                                                                              ; clk          ; clk         ; 0.000        ; 0.000      ; 1.989      ;
-; 1.854 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.992      ;
-; 1.854 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.992      ;
-; 1.900 ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                 ; rx:inst9|rx_fsm:inst|fstate.STOP                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.038      ;
-; 1.905 ; reset                                                                                                             ; tx:inst8|tx_fsm:inst|fstate.DATA                                                                                  ; reset        ; clk         ; 0.000        ; 2.093      ; 4.136      ;
-; 1.905 ; reset                                                                                                             ; tx:inst8|tx_fsm:inst|fstate.STOP                                                                                  ; reset        ; clk         ; 0.000        ; 2.093      ; 4.136      ;
-; 1.906 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.044      ;
-; 1.918 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.056      ;
-; 1.923 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[5]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.061      ;
-; 1.923 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.061      ;
-; 1.924 ; reset                                                                                                             ; tx:inst8|tx_fsm:inst|fstate.START                                                                                 ; reset        ; clk         ; -0.500       ; 2.093      ; 3.655      ;
-; 1.942 ; baud_gen_:inst|inst8                                                                                              ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 2.080      ;
-; 1.947 ; baud_gen_:inst|inst8                                                                                              ; rx:inst9|rx_fsm:inst|fstate.DATA                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.085      ;
-; 1.960 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[5]  ; baud_gen_:inst|inst8                                                                                              ; clk          ; clk         ; 0.000        ; 0.000      ; 2.098      ;
-; 1.975 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.113      ;
-; 1.982 ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                 ; rx:inst9|rx_fsm:inst|fstate.DATA                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.120      ;
-; 1.983 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.121      ;
-; 1.987 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.125      ;
-; 1.988 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[5]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.126      ;
-; 1.993 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.131      ;
-; 1.998 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.136      ;
-; 2.000 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.138      ;
-; 2.008 ; tx:inst8|tx_fsm:inst|fstate.IDLE                                                                                  ; tx:inst8|tx_fsm:inst|fstate.IDLE                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.146      ;
-; 2.009 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.147      ;
-; 2.037 ; baud_gen_:inst|inst8                                                                                              ; rx:inst9|rx_fsm:inst|fstate.STOP                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.175      ;
-; 2.044 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.182      ;
-; 2.060 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; baud_gen_:inst|inst8                                                                                              ; clk          ; clk         ; 0.000        ; 0.000      ; 2.198      ;
-; 2.062 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.200      ;
-; 2.063 ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                 ; rx:inst9|rx_fsm:inst|fstate.DATA                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.201      ;
-; 2.067 ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                  ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.205      ;
-; 2.074 ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                 ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                 ; clk          ; clk         ; 0.000        ; 0.000      ; 2.212      ;
-; 2.081 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; baud_gen_:inst|inst8                                                                                              ; clk          ; clk         ; 0.000        ; 0.000      ; 2.219      ;
-; 2.096 ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 2.234      ;
-; 2.102 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.240      ;
-; 2.131 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.269      ;
-; 2.152 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; baud_gen_:inst|inst8                                                                                              ; clk          ; clk         ; 0.000        ; 0.000      ; 2.290      ;
-; 2.168 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; baud_gen_:inst|inst8                                                                                              ; clk          ; clk         ; 0.000        ; 0.000      ; 2.306      ;
-; 2.171 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.309      ;
-; 2.190 ; reset                                                                                                             ; rx:inst9|rx_fsm:inst|fstate.DATA                                                                                  ; reset        ; clk         ; -0.500       ; 2.093      ; 3.921      ;
-; 2.190 ; reset                                                                                                             ; rx:inst9|rx_fsm:inst|fstate.START                                                                                 ; reset        ; clk         ; -0.500       ; 2.093      ; 3.921      ;
-; 2.190 ; reset                                                                                                             ; rx:inst9|rx_fsm:inst|fstate.STOP                                                                                  ; reset        ; clk         ; -0.500       ; 2.093      ; 3.921      ;
-; 2.193 ; reset                                                                                                             ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                 ; reset        ; clk         ; -0.500       ; 2.093      ; 3.924      ;
-; 2.193 ; reset                                                                                                             ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                 ; reset        ; clk         ; -0.500       ; 2.093      ; 3.924      ;
-; 2.193 ; reset                                                                                                             ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                 ; reset        ; clk         ; -0.500       ; 2.093      ; 3.924      ;
-; 2.195 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.333      ;
-; 2.195 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.333      ;
-; 2.195 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.333      ;
-; 2.195 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.333      ;
-; 2.195 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[5]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.333      ;
-; 2.200 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[5]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.338      ;
-; 2.209 ; rx:inst9|rx_fsm:inst|fstate.STOP                                                                                  ; rx:inst9|rx_fsm:inst|fstate.IDLE                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.347      ;
-; 2.215 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.353      ;
-; 2.215 ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.353      ;
-; 2.215 ; tx:inst8|tx_fsm:inst|fstate.STOP                                                                                  ; tx:inst8|tx_fsm:inst|fstate.IDLE                                                                                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.353      ;
-+-------+-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
++----------------------------------------+
+; Fast Model Minimum Pulse Width Summary ;
++-------+--------+-----------------------+
+; Clock ; Slack  ; End Point TNS         ;
++-------+--------+-----------------------+
+; clk   ; -2.289 ; -2.289                ;
+; reset ; -2.289 ; -2.289                ;
++-------+--------+-----------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Recovery: 'clk'                                                                                                                                                                                              ;
-+--------+-----------+-------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node ; To Node                                                                                                           ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+-----------+-------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; -0.351 ; reset     ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                  ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                  ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                  ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; baud_gen_:inst|inst8                                                                                              ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[5]  ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                 ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                 ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; -0.351 ; reset     ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                 ; reset        ; clk         ; 0.500        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                  ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                  ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                  ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; baud_gen_:inst|inst8                                                                                              ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[5]  ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                 ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                 ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-; 0.149  ; reset     ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                 ; reset        ; clk         ; 1.000        ; 2.093      ; 2.736      ;
-+--------+-----------+-------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removal: 'clk'                                                                                                                                                                                              ;
-+-------+-----------+-------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack ; From Node ; To Node                                                                                                           ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+-------+-----------+-------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; 0.505 ; reset     ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                  ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                  ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                  ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; baud_gen_:inst|inst8                                                                                              ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[5]  ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                 ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                 ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 0.505 ; reset     ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                 ; reset        ; clk         ; 0.000        ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                  ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                  ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                  ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; baud_gen_:inst|inst8                                                                                              ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[0]  ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[3]  ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[1]  ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[2]  ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[4]  ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[5]  ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[6]  ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[7]  ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[8]  ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[9]  ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[10] ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[11] ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated|safe_q[12] ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[1]                 ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[0]                 ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-; 1.005 ; reset     ; rx:inst9|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated|safe_q[2]                 ; reset        ; clk         ; -0.500       ; 2.093      ; 2.736      ;
-+-------+-----------+-------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
++--------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                            ;
++------------------+---------+--------+----------+---------+---------------------+
+; Clock            ; Setup   ; Hold   ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+---------+--------+----------+---------+---------------------+
+; Worst-case Slack ; -4.829  ; -1.137 ; -0.351   ; -0.014  ; -2.289              ;
+;  clk             ; -4.829  ; 0.405  ; -0.351   ; -0.014  ; -2.289              ;
+;  reset           ; -2.339  ; -1.137 ; N/A      ; N/A     ; -2.289              ;
+; Design-wide TNS  ; -97.65  ; -2.601 ; -7.02    ; -0.28   ; -4.578              ;
+;  clk             ; -83.422 ; 0.000  ; -7.020   ; -0.280  ; -2.289              ;
+;  reset           ; -14.228 ; -2.601 ; N/A      ; N/A     ; -2.289              ;
++------------------+---------+--------+----------+---------+---------------------+
 
 
 +-------------------------------------------------------------------+
@@ -672,8 +226,8 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +------------+----------+----------+----------+----------+----------+
 ; clk        ; clk      ; 424      ; 0        ; 0        ; 0        ;
 ; reset      ; clk      ; 39       ; 23       ; 0        ; 0        ;
-; clk        ; reset    ; 54       ; 0        ; 0        ; 0        ;
-; reset      ; reset    ; 54       ; 6        ; 0        ; 0        ;
+; clk        ; reset    ; 72       ; 0        ; 0        ; 0        ;
+; reset      ; reset    ; 72       ; 8        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -685,8 +239,8 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+----------+----------+----------+----------+----------+
 ; clk        ; clk      ; 424      ; 0        ; 0        ; 0        ;
 ; reset      ; clk      ; 39       ; 23       ; 0        ; 0        ;
-; clk        ; reset    ; 54       ; 0        ; 0        ; 0        ;
-; reset      ; reset    ; 54       ; 6        ; 0        ; 0        ;
+; clk        ; reset    ; 72       ; 0        ; 0        ; 0        ;
+; reset      ; reset    ; 72       ; 8        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -732,8 +286,8 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 10    ; 10   ;
 ; Unconstrained Input Port Paths  ; 11    ; 11   ;
-; Unconstrained Output Ports      ; 7     ; 7    ;
-; Unconstrained Output Port Paths ; 20    ; 20   ;
+; Unconstrained Output Ports      ; 9     ; 9    ;
+; Unconstrained Output Port Paths ; 22    ; 22   ;
 +---------------------------------+-------+------+
 
 
@@ -771,9 +325,11 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Output Port ; Comment                                                                               ;
 +-------------+---------------------------------------------------------------------------------------+
 ; data_out[0] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; data_out[1] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[2] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[3] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[4] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; data_out[5] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[6] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[7] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; tx_serial   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -804,9 +360,11 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Output Port ; Comment                                                                               ;
 +-------------+---------------------------------------------------------------------------------------+
 ; data_out[0] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; data_out[1] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[2] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[3] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[4] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; data_out[5] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[6] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[7] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; tx_serial   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -819,7 +377,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sun May 31 05:59:49 2026
+    Info: Processing started: Sun May 31 22:30:13 2026
 Info: Command: quartus_sta uart -c uart
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -832,18 +390,19 @@ Info (332105): Deriving Clocks
     Info (332105): create_clock -period 1.000 -name reset reset
     Info (332105): create_clock -period 1.000 -name clk clk
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow Model
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -4.939
+Info (332146): Worst-case setup slack is -4.829
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.939             -83.149 clk 
-    Info (332119):    -1.795              -8.772 reset 
-Info (332146): Worst-case hold slack is -1.307
+    Info (332119):    -4.829             -83.422 clk 
+    Info (332119):    -2.339             -14.228 reset 
+Info (332146): Worst-case hold slack is -1.137
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.307              -2.965 reset 
-    Info (332119):     1.084               0.000 clk 
+    Info (332119):    -1.137              -1.635 reset 
+    Info (332119):     0.807               0.000 clk 
 Info (332146): Worst-case recovery slack is -0.351
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
@@ -858,12 +417,40 @@ Info (332146): Worst-case minimum pulse width slack is -2.289
     Info (332119):    -2.289              -2.289 clk 
     Info (332119):    -2.289              -2.289 reset 
 Info (332001): The selected device family is not supported by the report_metastability command.
+Info: Analyzing Fast Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -2.402
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.402             -29.960 clk 
+    Info (332119):    -0.897              -4.610 reset 
+Info (332146): Worst-case hold slack is -0.968
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.968              -2.601 reset 
+    Info (332119):     0.405               0.000 clk 
+Info (332146): Worst-case recovery slack is 0.168
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.168               0.000 clk 
+Info (332146): Worst-case removal slack is -0.014
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.014              -0.280 clk 
+Info (332146): Worst-case minimum pulse width slack is -2.289
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.289              -2.289 clk 
+    Info (332119):    -2.289              -2.289 reset 
+Info (332001): The selected device family is not supported by the report_metastability command.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
-Info: Quartus Prime Timing Analyzer was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 4680 megabytes
-    Info: Processing ended: Sun May 31 05:59:51 2026
-    Info: Elapsed time: 00:00:02
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 4682 megabytes
+    Info: Processing ended: Sun May 31 22:30:14 2026
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
 
