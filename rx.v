@@ -14,7 +14,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
-// CREATED		"Sun May 31 22:28:42 2026"
+// CREATED		"Mon Jun 01 13:17:15 2026"
 
 module rx(
 	rx_serial,

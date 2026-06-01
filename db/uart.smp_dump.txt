@@ -6,7 +6,7 @@ fstate.START 0 0 1 1
 fstate.DATA 0 1 0 1 
 fstate.STOP 1 0 0 1 
 
-State Machine - |top|tx:inst8|tx_fsm:inst|fstate
+State Machine - |top|tx:inst8|tx_fsm:b2v_inst|fstate
 Name fstate.STOP fstate.START fstate.DATA fstate.IDLE 
 fstate.IDLE 0 0 0 0 
 fstate.DATA 0 0 1 1 

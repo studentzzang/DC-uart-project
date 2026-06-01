@@ -26,140 +26,22 @@ data_out[7] <= rx:inst1.data_out[7]
 
 
 |top|tx:inst8
-tx_serial <= lpm_mux_4to1:inst43.result
-reset => tx_fsm:inst.reset
-reset => lpm_counter_3:inst1.aclr
-clk => tx_fsm:inst.clock
-clk => lpm_counter_3:inst1.clock
-baud_tick => tx_fsm:inst.baud_tick
-baud_tick => inst4.IN1
-data_ready => tx_fsm:inst.data_ready
-data_ready => inst40.IN1
-data_in[0] => inst6.DATAIN
-data_in[1] => inst19.DATAIN
-data_in[2] => inst20.DATAIN
-data_in[3] => inst21.DATAIN
-data_in[4] => inst25.DATAIN
-data_in[5] => inst37.DATAIN
-data_in[6] => inst38.DATAIN
-data_in[7] => inst39.DATAIN
+data_ready => data_ready.IN1
+clk => clk.IN2
+reset => reset.IN2
+baud_tick => baud_tick.IN1
+data_in[0] => tx_reg[0].DATAIN
+data_in[1] => tx_reg[1].DATAIN
+data_in[2] => tx_reg[2].DATAIN
+data_in[3] => tx_reg[3].DATAIN
+data_in[4] => tx_reg[4].DATAIN
+data_in[5] => tx_reg[5].DATAIN
+data_in[6] => tx_reg[6].DATAIN
+data_in[7] => tx_reg[7].DATAIN
+tx_serial <= lpm_mux_4to1:b2v_inst43.result
 
 
-|top|tx:inst8|lpm_mux_4to1:inst43
-data0 => sub_wire1[0].IN1
-data1 => sub_wire1[1].IN1
-data2 => sub_wire1[2].IN1
-data3 => sub_wire1[3].IN1
-sel[0] => sel[0].IN1
-sel[1] => sel[1].IN1
-result <= lpm_mux:LPM_MUX_component.result
-
-
-|top|tx:inst8|lpm_mux_4to1:inst43|lpm_mux:LPM_MUX_component
-data[0][0] => mux_h9c:auto_generated.data[0]
-data[1][0] => mux_h9c:auto_generated.data[1]
-data[2][0] => mux_h9c:auto_generated.data[2]
-data[3][0] => mux_h9c:auto_generated.data[3]
-sel[0] => mux_h9c:auto_generated.sel[0]
-sel[1] => mux_h9c:auto_generated.sel[1]
-clock => ~NO_FANOUT~
-aclr => ~NO_FANOUT~
-clken => ~NO_FANOUT~
-result[0] <= mux_h9c:auto_generated.result[0]
-
-
-|top|tx:inst8|lpm_mux_4to1:inst43|lpm_mux:LPM_MUX_component|mux_h9c:auto_generated
-data[0] => _.IN0
-data[0] => _.IN0
-data[1] => _.IN0
-data[2] => _.IN1
-data[2] => _.IN1
-data[3] => _.IN0
-result[0] <= result_node[0].DB_MAX_OUTPUT_PORT_TYPE
-sel[0] => _.IN1
-sel[0] => _.IN0
-sel[0] => _.IN0
-sel[0] => _.IN0
-sel[0] => _.IN0
-sel[0] => _.IN0
-sel[1] => _.IN0
-sel[1] => _.IN0
-sel[1] => _.IN0
-sel[1] => _.IN0
-
-
-|top|tx:inst8|lpm_mux_8:inst41
-data0 => sub_wire1[0].IN1
-data1 => sub_wire1[1].IN1
-data2 => sub_wire1[2].IN1
-data3 => sub_wire1[3].IN1
-data4 => sub_wire1[4].IN1
-data5 => sub_wire1[5].IN1
-data6 => sub_wire1[6].IN1
-data7 => sub_wire1[7].IN1
-sel[0] => sel[0].IN1
-sel[1] => sel[1].IN1
-sel[2] => sel[2].IN1
-result <= lpm_mux:LPM_MUX_component.result
-
-
-|top|tx:inst8|lpm_mux_8:inst41|lpm_mux:LPM_MUX_component
-data[0][0] => mux_m9c:auto_generated.data[0]
-data[1][0] => mux_m9c:auto_generated.data[1]
-data[2][0] => mux_m9c:auto_generated.data[2]
-data[3][0] => mux_m9c:auto_generated.data[3]
-data[4][0] => mux_m9c:auto_generated.data[4]
-data[5][0] => mux_m9c:auto_generated.data[5]
-data[6][0] => mux_m9c:auto_generated.data[6]
-data[7][0] => mux_m9c:auto_generated.data[7]
-sel[0] => mux_m9c:auto_generated.sel[0]
-sel[1] => mux_m9c:auto_generated.sel[1]
-sel[2] => mux_m9c:auto_generated.sel[2]
-clock => ~NO_FANOUT~
-aclr => ~NO_FANOUT~
-clken => ~NO_FANOUT~
-result[0] <= mux_m9c:auto_generated.result[0]
-
-
-|top|tx:inst8|lpm_mux_8:inst41|lpm_mux:LPM_MUX_component|mux_m9c:auto_generated
-data[0] => _.IN0
-data[0] => _.IN0
-data[1] => _.IN0
-data[2] => _.IN1
-data[2] => _.IN1
-data[3] => _.IN0
-data[4] => _.IN0
-data[4] => _.IN0
-data[5] => _.IN0
-data[6] => _.IN1
-data[6] => _.IN1
-data[7] => _.IN0
-result[0] <= result_node[0].DB_MAX_OUTPUT_PORT_TYPE
-sel[0] => _.IN1
-sel[0] => _.IN0
-sel[0] => _.IN0
-sel[0] => _.IN0
-sel[0] => _.IN0
-sel[0] => _.IN0
-sel[0] => _.IN1
-sel[0] => _.IN0
-sel[0] => _.IN0
-sel[0] => _.IN0
-sel[0] => _.IN0
-sel[0] => _.IN0
-sel[1] => _.IN0
-sel[1] => _.IN0
-sel[1] => _.IN0
-sel[1] => _.IN0
-sel[1] => _.IN0
-sel[1] => _.IN0
-sel[1] => _.IN0
-sel[1] => _.IN0
-sel[2] => result_node[0].IN0
-sel[2] => _.IN0
-
-
-|top|tx:inst8|tx_fsm:inst
+|top|tx:inst8|tx_fsm:b2v_inst
 reset => reg_fstate.START.OUTPUTSELECT
 reset => reg_fstate.DATA.OUTPUTSELECT
 reset => reg_fstate.IDLE.OUTPUTSELECT
@@ -189,7 +71,7 @@ tx_state_data <= tx_state_data.DB_MAX_OUTPUT_PORT_TYPE
 tx_state_stop <= tx_state_stop.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|top|tx:inst8|lpm_counter_3:inst1
+|top|tx:inst8|lpm_counter_3:b2v_inst1
 aclr => aclr.IN1
 clock => clock.IN1
 cnt_en => cnt_en.IN1
@@ -199,16 +81,16 @@ q[1] <= lpm_counter:LPM_COUNTER_component.q
 q[2] <= lpm_counter:LPM_COUNTER_component.q
 
 
-|top|tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component
-clock => cntr_toi:auto_generated.clock
+|top|tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component
+clock => cntr_83j:auto_generated.clock
 clk_en => ~NO_FANOUT~
-cnt_en => cntr_toi:auto_generated.cnt_en
+cnt_en => cntr_83j:auto_generated.cnt_en
 updown => ~NO_FANOUT~
-aclr => cntr_toi:auto_generated.aclr
+aclr => cntr_83j:auto_generated.aclr
 aset => ~NO_FANOUT~
 aconst => ~NO_FANOUT~
 aload => ~NO_FANOUT~
-sclr => cntr_toi:auto_generated.sclr
+sclr => cntr_83j:auto_generated.sclr
 sset => ~NO_FANOUT~
 sconst => ~NO_FANOUT~
 sload => ~NO_FANOUT~
@@ -216,9 +98,9 @@ data[0] => ~NO_FANOUT~
 data[1] => ~NO_FANOUT~
 data[2] => ~NO_FANOUT~
 cin => ~NO_FANOUT~
-q[0] <= cntr_toi:auto_generated.q[0]
-q[1] <= cntr_toi:auto_generated.q[1]
-q[2] <= cntr_toi:auto_generated.q[2]
+q[0] <= cntr_83j:auto_generated.q[0]
+q[1] <= cntr_83j:auto_generated.q[1]
+q[2] <= cntr_83j:auto_generated.q[2]
 cout <= <GND>
 eq[0] <= <GND>
 eq[1] <= <GND>
@@ -238,33 +120,124 @@ eq[14] <= <GND>
 eq[15] <= <GND>
 
 
-|top|tx:inst8|lpm_counter_3:inst1|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated
-aclr => counter_cella0.ACLR
-aclr => counter_cella1.ACLR
-aclr => counter_cella2.ACLR
-clock => counter_cella0.CLK
-clock => counter_cella1.CLK
-clock => counter_cella2.CLK
-cnt_en => counter_cella0.DATAB
-cnt_en => counter_cella1.DATAB
-cnt_en => counter_cella2.DATAB
-q[0] <= counter_cella0.REGOUT
-q[1] <= counter_cella1.REGOUT
-q[2] <= counter_cella2.REGOUT
-sclr => counter_cella0.SCLR
-sclr => counter_cella1.SCLR
-sclr => counter_cella2.SCLR
+|top|tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated
+aclr => counter_reg_bit[2].IN0
+clock => counter_reg_bit[2].CLK
+clock => counter_reg_bit[1].CLK
+clock => counter_reg_bit[0].CLK
+cnt_en => _.IN0
+q[0] <= counter_reg_bit[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= counter_reg_bit[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= counter_reg_bit[2].DB_MAX_OUTPUT_PORT_TYPE
+sclr => _.IN1
+sclr => counter_reg_bit[2].SCLR
+sclr => counter_reg_bit[1].SCLR
+sclr => counter_reg_bit[0].SCLR
+
+
+|top|tx:inst8|lpm_mux_8:b2v_inst41
+data0 => sub_wire1[0].IN1
+data1 => sub_wire1[1].IN1
+data2 => sub_wire1[2].IN1
+data3 => sub_wire1[3].IN1
+data4 => sub_wire1[4].IN1
+data5 => sub_wire1[5].IN1
+data6 => sub_wire1[6].IN1
+data7 => sub_wire1[7].IN1
+sel[0] => sel[0].IN1
+sel[1] => sel[1].IN1
+sel[2] => sel[2].IN1
+result <= lpm_mux:LPM_MUX_component.result
+
+
+|top|tx:inst8|lpm_mux_8:b2v_inst41|lpm_mux:LPM_MUX_component
+data[0][0] => mux_1kc:auto_generated.data[0]
+data[1][0] => mux_1kc:auto_generated.data[1]
+data[2][0] => mux_1kc:auto_generated.data[2]
+data[3][0] => mux_1kc:auto_generated.data[3]
+data[4][0] => mux_1kc:auto_generated.data[4]
+data[5][0] => mux_1kc:auto_generated.data[5]
+data[6][0] => mux_1kc:auto_generated.data[6]
+data[7][0] => mux_1kc:auto_generated.data[7]
+sel[0] => mux_1kc:auto_generated.sel[0]
+sel[1] => mux_1kc:auto_generated.sel[1]
+sel[2] => mux_1kc:auto_generated.sel[2]
+clock => ~NO_FANOUT~
+aclr => ~NO_FANOUT~
+clken => ~NO_FANOUT~
+result[0] <= mux_1kc:auto_generated.result[0]
+
+
+|top|tx:inst8|lpm_mux_8:b2v_inst41|lpm_mux:LPM_MUX_component|mux_1kc:auto_generated
+data[0] => l1_w0_n0_mux_dataout.IN1
+data[1] => l1_w0_n0_mux_dataout.IN1
+data[2] => l1_w0_n1_mux_dataout.IN1
+data[3] => l1_w0_n1_mux_dataout.IN1
+data[4] => l1_w0_n2_mux_dataout.IN1
+data[5] => l1_w0_n2_mux_dataout.IN1
+data[6] => l1_w0_n3_mux_dataout.IN1
+data[7] => l1_w0_n3_mux_dataout.IN1
+result[0] <= l3_w0_n0_mux_dataout.DB_MAX_OUTPUT_PORT_TYPE
+sel[0] => l1_w0_n0_mux_dataout.IN0
+sel[0] => _.IN0
+sel[0] => l1_w0_n1_mux_dataout.IN0
+sel[0] => _.IN0
+sel[0] => l1_w0_n2_mux_dataout.IN0
+sel[0] => _.IN0
+sel[0] => l1_w0_n3_mux_dataout.IN0
+sel[0] => _.IN0
+sel[1] => l2_w0_n0_mux_dataout.IN0
+sel[1] => _.IN0
+sel[1] => l2_w0_n1_mux_dataout.IN0
+sel[1] => _.IN0
+sel[2] => l3_w0_n0_mux_dataout.IN0
+sel[2] => _.IN0
+
+
+|top|tx:inst8|lpm_mux_4to1:b2v_inst43
+data0 => sub_wire1[0].IN1
+data1 => sub_wire1[1].IN1
+data2 => sub_wire1[2].IN1
+data3 => sub_wire1[3].IN1
+sel[0] => sel[0].IN1
+sel[1] => sel[1].IN1
+result <= lpm_mux:LPM_MUX_component.result
+
+
+|top|tx:inst8|lpm_mux_4to1:b2v_inst43|lpm_mux:LPM_MUX_component
+data[0][0] => mux_sjc:auto_generated.data[0]
+data[1][0] => mux_sjc:auto_generated.data[1]
+data[2][0] => mux_sjc:auto_generated.data[2]
+data[3][0] => mux_sjc:auto_generated.data[3]
+sel[0] => mux_sjc:auto_generated.sel[0]
+sel[1] => mux_sjc:auto_generated.sel[1]
+clock => ~NO_FANOUT~
+aclr => ~NO_FANOUT~
+clken => ~NO_FANOUT~
+result[0] <= mux_sjc:auto_generated.result[0]
+
+
+|top|tx:inst8|lpm_mux_4to1:b2v_inst43|lpm_mux:LPM_MUX_component|mux_sjc:auto_generated
+data[0] => l1_w0_n0_mux_dataout.IN1
+data[1] => l1_w0_n0_mux_dataout.IN1
+data[2] => l1_w0_n1_mux_dataout.IN1
+data[3] => l1_w0_n1_mux_dataout.IN1
+result[0] <= l2_w0_n0_mux_dataout.DB_MAX_OUTPUT_PORT_TYPE
+sel[0] => l1_w0_n0_mux_dataout.IN0
+sel[0] => _.IN0
+sel[0] => l1_w0_n1_mux_dataout.IN0
+sel[0] => _.IN0
+sel[1] => l2_w0_n0_mux_dataout.IN0
+sel[1] => _.IN0
 
 
 |top|baud_gen_:inst
-baud_tick <= inst8.DB_MAX_OUTPUT_PORT_TYPE
-reset => inst.IN0
-reset => lpm_counter_13:lpm_counter_13.aclr
-clk => inst8.CLK
-clk => lpm_counter_13:lpm_counter_13.clock
+clk => clk.IN1
+reset => reset.IN1
+baud_tick <= baud_tick~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|top|baud_gen_:inst|lpm_counter_13:lpm_counter_13
+|top|baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13
 aclr => aclr.IN1
 clock => clock.IN1
 sclr => sclr.IN1
@@ -283,16 +256,16 @@ q[11] <= lpm_counter:LPM_COUNTER_component.q
 q[12] <= lpm_counter:LPM_COUNTER_component.q
 
 
-|top|baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component
-clock => cntr_n5i:auto_generated.clock
+|top|baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component
+clock => cntr_2gi:auto_generated.clock
 clk_en => ~NO_FANOUT~
 cnt_en => ~NO_FANOUT~
 updown => ~NO_FANOUT~
-aclr => cntr_n5i:auto_generated.aclr
+aclr => cntr_2gi:auto_generated.aclr
 aset => ~NO_FANOUT~
 aconst => ~NO_FANOUT~
 aload => ~NO_FANOUT~
-sclr => cntr_n5i:auto_generated.sclr
+sclr => cntr_2gi:auto_generated.sclr
 sset => ~NO_FANOUT~
 sconst => ~NO_FANOUT~
 sload => ~NO_FANOUT~
@@ -310,19 +283,19 @@ data[10] => ~NO_FANOUT~
 data[11] => ~NO_FANOUT~
 data[12] => ~NO_FANOUT~
 cin => ~NO_FANOUT~
-q[0] <= cntr_n5i:auto_generated.q[0]
-q[1] <= cntr_n5i:auto_generated.q[1]
-q[2] <= cntr_n5i:auto_generated.q[2]
-q[3] <= cntr_n5i:auto_generated.q[3]
-q[4] <= cntr_n5i:auto_generated.q[4]
-q[5] <= cntr_n5i:auto_generated.q[5]
-q[6] <= cntr_n5i:auto_generated.q[6]
-q[7] <= cntr_n5i:auto_generated.q[7]
-q[8] <= cntr_n5i:auto_generated.q[8]
-q[9] <= cntr_n5i:auto_generated.q[9]
-q[10] <= cntr_n5i:auto_generated.q[10]
-q[11] <= cntr_n5i:auto_generated.q[11]
-q[12] <= cntr_n5i:auto_generated.q[12]
+q[0] <= cntr_2gi:auto_generated.q[0]
+q[1] <= cntr_2gi:auto_generated.q[1]
+q[2] <= cntr_2gi:auto_generated.q[2]
+q[3] <= cntr_2gi:auto_generated.q[3]
+q[4] <= cntr_2gi:auto_generated.q[4]
+q[5] <= cntr_2gi:auto_generated.q[5]
+q[6] <= cntr_2gi:auto_generated.q[6]
+q[7] <= cntr_2gi:auto_generated.q[7]
+q[8] <= cntr_2gi:auto_generated.q[8]
+q[9] <= cntr_2gi:auto_generated.q[9]
+q[10] <= cntr_2gi:auto_generated.q[10]
+q[11] <= cntr_2gi:auto_generated.q[11]
+q[12] <= cntr_2gi:auto_generated.q[12]
 cout <= <GND>
 eq[0] <= <GND>
 eq[1] <= <GND>
@@ -342,59 +315,48 @@ eq[14] <= <GND>
 eq[15] <= <GND>
 
 
-|top|baud_gen_:inst|lpm_counter_13:lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_n5i:auto_generated
-aclr => counter_cella0.ACLR
-aclr => counter_cella1.ACLR
-aclr => counter_cella2.ACLR
-aclr => counter_cella3.ACLR
-aclr => counter_cella4.ACLR
-aclr => counter_cella5.ACLR
-aclr => counter_cella6.ACLR
-aclr => counter_cella7.ACLR
-aclr => counter_cella8.ACLR
-aclr => counter_cella9.ACLR
-aclr => counter_cella10.ACLR
-aclr => counter_cella11.ACLR
-aclr => counter_cella12.ACLR
-clock => counter_cella0.CLK
-clock => counter_cella1.CLK
-clock => counter_cella2.CLK
-clock => counter_cella3.CLK
-clock => counter_cella4.CLK
-clock => counter_cella5.CLK
-clock => counter_cella6.CLK
-clock => counter_cella7.CLK
-clock => counter_cella8.CLK
-clock => counter_cella9.CLK
-clock => counter_cella10.CLK
-clock => counter_cella11.CLK
-clock => counter_cella12.CLK
-q[0] <= counter_cella0.REGOUT
-q[1] <= counter_cella1.REGOUT
-q[2] <= counter_cella2.REGOUT
-q[3] <= counter_cella3.REGOUT
-q[4] <= counter_cella4.REGOUT
-q[5] <= counter_cella5.REGOUT
-q[6] <= counter_cella6.REGOUT
-q[7] <= counter_cella7.REGOUT
-q[8] <= counter_cella8.REGOUT
-q[9] <= counter_cella9.REGOUT
-q[10] <= counter_cella10.REGOUT
-q[11] <= counter_cella11.REGOUT
-q[12] <= counter_cella12.REGOUT
-sclr => counter_cella0.SCLR
-sclr => counter_cella1.SCLR
-sclr => counter_cella2.SCLR
-sclr => counter_cella3.SCLR
-sclr => counter_cella4.SCLR
-sclr => counter_cella5.SCLR
-sclr => counter_cella6.SCLR
-sclr => counter_cella7.SCLR
-sclr => counter_cella8.SCLR
-sclr => counter_cella9.SCLR
-sclr => counter_cella10.SCLR
-sclr => counter_cella11.SCLR
-sclr => counter_cella12.SCLR
+|top|baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated
+aclr => counter_reg_bit[12].IN0
+clock => counter_reg_bit[12].CLK
+clock => counter_reg_bit[11].CLK
+clock => counter_reg_bit[10].CLK
+clock => counter_reg_bit[9].CLK
+clock => counter_reg_bit[8].CLK
+clock => counter_reg_bit[7].CLK
+clock => counter_reg_bit[6].CLK
+clock => counter_reg_bit[5].CLK
+clock => counter_reg_bit[4].CLK
+clock => counter_reg_bit[3].CLK
+clock => counter_reg_bit[2].CLK
+clock => counter_reg_bit[1].CLK
+clock => counter_reg_bit[0].CLK
+q[0] <= counter_reg_bit[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= counter_reg_bit[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= counter_reg_bit[2].DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= counter_reg_bit[3].DB_MAX_OUTPUT_PORT_TYPE
+q[4] <= counter_reg_bit[4].DB_MAX_OUTPUT_PORT_TYPE
+q[5] <= counter_reg_bit[5].DB_MAX_OUTPUT_PORT_TYPE
+q[6] <= counter_reg_bit[6].DB_MAX_OUTPUT_PORT_TYPE
+q[7] <= counter_reg_bit[7].DB_MAX_OUTPUT_PORT_TYPE
+q[8] <= counter_reg_bit[8].DB_MAX_OUTPUT_PORT_TYPE
+q[9] <= counter_reg_bit[9].DB_MAX_OUTPUT_PORT_TYPE
+q[10] <= counter_reg_bit[10].DB_MAX_OUTPUT_PORT_TYPE
+q[11] <= counter_reg_bit[11].DB_MAX_OUTPUT_PORT_TYPE
+q[12] <= counter_reg_bit[12].DB_MAX_OUTPUT_PORT_TYPE
+sclr => _.IN1
+sclr => counter_reg_bit[12].SCLR
+sclr => counter_reg_bit[11].SCLR
+sclr => counter_reg_bit[10].SCLR
+sclr => counter_reg_bit[9].SCLR
+sclr => counter_reg_bit[8].SCLR
+sclr => counter_reg_bit[7].SCLR
+sclr => counter_reg_bit[6].SCLR
+sclr => counter_reg_bit[5].SCLR
+sclr => counter_reg_bit[4].SCLR
+sclr => counter_reg_bit[3].SCLR
+sclr => counter_reg_bit[2].SCLR
+sclr => counter_reg_bit[1].SCLR
+sclr => counter_reg_bit[0].SCLR
 
 
 |top|rx:inst1
@@ -446,24 +408,24 @@ eq7 <= lpm_decode:LPM_DECODE_component.eq
 
 
 |top|rx:inst1|lpm_decode_3:inst28|lpm_decode:LPM_DECODE_component
-data[0] => decode_lpe:auto_generated.data[0]
-data[1] => decode_lpe:auto_generated.data[1]
-data[2] => decode_lpe:auto_generated.data[2]
+data[0] => decode_04f:auto_generated.data[0]
+data[1] => decode_04f:auto_generated.data[1]
+data[2] => decode_04f:auto_generated.data[2]
 enable => ~NO_FANOUT~
 clock => ~NO_FANOUT~
 aclr => ~NO_FANOUT~
 clken => ~NO_FANOUT~
-eq[0] <= decode_lpe:auto_generated.eq[0]
-eq[1] <= decode_lpe:auto_generated.eq[1]
-eq[2] <= decode_lpe:auto_generated.eq[2]
-eq[3] <= decode_lpe:auto_generated.eq[3]
-eq[4] <= decode_lpe:auto_generated.eq[4]
-eq[5] <= decode_lpe:auto_generated.eq[5]
-eq[6] <= decode_lpe:auto_generated.eq[6]
-eq[7] <= decode_lpe:auto_generated.eq[7]
+eq[0] <= decode_04f:auto_generated.eq[0]
+eq[1] <= decode_04f:auto_generated.eq[1]
+eq[2] <= decode_04f:auto_generated.eq[2]
+eq[3] <= decode_04f:auto_generated.eq[3]
+eq[4] <= decode_04f:auto_generated.eq[4]
+eq[5] <= decode_04f:auto_generated.eq[5]
+eq[6] <= decode_04f:auto_generated.eq[6]
+eq[7] <= decode_04f:auto_generated.eq[7]
 
 
-|top|rx:inst1|lpm_decode_3:inst28|lpm_decode:LPM_DECODE_component|decode_lpe:auto_generated
+|top|rx:inst1|lpm_decode_3:inst28|lpm_decode:LPM_DECODE_component|decode_04f:auto_generated
 data[0] => w_anode19w[1].IN1
 data[0] => w_anode1w[1].IN0
 data[0] => w_anode30w[1].IN0
@@ -509,15 +471,15 @@ q[2] <= lpm_counter:LPM_COUNTER_component.q
 
 
 |top|rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component
-clock => cntr_toi:auto_generated.clock
+clock => cntr_83j:auto_generated.clock
 clk_en => ~NO_FANOUT~
-cnt_en => cntr_toi:auto_generated.cnt_en
+cnt_en => cntr_83j:auto_generated.cnt_en
 updown => ~NO_FANOUT~
-aclr => cntr_toi:auto_generated.aclr
+aclr => cntr_83j:auto_generated.aclr
 aset => ~NO_FANOUT~
 aconst => ~NO_FANOUT~
 aload => ~NO_FANOUT~
-sclr => cntr_toi:auto_generated.sclr
+sclr => cntr_83j:auto_generated.sclr
 sset => ~NO_FANOUT~
 sconst => ~NO_FANOUT~
 sload => ~NO_FANOUT~
@@ -525,9 +487,9 @@ data[0] => ~NO_FANOUT~
 data[1] => ~NO_FANOUT~
 data[2] => ~NO_FANOUT~
 cin => ~NO_FANOUT~
-q[0] <= cntr_toi:auto_generated.q[0]
-q[1] <= cntr_toi:auto_generated.q[1]
-q[2] <= cntr_toi:auto_generated.q[2]
+q[0] <= cntr_83j:auto_generated.q[0]
+q[1] <= cntr_83j:auto_generated.q[1]
+q[2] <= cntr_83j:auto_generated.q[2]
 cout <= <GND>
 eq[0] <= <GND>
 eq[1] <= <GND>
@@ -547,22 +509,19 @@ eq[14] <= <GND>
 eq[15] <= <GND>
 
 
-|top|rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_toi:auto_generated
-aclr => counter_cella0.ACLR
-aclr => counter_cella1.ACLR
-aclr => counter_cella2.ACLR
-clock => counter_cella0.CLK
-clock => counter_cella1.CLK
-clock => counter_cella2.CLK
-cnt_en => counter_cella0.DATAB
-cnt_en => counter_cella1.DATAB
-cnt_en => counter_cella2.DATAB
-q[0] <= counter_cella0.REGOUT
-q[1] <= counter_cella1.REGOUT
-q[2] <= counter_cella2.REGOUT
-sclr => counter_cella0.SCLR
-sclr => counter_cella1.SCLR
-sclr => counter_cella2.SCLR
+|top|rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated
+aclr => counter_reg_bit[2].IN0
+clock => counter_reg_bit[2].CLK
+clock => counter_reg_bit[1].CLK
+clock => counter_reg_bit[0].CLK
+cnt_en => _.IN0
+q[0] <= counter_reg_bit[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= counter_reg_bit[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= counter_reg_bit[2].DB_MAX_OUTPUT_PORT_TYPE
+sclr => _.IN1
+sclr => counter_reg_bit[2].SCLR
+sclr => counter_reg_bit[1].SCLR
+sclr => counter_reg_bit[0].SCLR
 
 
 |top|rx:inst1|rx_fsm:inst
