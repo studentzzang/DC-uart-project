@@ -86,7 +86,7 @@ refer to the applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 1712 32 1888 48)
+	(rect 1616 40 1792 56)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "data_out[7..0]" (rect 90 0 158 12)(font "Arial" ))
 	(pt 0 8)
@@ -1650,12 +1650,6 @@ refer to the applicable agreement for further details.
 	(pt 1000 304)
 )
 (connector
-	(text "data_out[7..0]" (rect 1632 24 1698 41)(font "Intel Clear" ))
-	(pt 1632 40)
-	(pt 1712 40)
-	(bus)
-)
-(connector
 	(pt 136 184)
 	(pt 208 184)
 )
@@ -1937,6 +1931,12 @@ refer to the applicable agreement for further details.
 	(text "data_out[5]" (rect 1251 80 1306 97)(font "Intel Clear" ))
 	(pt 1216 96)
 	(pt 1288 96)
+)
+(connector
+	(text "data_out[7..0]" (rect 1536 32 1602 49)(font "Intel Clear" ))
+	(pt 1536 48)
+	(pt 1616 48)
+	(bus)
 )
 (junction (pt 128 40))
 (junction (pt 984 8))
