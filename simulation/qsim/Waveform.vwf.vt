@@ -18,7 +18,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "06/01/2026 14:15:34"
+// Generated on "06/08/2026 20:52:12"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          top
 // 
@@ -34,22 +34,30 @@ reg [7:0] data_in;
 reg data_ready;
 reg reset;
 // wires                                               
+wire baud_tick;
 wire [7:0] data_out;
+wire [2:0] rx_cnt;
+wire [2:0] tx_cmt;
+wire [1:0] tx_sel;
 wire tx_serial;
 
 // assign statements (if any)                          
 top i1 (
 // port map - connection between master ports and signals/registers   
+	.baud_tick(baud_tick),
 	.clk(clk),
 	.data_in(data_in),
 	.data_out(data_out),
 	.data_ready(data_ready),
 	.reset(reset),
+	.rx_cnt(rx_cnt),
+	.tx_cmt(tx_cmt),
+	.tx_sel(tx_sel),
 	.tx_serial(tx_serial)
 );
 initial 
 begin 
-#4000000 $finish;
+#3000000 $finish;
 end 
 
 // clk
@@ -67,7 +75,7 @@ end
 // data_in[ 6 ]
 initial
 begin
-	data_in[6] = 1'b1;
+	data_in[6] = 1'b0;
 end 
 // data_in[ 5 ]
 initial
@@ -82,7 +90,7 @@ end
 // data_in[ 3 ]
 initial
 begin
-	data_in[3] = 1'b1;
+	data_in[3] = 1'b0;
 end 
 // data_in[ 2 ]
 initial
@@ -92,7 +100,7 @@ end
 // data_in[ 1 ]
 initial
 begin
-	data_in[1] = 1'b1;
+	data_in[1] = 1'b0;
 end 
 // data_in[ 0 ]
 initial
@@ -104,7 +112,7 @@ end
 initial
 begin
 	data_ready = 1'b0;
-	data_ready = #10000 1'b1;
+	data_ready = #20000 1'b1;
 	data_ready = #120000 1'b0;
 end 
 
@@ -112,7 +120,7 @@ end
 initial
 begin
 	reset = 1'b1;
-	reset = #10000 1'b0;
+	reset = #20000 1'b0;
 end 
 endmodule
 

@@ -14,14 +14,15 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
-// CREATED		"Mon Jun 01 13:17:15 2026"
+// CREATED		"Mon Jun 08 20:37:52 2026"
 
 module rx(
 	rx_serial,
 	clk,
 	reset,
 	baud_tick,
-	data_out
+	data_out,
+	rx_cnt
 );
 
 
@@ -30,6 +31,7 @@ input wire	clk;
 input wire	reset;
 input wire	baud_tick;
 output wire	[7:0] data_out;
+output wire	[2:0] rx_cnt;
 
 reg	[7:0] data_out_ALTERA_SYNTHESIZED;
 wire	[2:0] q;
@@ -183,5 +185,6 @@ assign	SYNTHESIZED_WIRE_15 = SYNTHESIZED_WIRE_26 & baud_tick & SYNTHESIZED_WIRE_
 assign	SYNTHESIZED_WIRE_16 = SYNTHESIZED_WIRE_28 & baud_tick & SYNTHESIZED_WIRE_30;
 
 assign	data_out = data_out_ALTERA_SYNTHESIZED;
+assign	rx_cnt = q;
 
 endmodule
