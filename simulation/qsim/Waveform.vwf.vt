@@ -18,7 +18,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "06/01/2026 14:15:34"
+// Generated on "06/09/2026 23:38:09"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          top
 // 
@@ -32,6 +32,7 @@ module top_vlg_vec_tst();
 reg clk;
 reg [7:0] data_in;
 reg data_ready;
+reg noise;
 reg reset;
 // wires                                               
 wire [7:0] data_out;
@@ -44,6 +45,7 @@ top i1 (
 	.data_in(data_in),
 	.data_out(data_out),
 	.data_ready(data_ready),
+	.noise(noise),
 	.reset(reset),
 	.tx_serial(tx_serial)
 );
@@ -78,11 +80,15 @@ end
 initial
 begin
 	data_in[4] = 1'b1;
+	data_in[4] = #1590000 1'b0;
+	data_in[4] = #910000 1'b1;
 end 
 // data_in[ 3 ]
 initial
 begin
 	data_in[3] = 1'b1;
+	data_in[3] = #1590000 1'b0;
+	data_in[3] = #910000 1'b1;
 end 
 // data_in[ 2 ]
 initial
@@ -93,6 +99,8 @@ end
 initial
 begin
 	data_in[1] = 1'b1;
+	data_in[1] = #1590000 1'b0;
+	data_in[1] = #910000 1'b1;
 end 
 // data_in[ 0 ]
 initial
@@ -106,6 +114,8 @@ begin
 	data_ready = 1'b0;
 	data_ready = #10000 1'b1;
 	data_ready = #120000 1'b0;
+	data_ready = #1470000 1'b1;
+	data_ready = #150000 1'b0;
 end 
 
 // reset
@@ -113,6 +123,12 @@ initial
 begin
 	reset = 1'b1;
 	reset = #10000 1'b0;
+end 
+
+// noise
+initial
+begin
+	noise = 1'b0;
 end 
 endmodule
 

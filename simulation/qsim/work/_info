@@ -9,13 +9,13 @@ z2
 cModel Technology
 Z0 dD:/Projects/dc-UART/simulation/qsim
 vtop
-Z1 !s110 1780987155
+Z1 !s110 1781015920
 !i10b 1
-!s100 0IcIdk4d?:?6R>9G^zCed1
-I:k9WOiEeToZWB9`;FzL<c3
+!s100 6M7U?zLGe2MHhM;UJ4SK[2
+I9zDTO=`A>29RmYn6ReTP?3
 Z2 VDg1SIo80bB@j0V0VzS_@n1
-Z3 dC:/github/digitalsystem_teamproject/DC-uart-project/simulation/qsim
-w1780987153
+Z3 dC:/Users/user/Desktop/dcsystem/DC-uart-project/simulation/qsim
+w1781015899
 Z4 8uart.vo
 Z5 Fuart.vo
 Z6 L0 31
@@ -23,35 +23,35 @@ Z7 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z8 !s108 1780987155.000000
-Z9 !s107 uart.vo|
-Z10 !s90 -work|work|uart.vo|
+!s108 1781015919.000000
+Z8 !s107 uart.vo|
+Z9 !s90 -work|work|uart.vo|
 !i113 1
-Z11 o-work work
-Z12 tCvgOpt 0
+Z10 o-work work
+Z11 tCvgOpt 0
 vtop_vlg_vec_tst
 R1
 !i10b 1
 !s100 mPN:iLcoMgE3RjaE];K=N1
-IXd18KH7;b8n?YOKU6Y8BX3
+IP?1]W<c<M^Q8cKOBIDOG92
 R2
 R3
-w1780987147
-8Waveform1.vwf.vt
-FWaveform1.vwf.vt
-Z13 L0 29
+w1781015889
+Z12 8Waveform.vwf.vt
+Z13 FWaveform.vwf.vt
+Z14 L0 29
 R7
 r1
 !s85 0
 31
-R8
-!s107 Waveform1.vwf.vt|
-!s90 -work|work|Waveform1.vwf.vt|
+!s108 1781015920.000000
+!s107 Waveform.vwf.vt|
+Z15 !s90 -work|work|Waveform.vwf.vt|
 !i113 1
+R10
 R11
-R12
 vtx
-Z14 !s110 1779898981
+Z16 !s110 1779898981
 !i10b 1
 !s100 aJ2YF4:08gdh4LoO5;8l>0
 Ik9cLB0C>T99KhO]lD2I8?1
@@ -65,35 +65,35 @@ R7
 r1
 !s85 0
 31
-Z15 !s108 1779898981.000000
+Z17 !s108 1779898981.000000
+R8
 R9
-R10
 !i113 1
+R10
 R11
-R12
 vtx_vlg_vec_tst
-R14
+R16
 !i10b 1
 !s100 7Ueg_YG0`I2WlfTd]N3Qz0
 I0@fEVj0MAW@EQlNVZ=3>N3
 R2
 R0
 w1779898975
-Z16 8Waveform.vwf.vt
-Z17 FWaveform.vwf.vt
+R12
 R13
+R14
 R7
 r1
 !s85 0
 31
+R17
+!s107 Waveform.vwf.vt|
 R15
-Z18 !s107 Waveform.vwf.vt|
-Z19 !s90 -work|work|Waveform.vwf.vt|
 !i113 1
+R10
 R11
-R12
 vuart
-Z20 !s110 1780285940
+Z18 !s110 1780285940
 !i10b 1
 !s100 UCnVz1BSD4`=fP<a1SB323
 IB^@6<iT:J19S6j1Jf0h9T3
@@ -108,29 +108,29 @@ r1
 !s85 0
 31
 !s108 1780285939.000000
+R8
 R9
-R10
 !i113 1
+R10
 R11
-R12
 vuart_vlg_vec_tst
-R20
+R18
 !i10b 1
 !s100 1j7LdDoVRI2=3j1hXAD>G0
 IZToQCj8U4J^n^2XPCCzFX2
 R2
 R0
 w1780285932
-R16
-R17
+R12
 R13
+R14
 R7
 r1
 !s85 0
 31
 !s108 1780285940.000000
-R18
-R19
+!s107 Waveform.vwf.vt|
+R15
 !i113 1
+R10
 R11
-R12
