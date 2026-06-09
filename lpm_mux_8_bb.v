@@ -39,6 +39,7 @@ module lpm_mux_8 (
 	data4,
 	data5,
 	data6,
+	data7,
 	sel,
 	result);
 
@@ -49,6 +50,7 @@ module lpm_mux_8 (
 	input	  data4;
 	input	  data5;
 	input	  data6;
+	input	  data7;
 	input	[2:0]  sel;
 	output	  result;
 
@@ -61,7 +63,7 @@ endmodule
 // Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "0"
 // Retrieval info: PRIVATE: new_diagram STRING "1"
 // Retrieval info: LIBRARY: lpm lpm.lpm_components.all
-// Retrieval info: CONSTANT: LPM_SIZE NUMERIC "7"
+// Retrieval info: CONSTANT: LPM_SIZE NUMERIC "8"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "LPM_MUX"
 // Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "1"
 // Retrieval info: CONSTANT: LPM_WIDTHS NUMERIC "3"
@@ -72,6 +74,7 @@ endmodule
 // Retrieval info: USED_PORT: data4 0 0 0 0 INPUT NODEFVAL "data4"
 // Retrieval info: USED_PORT: data5 0 0 0 0 INPUT NODEFVAL "data5"
 // Retrieval info: USED_PORT: data6 0 0 0 0 INPUT NODEFVAL "data6"
+// Retrieval info: USED_PORT: data7 0 0 0 0 INPUT NODEFVAL "data7"
 // Retrieval info: USED_PORT: result 0 0 0 0 OUTPUT NODEFVAL "result"
 // Retrieval info: USED_PORT: sel 0 0 3 0 INPUT NODEFVAL "sel[2..0]"
 // Retrieval info: CONNECT: @data 0 0 1 0 data0 0 0 0 0
@@ -81,6 +84,7 @@ endmodule
 // Retrieval info: CONNECT: @data 0 0 1 4 data4 0 0 0 0
 // Retrieval info: CONNECT: @data 0 0 1 5 data5 0 0 0 0
 // Retrieval info: CONNECT: @data 0 0 1 6 data6 0 0 0 0
+// Retrieval info: CONNECT: @data 0 0 1 7 data7 0 0 0 0
 // Retrieval info: CONNECT: @sel 0 0 3 0 sel 0 0 3 0
 // Retrieval info: CONNECT: result 0 0 0 0 @result 0 0 1 0
 // Retrieval info: GEN_FILE: TYPE_NORMAL lpm_mux_8.v TRUE

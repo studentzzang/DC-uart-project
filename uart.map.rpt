@@ -1,5 +1,5 @@
 Analysis & Synthesis report for uart
-Wed Jun 10 01:24:30 2026
+Wed Jun 10 01:36:57 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -36,7 +36,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Wed Jun 10 01:24:30 2026           ;
+; Analysis & Synthesis Status ; Failed - Wed Jun 10 01:36:57 2026           ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name               ; uart                                        ;
 ; Top-level Entity Name       ; top                                         ;
@@ -160,7 +160,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Wed Jun 10 01:24:20 2026
+    Info: Processing started: Wed Jun 10 01:36:49 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off uart -c uart
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
@@ -168,91 +168,18 @@ Info (12021): Found 1 design units, including 1 entities, in source file top.bdf
     Info (12023): Found entity 1: top
 Info (12021): Found 1 design units, including 1 entities, in source file rx.bdf
     Info (12023): Found entity 1: rx
+Info (12021): Found 1 design units, including 1 entities, in source file baud_gen_.bdf
+    Info (12023): Found entity 1: baud_gen_
+Info (12021): Found 1 design units, including 1 entities, in source file tx.bdf
+    Info (12023): Found entity 1: tx
 Info (12127): Elaborating entity "top" for the top level hierarchy
-Warning (12125): Using design file tx.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: tx File: C:/github/digitalsystem_teamproject/DC-uart-project/tx.v Line: 19
-Warning (12300): Found the following files while searching for definition of entity "tx", but did not use these files because already using a different file containing the entity definition
-    Warning (12126): File: tx.bdf
-Info (12128): Elaborating entity "tx" for hierarchy "tx:inst8"
-Warning (12125): Using design file tx_fsm.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: tx_fsm File: C:/github/digitalsystem_teamproject/DC-uart-project/tx_fsm.v Line: 22
-Info (12128): Elaborating entity "tx_fsm" for hierarchy "tx:inst8|tx_fsm:b2v_inst" File: C:/github/digitalsystem_teamproject/DC-uart-project/tx.v Line: 69
-Warning (12125): Using design file lpm_counter_3.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: lpm_counter_3 File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_counter_3.v Line: 39
-Info (12128): Elaborating entity "lpm_counter_3" for hierarchy "tx:inst8|lpm_counter_3:b2v_inst1" File: C:/github/digitalsystem_teamproject/DC-uart-project/tx.v Line: 81
-Info (12128): Elaborating entity "lpm_counter" for hierarchy "tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component" File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_counter_3.v Line: 70
-Info (12130): Elaborated megafunction instantiation "tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component" File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_counter_3.v Line: 70
-Info (12133): Instantiated megafunction "tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component" with the following parameter: File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_counter_3.v Line: 70
-    Info (12134): Parameter "lpm_direction" = "UP"
-    Info (12134): Parameter "lpm_modulus" = "7"
-    Info (12134): Parameter "lpm_port_updown" = "PORT_UNUSED"
-    Info (12134): Parameter "lpm_type" = "LPM_COUNTER"
-    Info (12134): Parameter "lpm_width" = "3"
-Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_ddk.tdf
-    Info (12023): Found entity 1: cntr_ddk File: C:/github/digitalsystem_teamproject/DC-uart-project/db/cntr_ddk.tdf Line: 27
-Info (12128): Elaborating entity "cntr_ddk" for hierarchy "tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_ddk:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_counter.tdf Line: 258
-Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_b9c.tdf
-    Info (12023): Found entity 1: cmpr_b9c File: C:/github/digitalsystem_teamproject/DC-uart-project/db/cmpr_b9c.tdf Line: 22
-Info (12128): Elaborating entity "cmpr_b9c" for hierarchy "tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_ddk:auto_generated|cmpr_b9c:cmpr1" File: C:/github/digitalsystem_teamproject/DC-uart-project/db/cntr_ddk.tdf Line: 37
-Warning (12125): Using design file lpm_mux_8.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: lpm_mux_8 File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_mux_8.v Line: 39
-Info (12128): Elaborating entity "lpm_mux_8" for hierarchy "tx:inst8|lpm_mux_8:b2v_inst41" File: C:/github/digitalsystem_teamproject/DC-uart-project/tx.v Line: 157
-Info (12128): Elaborating entity "lpm_mux" for hierarchy "tx:inst8|lpm_mux_8:b2v_inst41|lpm_mux:LPM_MUX_component" File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_mux_8.v Line: 82
-Info (12130): Elaborated megafunction instantiation "tx:inst8|lpm_mux_8:b2v_inst41|lpm_mux:LPM_MUX_component" File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_mux_8.v Line: 82
-Info (12133): Instantiated megafunction "tx:inst8|lpm_mux_8:b2v_inst41|lpm_mux:LPM_MUX_component" with the following parameter: File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_mux_8.v Line: 82
-    Info (12134): Parameter "lpm_size" = "7"
-    Info (12134): Parameter "lpm_type" = "LPM_MUX"
-    Info (12134): Parameter "lpm_width" = "1"
-    Info (12134): Parameter "lpm_widths" = "3"
-Info (12021): Found 1 design units, including 1 entities, in source file db/mux_0kc.tdf
-    Info (12023): Found entity 1: mux_0kc File: C:/github/digitalsystem_teamproject/DC-uart-project/db/mux_0kc.tdf Line: 22
-Info (12128): Elaborating entity "mux_0kc" for hierarchy "tx:inst8|lpm_mux_8:b2v_inst41|lpm_mux:LPM_MUX_component|mux_0kc:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mux.tdf Line: 86
-Warning (12125): Using design file lpm_mux_4to1.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: lpm_mux_4to1 File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_mux_4to1.v Line: 39
-Info (12128): Elaborating entity "lpm_mux_4to1" for hierarchy "tx:inst8|lpm_mux_4to1:b2v_inst43" File: C:/github/digitalsystem_teamproject/DC-uart-project/tx.v Line: 166
-Info (12128): Elaborating entity "lpm_mux" for hierarchy "tx:inst8|lpm_mux_4to1:b2v_inst43|lpm_mux:LPM_MUX_component" File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_mux_4to1.v Line: 73
-Info (12130): Elaborated megafunction instantiation "tx:inst8|lpm_mux_4to1:b2v_inst43|lpm_mux:LPM_MUX_component" File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_mux_4to1.v Line: 73
-Info (12133): Instantiated megafunction "tx:inst8|lpm_mux_4to1:b2v_inst43|lpm_mux:LPM_MUX_component" with the following parameter: File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_mux_4to1.v Line: 73
-    Info (12134): Parameter "lpm_size" = "4"
-    Info (12134): Parameter "lpm_type" = "LPM_MUX"
-    Info (12134): Parameter "lpm_width" = "1"
-    Info (12134): Parameter "lpm_widths" = "2"
-Info (12021): Found 1 design units, including 1 entities, in source file db/mux_sjc.tdf
-    Info (12023): Found entity 1: mux_sjc File: C:/github/digitalsystem_teamproject/DC-uart-project/db/mux_sjc.tdf Line: 22
-Info (12128): Elaborating entity "mux_sjc" for hierarchy "tx:inst8|lpm_mux_4to1:b2v_inst43|lpm_mux:LPM_MUX_component|mux_sjc:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mux.tdf Line: 86
-Warning (12125): Using design file baud_gen_.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: baud_gen_ File: C:/github/digitalsystem_teamproject/DC-uart-project/baud_gen_.v Line: 19
-Warning (12300): Found the following files while searching for definition of entity "baud_gen_", but did not use these files because already using a different file containing the entity definition
-    Warning (12126): File: baud_gen_.bdf
-Info (12128): Elaborating entity "baud_gen_" for hierarchy "baud_gen_:inst"
-Warning (12125): Using design file lpm_counter_13.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: lpm_counter_13 File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_counter_13.v Line: 39
-Info (12128): Elaborating entity "lpm_counter_13" for hierarchy "baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13" File: C:/github/digitalsystem_teamproject/DC-uart-project/baud_gen_.v Line: 98
-Info (12128): Elaborating entity "lpm_counter" for hierarchy "baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component" File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_counter_13.v Line: 68
-Info (12130): Elaborated megafunction instantiation "baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component" File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_counter_13.v Line: 68
-Info (12133): Instantiated megafunction "baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component" with the following parameter: File: C:/github/digitalsystem_teamproject/DC-uart-project/lpm_counter_13.v Line: 68
-    Info (12134): Parameter "lpm_direction" = "UP"
-    Info (12134): Parameter "lpm_port_updown" = "PORT_UNUSED"
-    Info (12134): Parameter "lpm_type" = "LPM_COUNTER"
-    Info (12134): Parameter "lpm_width" = "13"
-Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_2gi.tdf
-    Info (12023): Found entity 1: cntr_2gi File: C:/github/digitalsystem_teamproject/DC-uart-project/db/cntr_2gi.tdf Line: 25
-Info (12128): Elaborating entity "cntr_2gi" for hierarchy "baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_counter.tdf Line: 258
-Info (12128): Elaborating entity "rx" for hierarchy "rx:inst1"
-Error (275062): Logic function of type XOR4 and instance "inst3" is already defined as a signal name or another logic function
-Error (275062): Logic function of type XOR4 and instance "inst4" is already defined as a signal name or another logic function
-Error (275062): Logic function of type 74138 and instance "inst5" is already defined as a signal name or another logic function
-Error (275062): Logic function of type NOT and instance "inst6" is already defined as a signal name or another logic function
-Error (275062): Logic function of type XOR and instance "inst7" is already defined as a signal name or another logic function
-Error (275062): Logic function of type XOR and instance "inst8" is already defined as a signal name or another logic function
-Error (275062): Logic function of type XOR and instance "inst9" is already defined as a signal name or another logic function
-Warning (275011): Block or symbol "rx_fsm" of instance "inst" overlaps another block or symbol
-Warning (275011): Block or symbol "NOT" of instance "inst13" overlaps another block or symbol
-Error (12152): Can't elaborate user hierarchy "rx:inst1"
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 8 errors, 14 warnings
-    Error: Peak virtual memory: 4808 megabytes
-    Error: Processing ended: Wed Jun 10 01:24:30 2026
-    Error: Elapsed time: 00:00:10
-    Error: Total CPU time (on all processors): 00:00:15
+Info (12128): Elaborating entity "tx" for hierarchy "tx:inst2"
+Error (275019): Can't open file C:/github/digitalsystem_teamproject/DC-uart-project/tx.bdf
+Error (12152): Can't elaborate user hierarchy "tx:inst2"
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 1 warning
+    Error: Peak virtual memory: 4792 megabytes
+    Error: Processing ended: Wed Jun 10 01:36:57 2026
+    Error: Elapsed time: 00:00:08
+    Error: Total CPU time (on all processors): 00:00:13
 
 

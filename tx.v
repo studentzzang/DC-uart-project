@@ -14,7 +14,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
-// CREATED		"Sun May 31 05:49:43 2026"
+// CREATED		"Mon Jun 08 20:19:10 2026"
 
 module tx(
 	data_ready,
@@ -22,7 +22,9 @@ module tx(
 	reset,
 	baud_tick,
 	data_in,
-	tx_serial
+	tx_serial,
+	tx_cnt,
+	tx_sel
 );
 
 
@@ -32,12 +34,14 @@ input wire	reset;
 input wire	baud_tick;
 input wire	[7:0] data_in;
 output wire	tx_serial;
+output wire	[2:0] tx_cnt;
+output wire	[1:0] tx_sel;
 
 wire	tx_bit_7;
 wire	[2:0] tx_bit_cnt;
 reg	[7:0] tx_reg;
 wire	tx_reg_clk;
-wire	[1:0] tx_sel;
+wire	[1:0] tx_sel_ALTERA_SYNTHESIZED;
 wire	SYNTHESIZED_WIRE_0;
 wire	SYNTHESIZED_WIRE_1;
 wire	SYNTHESIZED_WIRE_2;
@@ -64,8 +68,8 @@ tx_fsm	b2v_inst(
 	.tx_clear_bit(SYNTHESIZED_WIRE_0),
 	.tx_count_en(SYNTHESIZED_WIRE_2),
 	
-	.tx_state_start(tx_sel[0]),
-	.tx_state_data(tx_sel[1])
+	.tx_state_start(tx_sel_ALTERA_SYNTHESIZED[0]),
+	.tx_state_data(tx_sel_ALTERA_SYNTHESIZED[1])
 	);
 	defparam	b2v_inst.DATA = 1;
 	defparam	b2v_inst.IDLE = 2;
@@ -162,7 +166,7 @@ lpm_mux_4to1	b2v_inst43(
 	.data2(SYNTHESIZED_WIRE_5),
 	.data1(SYNTHESIZED_WIRE_6),
 	.data0(SYNTHESIZED_WIRE_7),
-	.sel(tx_sel),
+	.sel(tx_sel_ALTERA_SYNTHESIZED),
 	.result(tx_serial));
 
 
@@ -175,5 +179,7 @@ begin
 	end
 end
 
+assign	tx_cnt = tx_bit_cnt;
+assign	tx_sel = tx_sel_ALTERA_SYNTHESIZED;
 
 endmodule

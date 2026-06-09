@@ -763,16 +763,6 @@ refer to the applicable agreement for further details.
 	(pt 1416 272)
 )
 (connector
-	(text "clk" (rect 736 260 753 274)(font "Intel Clear" )(vertical))
-	(pt 752 256)
-	(pt 752 288)
-)
-(connector
-	(text "reset" (rect 695 448 718 465)(font "Intel Clear" ))
-	(pt 696 464)
-	(pt 736 464)
-)
-(connector
 	(pt 736 464)
 	(pt 840 464)
 )
@@ -791,14 +781,6 @@ refer to the applicable agreement for further details.
 (connector
 	(pt 736 288)
 	(pt 736 400)
-)
-(connector
-	(pt 736 288)
-	(pt 752 288)
-)
-(connector
-	(pt 752 288)
-	(pt 1328 288)
 )
 (connector
 	(pt 752 400)
@@ -832,9 +814,11 @@ refer to the applicable agreement for further details.
 	(pt 632 392)
 	(pt 760 392)
 )
-(junction (pt 752 288))
+(connector
+	(pt 736 288)
+	(pt 1328 288)
+)
 (junction (pt 840 464))
-(junction (pt 736 464))
 (junction (pt 736 400))
 (junction (pt 1296 472))
 (text "baud_gen" (rect 552 184 611 203)(font "Intel Clear" (font_size 8)))
