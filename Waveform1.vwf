@@ -20,6 +20,9 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
+
+
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
@@ -38,6 +41,9 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
+
+
 </modelsim_script_timing>
 <hdl_lang>verilog</hdl_lang>
 </simulation_settings>*/
@@ -295,6 +301,16 @@ SIGNAL("tx_serial")
 	PARENT = "";
 }
 
+SIGNAL("noise")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
 TRANSITION_LIST("clk")
 {
 	NODE
@@ -341,7 +357,9 @@ TRANSITION_LIST("data_in[4]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 4000.0;
+		LEVEL 1 FOR 1590.0;
+		LEVEL 0 FOR 910.0;
+		LEVEL 1 FOR 1500.0;
 	}
 }
 
@@ -350,7 +368,9 @@ TRANSITION_LIST("data_in[3]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 4000.0;
+		LEVEL 1 FOR 1590.0;
+		LEVEL 0 FOR 910.0;
+		LEVEL 1 FOR 1500.0;
 	}
 }
 
@@ -368,7 +388,9 @@ TRANSITION_LIST("data_in[1]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 4000.0;
+		LEVEL 1 FOR 1590.0;
+		LEVEL 0 FOR 910.0;
+		LEVEL 1 FOR 1500.0;
 	}
 }
 
@@ -460,7 +482,9 @@ TRANSITION_LIST("data_ready")
 		REPEAT = 1;
 		LEVEL 0 FOR 10.0;
 		LEVEL 1 FOR 120.0;
-		LEVEL 0 FOR 3870.0;
+		LEVEL 0 FOR 1470.0;
+		LEVEL 1 FOR 150.0;
+		LEVEL 0 FOR 2250.0;
 	}
 }
 
@@ -481,6 +505,15 @@ TRANSITION_LIST("tx_serial")
 		REPEAT = 1;
 		LEVEL X FOR 999.0;
 		LEVEL 0 FOR 3001.0;
+	}
+}
+
+TRANSITION_LIST("noise")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 4000.0;
 	}
 }
 
@@ -697,6 +730,15 @@ DISPLAY_LINE
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 21;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "noise";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 22;
 	TREE_LEVEL = 0;
 }
 
