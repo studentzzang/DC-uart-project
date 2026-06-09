@@ -1,5 +1,5 @@
 Fitter report for uart
-Mon Jun 01 13:18:18 2026
+Tue Jun 09 13:00:42 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -62,7 +62,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Mon Jun 01 13:18:18 2026       ;
+; Fitter Status                   ; Successful - Tue Jun 09 13:00:42 2026       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; uart                                        ;
 ; Top-level Entity Name           ; top                                         ;
@@ -70,8 +70,8 @@ refer to the applicable agreement for further details.
 ; Device                          ; 5CGXFC7C7F23C8                              ;
 ; Timing Models                   ; Final                                       ;
 ; Logic utilization (in ALMs)     ; 33 / 56,480 ( < 1 % )                       ;
-; Total registers                 ; 46                                          ;
-; Total pins                      ; 20 / 268 ( 7 % )                            ;
+; Total registers                 ; 47                                          ;
+; Total pins                      ; 21 / 268 ( 8 % )                            ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0 / 7,024,640 ( 0 % )                       ;
 ; Total RAM Blocks                ; 0 / 686 ( 0 % )                             ;
@@ -147,19 +147,21 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 12          ;
-; Maximum allowed            ; 6           ;
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 8           ;
 ;                            ;             ;
-; Average used               ; 1.01        ;
-; Maximum used               ; 6           ;
+; Average used               ; 1.03        ;
+; Maximum used               ; 8           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.3%      ;
-;     Processor 3            ;   0.2%      ;
-;     Processor 4            ;   0.2%      ;
-;     Processor 5            ;   0.2%      ;
-;     Processor 6            ;   0.2%      ;
+;     Processor 2            ;   0.5%      ;
+;     Processor 3            ;   0.4%      ;
+;     Processor 4            ;   0.4%      ;
+;     Processor 5            ;   0.4%      ;
+;     Processor 6            ;   0.4%      ;
+;     Processor 7            ;   0.4%      ;
+;     Processor 8            ;   0.4%      ;
 +----------------------------+-------------+
 
 
@@ -171,6 +173,7 @@ refer to the applicable agreement for further details.
 ; clk~inputCLKENA0                                                                                                               ; Created    ; Placement                                         ; Fitter Periphery Placement ;           ;                ;                                                                                                                                          ;                  ;                       ;
 ; baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[0]  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[0]~DUPLICATE  ;                  ;                       ;
 ; baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[10] ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[10]~DUPLICATE ;                  ;                       ;
+; baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[12] ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[12]~DUPLICATE ;                  ;                       ;
 +--------------------------------------------------------------------------------------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+------------------------------------------------------------------------------------------------------------------------------------------+------------------+-----------------------+
 
 
@@ -180,8 +183,8 @@ refer to the applicable agreement for further details.
 ; Type                ; Total [A + B]      ; From Design Partitions [A] ; From Rapid Recompile [B] ;
 +---------------------+--------------------+----------------------------+--------------------------+
 ; Placement (by node) ;                    ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 135 ) ; 0.00 % ( 0 / 135 )         ; 0.00 % ( 0 / 135 )       ;
-;     -- Achieved     ; 0.00 % ( 0 / 135 ) ; 0.00 % ( 0 / 135 )         ; 0.00 % ( 0 / 135 )       ;
+;     -- Requested    ; 0.00 % ( 0 / 137 ) ; 0.00 % ( 0 / 137 )         ; 0.00 % ( 0 / 137 )       ;
+;     -- Achieved     ; 0.00 % ( 0 / 137 ) ; 0.00 % ( 0 / 137 )         ; 0.00 % ( 0 / 137 )       ;
 ;                     ;                    ;                            ;                          ;
 ; Routing (by net)    ;                    ;                            ;                          ;
 ;     -- Requested    ; 0.00 % ( 0 / 0 )   ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
@@ -204,7 +207,7 @@ refer to the applicable agreement for further details.
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                 ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                            ; 0.00 % ( 0 / 135 )    ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                            ; 0.00 % ( 0 / 137 )    ; N/A                     ; Source File       ; N/A                 ;       ;
 ; hard_block:auto_generated_inst ; 0.00 % ( 0 / 0 )      ; N/A                     ; Source File       ; N/A                 ;       ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
@@ -212,7 +215,7 @@ refer to the applicable agreement for further details.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
+The pin-out file can be found in C:/github/digitalsystem_teamproject/DC-uart-project/uart.pin.
 
 
 +------------------------------------------------------------------------------------------+
@@ -222,12 +225,12 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 +-------------------------------------------------------------+--------------------+-------+
 ; Logic utilization (ALMs needed / total ALMs on device)      ; 33 / 56,480        ; < 1 % ;
 ; ALMs needed [=A-B+C]                                        ; 33                 ;       ;
-;     [A] ALMs used in final placement [=a+b+c+d]             ; 41 / 56,480        ; < 1 % ;
-;         [a] ALMs used for LUT logic and registers           ; 17                 ;       ;
-;         [b] ALMs used for LUT logic                         ; 18                 ;       ;
-;         [c] ALMs used for registers                         ; 6                  ;       ;
+;     [A] ALMs used in final placement [=a+b+c+d]             ; 39 / 56,480        ; < 1 % ;
+;         [a] ALMs used for LUT logic and registers           ; 18                 ;       ;
+;         [b] ALMs used for LUT logic                         ; 16                 ;       ;
+;         [c] ALMs used for registers                         ; 5                  ;       ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                  ;       ;
-;     [B] Estimate of ALMs recoverable by dense packing       ; 8 / 56,480         ; < 1 % ;
+;     [B] Estimate of ALMs recoverable by dense packing       ; 6 / 56,480         ; < 1 % ;
 ;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 56,480         ; 0 %   ;
 ;         [a] Due to location constrained logic               ; 0                  ;       ;
 ;         [b] Due to LAB-wide signal conflicts                ; 0                  ;       ;
@@ -241,23 +244,23 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ;     -- Memory LABs (up to half of total LABs)               ; 0                  ;       ;
 ;                                                             ;                    ;       ;
 ; Combinational ALUT usage for logic                          ; 50                 ;       ;
-;     -- 7 input functions                                    ; 3                  ;       ;
-;     -- 6 input functions                                    ; 13                 ;       ;
-;     -- 5 input functions                                    ; 4                  ;       ;
+;     -- 7 input functions                                    ; 2                  ;       ;
+;     -- 6 input functions                                    ; 14                 ;       ;
+;     -- 5 input functions                                    ; 5                  ;       ;
 ;     -- 4 input functions                                    ; 3                  ;       ;
-;     -- <=3 input functions                                  ; 27                 ;       ;
-; Combinational ALUT usage for route-throughs                 ; 6                  ;       ;
+;     -- <=3 input functions                                  ; 26                 ;       ;
+; Combinational ALUT usage for route-throughs                 ; 5                  ;       ;
 ;                                                             ;                    ;       ;
-; Dedicated logic registers                                   ; 46                 ;       ;
+; Dedicated logic registers                                   ; 47                 ;       ;
 ;     -- By type:                                             ;                    ;       ;
 ;         -- Primary logic registers                          ; 44 / 112,960       ; < 1 % ;
-;         -- Secondary logic registers                        ; 2 / 112,960        ; < 1 % ;
+;         -- Secondary logic registers                        ; 3 / 112,960        ; < 1 % ;
 ;     -- By function:                                         ;                    ;       ;
 ;         -- Design implementation registers                  ; 44                 ;       ;
-;         -- Routing optimization registers                   ; 2                  ;       ;
+;         -- Routing optimization registers                   ; 3                  ;       ;
 ;                                                             ;                    ;       ;
 ; Virtual pins                                                ; 0                  ;       ;
-; I/O pins                                                    ; 20 / 268           ; 7 %   ;
+; I/O pins                                                    ; 21 / 268           ; 8 %   ;
 ;     -- Clock pins                                           ; 1 / 11             ; 9 %   ;
 ;     -- Dedicated input pins                                 ; 0 / 23             ; 0 %   ;
 ;                                                             ;                    ;       ;
@@ -288,12 +291,12 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ; Channel PLLs                                                ; 0 / 6              ; 0 %   ;
 ; Impedance control blocks                                    ; 0 / 3              ; 0 %   ;
 ; Hard Memory Controllers                                     ; 0 / 2              ; 0 %   ;
-; Average interconnect usage (total/H/V)                      ; 0.0% / 0.0% / 0.0% ;       ;
-; Peak interconnect usage (total/H/V)                         ; 1.0% / 0.9% / 1.6% ;       ;
-; Maximum fan-out                                             ; 46                 ;       ;
-; Highest non-global fan-out                                  ; 46                 ;       ;
-; Total fan-out                                               ; 364                ;       ;
-; Average fan-out                                             ; 2.55               ;       ;
+; Average interconnect usage (total/H/V)                      ; 0.0% / 0.0% / 0.1% ;       ;
+; Peak interconnect usage (total/H/V)                         ; 1.1% / 0.8% / 1.8% ;       ;
+; Maximum fan-out                                             ; 48                 ;       ;
+; Highest non-global fan-out                                  ; 48                 ;       ;
+; Total fan-out                                               ; 372                ;       ;
+; Average fan-out                                             ; 2.57               ;       ;
 +-------------------------------------------------------------+--------------------+-------+
 
 
@@ -304,12 +307,12 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 +-------------------------------------------------------------+-----------------------+--------------------------------+
 ; Logic utilization (ALMs needed / total ALMs on device)      ; 33 / 56480 ( < 1 % )  ; 0 / 56480 ( 0 % )              ;
 ; ALMs needed [=A-B+C]                                        ; 33                    ; 0                              ;
-;     [A] ALMs used in final placement [=a+b+c+d]             ; 41 / 56480 ( < 1 % )  ; 0 / 56480 ( 0 % )              ;
-;         [a] ALMs used for LUT logic and registers           ; 17                    ; 0                              ;
-;         [b] ALMs used for LUT logic                         ; 18                    ; 0                              ;
-;         [c] ALMs used for registers                         ; 6                     ; 0                              ;
+;     [A] ALMs used in final placement [=a+b+c+d]             ; 39 / 56480 ( < 1 % )  ; 0 / 56480 ( 0 % )              ;
+;         [a] ALMs used for LUT logic and registers           ; 18                    ; 0                              ;
+;         [b] ALMs used for LUT logic                         ; 16                    ; 0                              ;
+;         [c] ALMs used for registers                         ; 5                     ; 0                              ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                     ; 0                              ;
-;     [B] Estimate of ALMs recoverable by dense packing       ; 8 / 56480 ( < 1 % )   ; 0 / 56480 ( 0 % )              ;
+;     [B] Estimate of ALMs recoverable by dense packing       ; 6 / 56480 ( < 1 % )   ; 0 / 56480 ( 0 % )              ;
 ;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 56480 ( 0 % )     ; 0 / 56480 ( 0 % )              ;
 ;         [a] Due to location constrained logic               ; 0                     ; 0                              ;
 ;         [b] Due to LAB-wide signal conflicts                ; 0                     ; 0                              ;
@@ -323,12 +326,12 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ;     -- Memory LABs (up to half of total LABs)               ; 0                     ; 0                              ;
 ;                                                             ;                       ;                                ;
 ; Combinational ALUT usage for logic                          ; 50                    ; 0                              ;
-;     -- 7 input functions                                    ; 3                     ; 0                              ;
-;     -- 6 input functions                                    ; 13                    ; 0                              ;
-;     -- 5 input functions                                    ; 4                     ; 0                              ;
+;     -- 7 input functions                                    ; 2                     ; 0                              ;
+;     -- 6 input functions                                    ; 14                    ; 0                              ;
+;     -- 5 input functions                                    ; 5                     ; 0                              ;
 ;     -- 4 input functions                                    ; 3                     ; 0                              ;
-;     -- <=3 input functions                                  ; 27                    ; 0                              ;
-; Combinational ALUT usage for route-throughs                 ; 6                     ; 0                              ;
+;     -- <=3 input functions                                  ; 26                    ; 0                              ;
+; Combinational ALUT usage for route-throughs                 ; 5                     ; 0                              ;
 ; Memory ALUT usage                                           ; 0                     ; 0                              ;
 ;     -- 64-address deep                                      ; 0                     ; 0                              ;
 ;     -- 32-address deep                                      ; 0                     ; 0                              ;
@@ -336,14 +339,14 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ; Dedicated logic registers                                   ; 0                     ; 0                              ;
 ;     -- By type:                                             ;                       ;                                ;
 ;         -- Primary logic registers                          ; 44 / 112960 ( < 1 % ) ; 0 / 112960 ( 0 % )             ;
-;         -- Secondary logic registers                        ; 2 / 112960 ( < 1 % )  ; 0 / 112960 ( 0 % )             ;
+;         -- Secondary logic registers                        ; 3 / 112960 ( < 1 % )  ; 0 / 112960 ( 0 % )             ;
 ;     -- By function:                                         ;                       ;                                ;
 ;         -- Design implementation registers                  ; 44                    ; 0                              ;
-;         -- Routing optimization registers                   ; 2                     ; 0                              ;
+;         -- Routing optimization registers                   ; 3                     ; 0                              ;
 ;                                                             ;                       ;                                ;
 ;                                                             ;                       ;                                ;
 ; Virtual pins                                                ; 0                     ; 0                              ;
-; I/O pins                                                    ; 20                    ; 0                              ;
+; I/O pins                                                    ; 21                    ; 0                              ;
 ; I/O registers                                               ; 0                     ; 0                              ;
 ; Total block memory bits                                     ; 0                     ; 0                              ;
 ; Total block memory implementation bits                      ; 0                     ; 0                              ;
@@ -356,7 +359,7 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ;     -- Registered Output Connections                        ; 0                     ; 0                              ;
 ;                                                             ;                       ;                                ;
 ; Internal Connections                                        ;                       ;                                ;
-;     -- Total Connections                                    ; 364                   ; 0                              ;
+;     -- Total Connections                                    ; 372                   ; 0                              ;
 ;     -- Registered Connections                               ; 143                   ; 0                              ;
 ;                                                             ;                       ;                                ;
 ; External Connections                                        ;                       ;                                ;
@@ -364,7 +367,7 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ;     -- hard_block:auto_generated_inst                       ; 0                     ; 0                              ;
 ;                                                             ;                       ;                                ;
 ; Partition Interface                                         ;                       ;                                ;
-;     -- Input Ports                                          ; 11                    ; 0                              ;
+;     -- Input Ports                                          ; 12                    ; 0                              ;
 ;     -- Output Ports                                         ; 9                     ; 0                              ;
 ;     -- Bidir Ports                                          ; 0                     ; 0                              ;
 ;                                                             ;                       ;                                ;
@@ -389,17 +392,18 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 +------------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+-----------+
 ; Name       ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination ; Termination Control Block ; Location assigned by ; Slew Rate ;
 +------------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+-----------+
-; clk        ; M16   ; 5B       ; 89           ; 35           ; 60           ; 30                    ; 0                  ; yes    ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
-; data_in[0] ; N20   ; 5B       ; 89           ; 35           ; 77           ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
-; data_in[1] ; E21   ; 7A       ; 88           ; 81           ; 35           ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
-; data_in[2] ; K22   ; 5B       ; 89           ; 38           ; 54           ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
-; data_in[3] ; N16   ; 5B       ; 89           ; 35           ; 43           ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
-; data_in[4] ; L19   ; 5B       ; 89           ; 38           ; 3            ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
-; data_in[5] ; N21   ; 5B       ; 89           ; 35           ; 94           ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
-; data_in[6] ; K17   ; 5B       ; 89           ; 37           ; 3            ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
-; data_in[7] ; N19   ; 5B       ; 89           ; 36           ; 3            ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
-; data_ready ; K21   ; 5B       ; 89           ; 38           ; 37           ; 3                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
-; reset      ; L18   ; 5B       ; 89           ; 38           ; 20           ; 46                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
+; clk        ; M16   ; 5B       ; 89           ; 35           ; 60           ; 31                    ; 0                  ; yes    ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
+; data_in[0] ; N19   ; 5B       ; 89           ; 36           ; 3            ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
+; data_in[1] ; P16   ; 5A       ; 89           ; 9            ; 3            ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
+; data_in[2] ; L17   ; 5B       ; 89           ; 37           ; 20           ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
+; data_in[3] ; P17   ; 5A       ; 89           ; 9            ; 20           ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
+; data_in[4] ; L18   ; 5B       ; 89           ; 38           ; 20           ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
+; data_in[5] ; P18   ; 5A       ; 89           ; 9            ; 54           ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
+; data_in[6] ; D21   ; 7A       ; 88           ; 81           ; 52           ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
+; data_in[7] ; L19   ; 5B       ; 89           ; 38           ; 3            ; 1                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
+; data_ready ; M21   ; 5B       ; 89           ; 37           ; 54           ; 3                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
+; noise      ; K17   ; 5B       ; 89           ; 37           ; 3            ; 3                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
+; reset      ; M20   ; 5B       ; 89           ; 37           ; 37           ; 48                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 2.5 V        ; Off         ; --                        ; Fitter               ; no        ;
 +------------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+-----------+
 
 
@@ -408,15 +412,15 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 +-------------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+---------------------+-----------------------------+----------------------+----------------------+---------------------+
 ; Name        ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Output Register ; Output Enable Register ; Slew Rate ; PCI I/O Enabled ; Open Drain ; TRI Primitive ; Bus Hold ; Weak Pull Up ; I/O Standard ; Current Strength ; Termination                       ; Termination Control Block ; Output Buffer Pre-emphasis ; Voltage Output Differential ; Output Buffer Delay ; Output Buffer Delay Control ; Location assigned by ; Output Enable Source ; Output Enable Group ;
 +-------------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+---------------------+-----------------------------+----------------------+----------------------+---------------------+
-; data_out[0] ; M22   ; 5B       ; 89           ; 36           ; 37           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; data_out[1] ; M18   ; 5B       ; 89           ; 36           ; 20           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; data_out[2] ; P19   ; 5A       ; 89           ; 9            ; 37           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; data_out[3] ; L17   ; 5B       ; 89           ; 37           ; 20           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; data_out[4] ; P18   ; 5A       ; 89           ; 9            ; 54           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; data_out[5] ; L22   ; 5B       ; 89           ; 36           ; 54           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; data_out[6] ; M21   ; 5B       ; 89           ; 37           ; 54           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; data_out[7] ; B20   ; 7A       ; 86           ; 81           ; 51           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
-; tx_serial   ; M20   ; 5B       ; 89           ; 37           ; 37           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; data_out[0] ; L22   ; 5B       ; 89           ; 36           ; 54           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; data_out[1] ; N20   ; 5B       ; 89           ; 35           ; 77           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; data_out[2] ; K21   ; 5B       ; 89           ; 38           ; 37           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; data_out[3] ; M18   ; 5B       ; 89           ; 36           ; 20           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; data_out[4] ; K22   ; 5B       ; 89           ; 38           ; 54           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; data_out[5] ; P19   ; 5A       ; 89           ; 9            ; 37           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; data_out[6] ; N21   ; 5B       ; 89           ; 35           ; 94           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; data_out[7] ; M22   ; 5B       ; 89           ; 36           ; 37           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
+; tx_serial   ; N16   ; 5B       ; 89           ; 35           ; 43           ; no              ; no                     ; 1         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; 0                   ; Off                         ; Fitter               ; -                    ; -                   ;
 +-------------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+---------------------+-----------------------------+----------------------+----------------------+---------------------+
 
 
@@ -431,9 +435,9 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ; 3A       ; 0 / 16 ( 0 % )    ; 2.5V          ; --           ; 2.5V          ;
 ; 3B       ; 0 / 32 ( 0 % )    ; 2.5V          ; --           ; 2.5V          ;
 ; 4A       ; 0 / 48 ( 0 % )    ; 2.5V          ; --           ; 2.5V          ;
-; 5A       ; 2 / 16 ( 13 % )   ; 2.5V          ; --           ; 2.5V          ;
+; 5A       ; 4 / 16 ( 25 % )   ; 2.5V          ; --           ; 2.5V          ;
 ; 5B       ; 16 / 16 ( 100 % ) ; 2.5V          ; --           ; 2.5V          ;
-; 7A       ; 2 / 80 ( 3 % )    ; 2.5V          ; --           ; 2.5V          ;
+; 7A       ; 1 / 80 ( 1 % )    ; 2.5V          ; --           ; 2.5V          ;
 ; 8A       ; 0 / 32 ( 0 % )    ; 2.5V          ; --           ; 2.5V          ;
 +----------+-------------------+---------------+--------------+---------------+
 
@@ -528,7 +532,7 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ; B17      ; 384        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; B18      ; 382        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; B19      ;            ; 7A       ; VCCIO7A                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
-; B20      ; 380        ; 7A       ; data_out[7]                     ; output ; 2.5 V        ;                     ; Column I/O   ; N               ; no       ; Off          ;
+; B20      ; 380        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; B21      ; 387        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; B22      ; 394        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; C1       ; 19         ; B1L      ; GND                             ;        ;              ;                     ; --           ;                 ; --       ; --           ;
@@ -573,7 +577,7 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ; D18      ;            ; --       ; VCC_AUX                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; D19      ; 379        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; D20      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
-; D21      ; 376        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
+; D21      ; 376        ; 7A       ; data_in[6]                      ; input  ; 2.5 V        ;                     ; Column I/O   ; N               ; no       ; Off          ;
 ; D22      ; 392        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; E1       ; 20         ; B1L      ; GXB_NC                          ;        ;              ;                     ; --           ;                 ; --       ; --           ;
 ; E2       ; 21         ; B1L      ; GXB_NC                          ;        ;              ;                     ; --           ;                 ; --       ; --           ;
@@ -595,7 +599,7 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ; E18      ;            ; 7A       ; VCCIO7A                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; E19      ; 377        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; E20      ; 398        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
-; E21      ; 374        ; 7A       ; data_in[1]                      ; input  ; 2.5 V        ;                     ; Column I/O   ; N               ; no       ; Off          ;
+; E21      ; 374        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; E22      ; 390        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; F1       ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; F2       ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
@@ -701,12 +705,12 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ; K14      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; K15      ;            ; --       ; VCC                             ; power  ;              ; 1.1V                ; --           ;                 ; --       ; --           ;
 ; K16      ; 424        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
-; K17      ; 284        ; 5B       ; data_in[6]                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; K17      ; 284        ; 5B       ; noise                           ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; K18      ;            ; 5B       ; VCCIO5B                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; K19      ; 407        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; K20      ; 405        ; 7A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
-; K21      ; 289        ; 5B       ; data_ready                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; K22      ; 291        ; 5B       ; data_in[2]                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; K21      ; 289        ; 5B       ; data_out[2]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; K22      ; 291        ; 5B       ; data_out[4]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; L1       ; 27         ; B1L      ; GND                             ;        ;              ;                     ; --           ;                 ; --       ; --           ;
 ; L2       ; 26         ; B1L      ; GND                             ;        ;              ;                     ; --           ;                 ; --       ; --           ;
 ; L3       ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
@@ -723,12 +727,12 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ; L14      ;            ; --       ; VCC                             ; power  ;              ; 1.1V                ; --           ;                 ; --       ; --           ;
 ; L15      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; L16      ;            ; --       ; VCC                             ; power  ;              ; 1.1V                ; --           ;                 ; --       ; --           ;
-; L17      ; 286        ; 5B       ; data_out[3]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; L18      ; 290        ; 5B       ; reset                           ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; L19      ; 288        ; 5B       ; data_in[4]                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; L17      ; 286        ; 5B       ; data_in[2]                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; L18      ; 290        ; 5B       ; data_in[4]                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; L19      ; 288        ; 5B       ; data_in[7]                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; L20      ;            ; 5B       ; VREFB5BN0                       ; power  ;              ;                     ; --           ;                 ; --       ; --           ;
 ; L21      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
-; L22      ; 283        ; 5B       ; data_out[5]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; L22      ; 283        ; 5B       ; data_out[0]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; M1       ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; M2       ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; M3       ;            ; --       ; VCCH_GXBL                       ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
@@ -746,11 +750,11 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ; M15      ;            ; --       ; VCC                             ; power  ;              ; 1.1V                ; --           ;                 ; --       ; --           ;
 ; M16      ; 278        ; 5B       ; clk                             ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; M17      ;            ; 5B       ; VCCPD5B                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
-; M18      ; 282        ; 5B       ; data_out[1]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; M18      ; 282        ; 5B       ; data_out[3]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; M19      ;            ; 5B       ; VCCIO5B                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
-; M20      ; 285        ; 5B       ; tx_serial                       ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; M21      ; 287        ; 5B       ; data_out[6]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; M22      ; 281        ; 5B       ; data_out[0]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; M20      ; 285        ; 5B       ; reset                           ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; M21      ; 287        ; 5B       ; data_ready                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; M22      ; 281        ; 5B       ; data_out[7]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; N1       ; 28         ; B0L      ; GXB_NC                          ;        ;              ;                     ; --           ;                 ; --       ; --           ;
 ; N2       ; 29         ; B0L      ; GXB_NC                          ;        ;              ;                     ; --           ;                 ; --       ; --           ;
 ; N3       ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
@@ -766,12 +770,12 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ; N13      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; N14      ;            ; --       ; VCC                             ; power  ;              ; 1.1V                ; --           ;                 ; --       ; --           ;
 ; N15      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
-; N16      ; 276        ; 5B       ; data_in[3]                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; N16      ; 276        ; 5B       ; tx_serial                       ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; N17      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; N18      ;            ; 5B       ; VCCPD5B                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
-; N19      ; 280        ; 5B       ; data_in[7]                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; N20      ; 277        ; 5B       ; data_in[0]                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; N21      ; 279        ; 5B       ; data_in[5]                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; N19      ; 280        ; 5B       ; data_in[0]                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; N20      ; 277        ; 5B       ; data_out[1]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; N21      ; 279        ; 5B       ; data_out[6]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; N22      ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; P1       ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; P2       ;            ;          ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
@@ -788,10 +792,10 @@ The pin-out file can be found in D:/Projects/dc-UART/uart.pin.
 ; P13      ;            ; --       ; VCC                             ; power  ;              ; 1.1V                ; --           ;                 ; --       ; --           ;
 ; P14      ; 168        ; 4A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; P15      ;            ; --       ; VCC                             ; power  ;              ; 1.1V                ; --           ;                 ; --       ; --           ;
-; P16      ; 225        ; 5A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
-; P17      ; 227        ; 5A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
-; P18      ; 226        ; 5A       ; data_out[4]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
-; P19      ; 224        ; 5A       ; data_out[2]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; P16      ; 225        ; 5A       ; data_in[1]                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; P17      ; 227        ; 5A       ; data_in[3]                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; P18      ; 226        ; 5A       ; data_in[5]                      ; input  ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
+; P19      ; 224        ; 5A       ; data_out[5]                     ; output ; 2.5 V        ;                     ; Row I/O      ; N               ; no       ; Off          ;
 ; P20      ;            ; 5A       ; VCCIO5A                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; P21      ;            ; 5A       ; VCCPD5A                         ; power  ;              ; 2.5V                ; --           ;                 ; --       ; --           ;
 ; P22      ; 222        ; 5A       ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Row I/O      ;                 ; no       ; On           ;
@@ -948,6 +952,7 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ; reset       ; Incomplete set of assignments ;
 ; clk         ; Incomplete set of assignments ;
 ; data_ready  ; Incomplete set of assignments ;
+; noise       ; Incomplete set of assignments ;
 ; data_in[5]  ; Incomplete set of assignments ;
 ; data_in[7]  ; Incomplete set of assignments ;
 ; data_in[4]  ; Incomplete set of assignments ;
@@ -968,6 +973,7 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ; reset       ; Missing location assignment   ;
 ; clk         ; Missing location assignment   ;
 ; data_ready  ; Missing location assignment   ;
+; noise       ; Missing location assignment   ;
 ; data_in[5]  ; Missing location assignment   ;
 ; data_in[7]  ; Missing location assignment   ;
 ; data_in[4]  ; Missing location assignment   ;
@@ -984,27 +990,27 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +----------------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------+----------------+--------------+
 ; Compilation Hierarchy Node                   ; ALMs needed [=A-B+C] ; [A] ALMs used in final placement ; [B] Estimate of ALMs recoverable by dense packing ; [C] Estimate of ALMs unavailable ; ALMs used for memory ; Combinational ALUTs ; Dedicated Logic Registers ; I/O Registers ; Block Memory Bits ; M10Ks ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                             ; Entity Name    ; Library Name ;
 +----------------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------+----------------+--------------+
-; |top                                         ; 32.5 (0.5)           ; 39.5 (0.5)                       ; 7.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 50 (1)              ; 46 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 20   ; 0            ; |top                                                                                                            ; top            ; work         ;
-;    |baud_gen_:inst|                          ; 9.5 (3.0)            ; 9.8 (3.3)                        ; 0.3 (0.3)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 16 (3)              ; 16 (1)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|baud_gen_:inst                                                                                             ; baud_gen_      ; work         ;
-;       |lpm_counter_13:b2v_lpm_counter_13|    ; 6.5 (0.0)            ; 6.5 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 13 (0)              ; 15 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13                                                           ; lpm_counter_13 ; work         ;
-;          |lpm_counter:LPM_COUNTER_component| ; 6.5 (0.0)            ; 6.5 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 13 (0)              ; 15 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component                         ; lpm_counter    ; work         ;
-;             |cntr_2gi:auto_generated|        ; 6.5 (6.5)            ; 6.5 (6.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 13 (13)             ; 15 (15)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated ; cntr_2gi       ; work         ;
-;    |rx:inst1|                                ; 13.7 (6.0)           ; 17.9 (10.7)                      ; 4.2 (4.7)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 19 (8)              ; 15 (8)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|rx:inst1                                                                                                   ; rx             ; work         ;
+; |top                                         ; 32.5 (1.0)           ; 38.0 (1.0)                       ; 5.5 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 50 (2)              ; 47 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 21   ; 0            ; |top                                                                                                            ; top            ; work         ;
+;    |baud_gen_:inst|                          ; 9.5 (3.0)            ; 9.5 (3.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 16 (3)              ; 17 (1)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|baud_gen_:inst                                                                                             ; baud_gen_      ; work         ;
+;       |lpm_counter_13:b2v_lpm_counter_13|    ; 6.5 (0.0)            ; 6.5 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 13 (0)              ; 16 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13                                                           ; lpm_counter_13 ; work         ;
+;          |lpm_counter:LPM_COUNTER_component| ; 6.5 (0.0)            ; 6.5 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 13 (0)              ; 16 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component                         ; lpm_counter    ; work         ;
+;             |cntr_2gi:auto_generated|        ; 6.5 (6.5)            ; 6.5 (6.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 13 (13)             ; 16 (16)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated ; cntr_2gi       ; work         ;
+;    |rx:inst1|                                ; 12.5 (6.0)           ; 17.0 (10.5)                      ; 4.5 (4.5)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 17 (8)              ; 15 (8)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|rx:inst1                                                                                                   ; rx             ; work         ;
 ;       |lpm_counter_3:inst26|                 ; 2.0 (0.0)            ; 2.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 4 (0)               ; 3 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|rx:inst1|lpm_counter_3:inst26                                                                              ; lpm_counter_3  ; work         ;
 ;          |lpm_counter:LPM_COUNTER_component| ; 2.0 (0.0)            ; 2.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 4 (0)               ; 3 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component                                            ; lpm_counter    ; work         ;
 ;             |cntr_83j:auto_generated|        ; 2.0 (2.0)            ; 2.0 (2.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 4 (4)               ; 3 (3)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated                    ; cntr_83j       ; work         ;
-;       |rx_fsm:inst|                          ; 5.2 (5.2)            ; 5.2 (5.2)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 4 (4)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|rx:inst1|rx_fsm:inst                                                                                       ; rx_fsm         ; work         ;
-;    |tx:inst8|                                ; 8.8 (1.2)            ; 11.3 (3.5)                       ; 2.4 (2.3)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 14 (1)              ; 15 (8)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8                                                                                                   ; tx             ; work         ;
+;       |rx_fsm:inst|                          ; 4.5 (4.5)            ; 4.5 (4.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 5 (5)               ; 4 (4)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|rx:inst1|rx_fsm:inst                                                                                       ; rx_fsm         ; work         ;
+;    |tx:inst8|                                ; 9.0 (0.7)            ; 10.5 (2.8)                       ; 1.5 (2.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 15 (1)              ; 15 (8)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8                                                                                                   ; tx             ; work         ;
 ;       |lpm_counter_3:b2v_inst1|              ; 1.8 (0.0)            ; 1.8 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 4 (0)               ; 3 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8|lpm_counter_3:b2v_inst1                                                                           ; lpm_counter_3  ; work         ;
 ;          |lpm_counter:LPM_COUNTER_component| ; 1.8 (0.0)            ; 1.8 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 4 (0)               ; 3 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component                                         ; lpm_counter    ; work         ;
 ;             |cntr_83j:auto_generated|        ; 1.8 (1.8)            ; 1.8 (1.8)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 4 (4)               ; 3 (3)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated                 ; cntr_83j       ; work         ;
-;       |lpm_mux_4to1:b2v_inst43|              ; 0.5 (0.0)            ; 0.5 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8|lpm_mux_4to1:b2v_inst43                                                                           ; lpm_mux_4to1   ; work         ;
-;          |lpm_mux:LPM_MUX_component|         ; 0.5 (0.0)            ; 0.5 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8|lpm_mux_4to1:b2v_inst43|lpm_mux:LPM_MUX_component                                                 ; lpm_mux        ; work         ;
-;             |mux_sjc:auto_generated|         ; 0.5 (0.5)            ; 0.5 (0.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 1 (1)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8|lpm_mux_4to1:b2v_inst43|lpm_mux:LPM_MUX_component|mux_sjc:auto_generated                          ; mux_sjc        ; work         ;
+;       |lpm_mux_4to1:b2v_inst43|              ; 0.3 (0.0)            ; 0.3 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8|lpm_mux_4to1:b2v_inst43                                                                           ; lpm_mux_4to1   ; work         ;
+;          |lpm_mux:LPM_MUX_component|         ; 0.3 (0.0)            ; 0.3 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8|lpm_mux_4to1:b2v_inst43|lpm_mux:LPM_MUX_component                                                 ; lpm_mux        ; work         ;
+;             |mux_sjc:auto_generated|         ; 0.3 (0.3)            ; 0.3 (0.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8|lpm_mux_4to1:b2v_inst43|lpm_mux:LPM_MUX_component|mux_sjc:auto_generated                          ; mux_sjc        ; work         ;
 ;       |lpm_mux_8:b2v_inst41|                 ; 1.3 (0.0)            ; 1.3 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8|lpm_mux_8:b2v_inst41                                                                              ; lpm_mux_8      ; work         ;
 ;          |lpm_mux:LPM_MUX_component|         ; 1.3 (0.0)            ; 1.3 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (0)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8|lpm_mux_8:b2v_inst41|lpm_mux:LPM_MUX_component                                                    ; lpm_mux        ; work         ;
 ;             |mux_1kc:auto_generated|         ; 1.3 (1.3)            ; 1.3 (1.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8|lpm_mux_8:b2v_inst41|lpm_mux:LPM_MUX_component|mux_1kc:auto_generated                             ; mux_1kc        ; work         ;
-;       |tx_fsm:b2v_inst|                      ; 3.8 (3.8)            ; 4.1 (4.1)                        ; 0.3 (0.3)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 6 (6)               ; 4 (4)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8|tx_fsm:b2v_inst                                                                                   ; tx_fsm         ; work         ;
+;       |tx_fsm:b2v_inst|                      ; 4.0 (4.0)            ; 4.2 (4.2)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 6 (6)               ; 4 (4)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |top|tx:inst8|tx_fsm:b2v_inst                                                                                   ; tx_fsm         ; work         ;
 +----------------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------+----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -1025,12 +1031,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; data_out[0] ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; reset       ; Input    ; -- ; (0)  ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; clk         ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; data_ready  ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; data_ready  ; Input    ; -- ; (0)  ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; noise       ; Input    ; -- ; (0)  ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; data_in[5]  ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; data_in[7]  ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; data_in[4]  ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; data_in[4]  ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; data_in[6]  ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; data_in[1]  ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; data_in[1]  ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; data_in[3]  ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; data_in[0]  ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; data_in[2]  ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
@@ -1043,67 +1050,73 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Source Pin / Fanout                                                                                                                             ; Pad To Core Index ; Setting ;
 +-------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+---------+
 ; reset                                                                                                                                           ;                   ;         ;
-;      - rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[2]                               ; 0                 ; 0       ;
-;      - rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[1]                               ; 0                 ; 0       ;
-;      - rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[0]                               ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[12]           ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[11]           ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[10]           ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[9]            ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[8]            ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[7]            ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[6]            ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[5]            ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[4]            ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[3]            ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[2]            ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[1]            ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[0]            ; 0                 ; 0       ;
-;      - tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[2]                            ; 0                 ; 0       ;
-;      - tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[1]                            ; 0                 ; 0       ;
-;      - tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[0]                            ; 0                 ; 0       ;
-;      - tx:inst8|tx_fsm:b2v_inst|fstate.DATA                                                                                                     ; 0                 ; 0       ;
-;      - tx:inst8|tx_fsm:b2v_inst|fstate.START                                                                                                    ; 0                 ; 0       ;
-;      - tx:inst8|tx_fsm:b2v_inst|fstate.STOP                                                                                                     ; 0                 ; 0       ;
-;      - rx:inst1|rx_fsm:inst|fstate.DATA                                                                                                         ; 0                 ; 0       ;
-;      - rx:inst1|rx_fsm:inst|fstate.START                                                                                                        ; 0                 ; 0       ;
-;      - rx:inst1|rx_fsm:inst|fstate.STOP                                                                                                         ; 0                 ; 0       ;
-;      - rx:inst1|rx_fsm:inst|reg_fstate.IDLE~0                                                                                                   ; 0                 ; 0       ;
-;      - tx:inst8|lpm_mux_4to1:b2v_inst43|lpm_mux:LPM_MUX_component|mux_sjc:auto_generated|l2_w0_n0_mux_dataout~0                                 ; 0                 ; 0       ;
-;      - baud_gen_:inst|baud_tick                                                                                                                 ; 0                 ; 0       ;
-;      - tx:inst8|tx_fsm:b2v_inst|fstate.START~0                                                                                                  ; 0                 ; 0       ;
-;      - tx:inst8|tx_fsm:b2v_inst|tx_state_start~0                                                                                                ; 0                 ; 0       ;
-;      - tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|_~0                                           ; 0                 ; 0       ;
-;      - tx:inst8|tx_fsm:b2v_inst|reg_fstate.IDLE~0                                                                                               ; 0                 ; 0       ;
+;      - rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[2]                               ; 1                 ; 0       ;
+;      - rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[1]                               ; 1                 ; 0       ;
+;      - rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[0]                               ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[12]           ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[11]           ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[10]           ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[9]            ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[8]            ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[7]            ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[6]            ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[5]            ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[4]            ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[3]            ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[2]            ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[1]            ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[0]            ; 1                 ; 0       ;
+;      - tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[2]                            ; 1                 ; 0       ;
+;      - tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[1]                            ; 1                 ; 0       ;
+;      - tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[0]                            ; 1                 ; 0       ;
+;      - tx:inst8|tx_fsm:b2v_inst|fstate.DATA                                                                                                     ; 1                 ; 0       ;
+;      - tx:inst8|tx_fsm:b2v_inst|fstate.START                                                                                                    ; 1                 ; 0       ;
+;      - tx:inst8|tx_fsm:b2v_inst|fstate.STOP                                                                                                     ; 1                 ; 0       ;
+;      - rx:inst1|rx_fsm:inst|fstate.DATA                                                                                                         ; 1                 ; 0       ;
+;      - rx:inst1|rx_fsm:inst|fstate.START                                                                                                        ; 1                 ; 0       ;
+;      - rx:inst1|rx_fsm:inst|fstate.STOP                                                                                                         ; 1                 ; 0       ;
+;      - tx:inst8|lpm_mux_4to1:b2v_inst43|lpm_mux:LPM_MUX_component|mux_sjc:auto_generated|l2_w0_n0_mux_dataout~0                                 ; 1                 ; 0       ;
+;      - baud_gen_:inst|baud_tick                                                                                                                 ; 1                 ; 0       ;
+;      - tx:inst8|tx_fsm:b2v_inst|fstate.START~0                                                                                                  ; 1                 ; 0       ;
+;      - inst2                                                                                                                                    ; 1                 ; 0       ;
+;      - tx:inst8|tx_fsm:b2v_inst|tx_state_start~0                                                                                                ; 1                 ; 0       ;
+;      - tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|_~0                                           ; 1                 ; 0       ;
+;      - tx:inst8|tx_fsm:b2v_inst|reg_fstate.IDLE~0                                                                                               ; 1                 ; 0       ;
 ;      - rx:inst1|inst10                                                                                                                          ; 1                 ; 0       ;
 ;      - rx:inst1|inst9                                                                                                                           ; 1                 ; 0       ;
 ;      - rx:inst1|inst8                                                                                                                           ; 1                 ; 0       ;
 ;      - rx:inst1|inst7                                                                                                                           ; 1                 ; 0       ;
 ;      - rx:inst1|inst6                                                                                                                           ; 1                 ; 0       ;
 ;      - rx:inst1|inst5                                                                                                                           ; 1                 ; 0       ;
-;      - rx:inst1|inst4                                                                                                                           ; 1                 ; 0       ;
+;      - rx:inst1|inst4                                                                                                                           ; 0                 ; 0       ;
 ;      - rx:inst1|inst3                                                                                                                           ; 1                 ; 0       ;
 ;      - tx:inst8|tx_reg_clk                                                                                                                      ; 0                 ; 0       ;
-;      - rx:inst1|rx_fsm:inst|clear_bit_index~0                                                                                                   ; 0                 ; 0       ;
-;      - rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|_~0                                              ; 0                 ; 0       ;
-;      - rx:inst1|rx_fsm:inst|Selector1~1                                                                                                         ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[0]~DUPLICATE  ; 0                 ; 0       ;
-;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[10]~DUPLICATE ; 0                 ; 0       ;
+;      - rx:inst1|rx_fsm:inst|clear_bit_index~0                                                                                                   ; 1                 ; 0       ;
+;      - rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|_~0                                              ; 1                 ; 0       ;
+;      - rx:inst1|rx_fsm:inst|Selector1~0                                                                                                         ; 1                 ; 0       ;
+;      - rx:inst1|rx_fsm:inst|reg_fstate.IDLE~0                                                                                                   ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[0]~DUPLICATE  ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[12]~DUPLICATE ; 1                 ; 0       ;
+;      - baud_gen_:inst|lpm_counter_13:b2v_lpm_counter_13|lpm_counter:LPM_COUNTER_component|cntr_2gi:auto_generated|counter_reg_bit[10]~DUPLICATE ; 1                 ; 0       ;
 ; clk                                                                                                                                             ;                   ;         ;
 ; data_ready                                                                                                                                      ;                   ;         ;
 ;      - tx:inst8|tx_fsm:b2v_inst|Selector0~0                                                                                                     ; 1                 ; 0       ;
 ;      - tx:inst8|tx_fsm:b2v_inst|reg_fstate.IDLE~0                                                                                               ; 1                 ; 0       ;
-;      - tx:inst8|tx_reg_clk                                                                                                                      ; 1                 ; 0       ;
+;      - tx:inst8|tx_reg_clk                                                                                                                      ; 0                 ; 0       ;
+; noise                                                                                                                                           ;                   ;         ;
+;      - inst2                                                                                                                                    ; 0                 ; 0       ;
+;      - rx:inst1|rx_fsm:inst|Selector1~0                                                                                                         ; 1                 ; 0       ;
+;      - rx:inst1|rx_fsm:inst|reg_fstate.IDLE~0                                                                                                   ; 1                 ; 0       ;
 ; data_in[5]                                                                                                                                      ;                   ;         ;
 ;      - tx:inst8|tx_reg[5]                                                                                                                       ; 1                 ; 0       ;
 ; data_in[7]                                                                                                                                      ;                   ;         ;
 ;      - tx:inst8|tx_reg[7]                                                                                                                       ; 0                 ; 0       ;
 ; data_in[4]                                                                                                                                      ;                   ;         ;
-;      - tx:inst8|tx_reg[4]                                                                                                                       ; 1                 ; 0       ;
+;      - tx:inst8|tx_reg[4]                                                                                                                       ; 0                 ; 0       ;
 ; data_in[6]                                                                                                                                      ;                   ;         ;
 ;      - tx:inst8|tx_reg[6]                                                                                                                       ; 0                 ; 0       ;
 ; data_in[1]                                                                                                                                      ;                   ;         ;
-;      - tx:inst8|tx_reg[1]                                                                                                                       ; 0                 ; 0       ;
+;      - tx:inst8|tx_reg[1]                                                                                                                       ; 1                 ; 0       ;
 ; data_in[3]                                                                                                                                      ;                   ;         ;
 ;      - tx:inst8|tx_reg[3]                                                                                                                       ; 0                 ; 0       ;
 ; data_in[0]                                                                                                                                      ;                   ;         ;
@@ -1118,23 +1131,23 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------------------------------------------------------------------------------------------------+----------------------+---------+---------------------------+--------+----------------------+------------------+---------------------------+
 ; Name                                                                                           ; Location             ; Fan-Out ; Usage                     ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +------------------------------------------------------------------------------------------------+----------------------+---------+---------------------------+--------+----------------------+------------------+---------------------------+
-; baud_gen_:inst|SYNTHESIZED_WIRE_16                                                             ; LABCELL_X88_Y39_N54  ; 16      ; Sync. clear               ; no     ; --                   ; --               ; --                        ;
-; clk                                                                                            ; PIN_M16              ; 30      ; Clock                     ; yes    ; Global Clock         ; GCLK10           ; --                        ;
-; reset                                                                                          ; PIN_L18              ; 46      ; Async. clear, Sync. clear ; no     ; --                   ; --               ; --                        ;
-; rx:inst1|inst10                                                                                ; MLABCELL_X87_Y38_N12 ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
-; rx:inst1|inst3                                                                                 ; LABCELL_X88_Y37_N6   ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
-; rx:inst1|inst4                                                                                 ; LABCELL_X88_Y37_N54  ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
-; rx:inst1|inst5                                                                                 ; LABCELL_X88_Y37_N3   ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
-; rx:inst1|inst6                                                                                 ; LABCELL_X88_Y37_N24  ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
-; rx:inst1|inst7                                                                                 ; LABCELL_X88_Y37_N18  ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
-; rx:inst1|inst8                                                                                 ; LABCELL_X88_Y37_N15  ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
-; rx:inst1|inst9                                                                                 ; LABCELL_X88_Y37_N48  ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
-; rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|_~0    ; LABCELL_X88_Y37_N42  ; 3       ; Clock enable              ; no     ; --                   ; --               ; --                        ;
-; rx:inst1|rx_fsm:inst|clear_bit_index~0                                                         ; LABCELL_X88_Y37_N45  ; 3       ; Sync. clear               ; no     ; --                   ; --               ; --                        ;
-; tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|_~0 ; LABCELL_X88_Y38_N39  ; 3       ; Clock enable              ; no     ; --                   ; --               ; --                        ;
-; tx:inst8|tx_fsm:b2v_inst|fstate.START~0                                                        ; MLABCELL_X87_Y38_N24 ; 1       ; Clock enable              ; no     ; --                   ; --               ; --                        ;
-; tx:inst8|tx_fsm:b2v_inst|tx_state_start~0                                                      ; LABCELL_X88_Y38_N33  ; 3       ; Sync. clear               ; no     ; --                   ; --               ; --                        ;
-; tx:inst8|tx_reg_clk                                                                            ; LABCELL_X88_Y38_N48  ; 8       ; Clock                     ; no     ; --                   ; --               ; --                        ;
+; baud_gen_:inst|SYNTHESIZED_WIRE_16                                                             ; LABCELL_X88_Y35_N42  ; 17      ; Sync. clear               ; no     ; --                   ; --               ; --                        ;
+; clk                                                                                            ; PIN_M16              ; 31      ; Clock                     ; yes    ; Global Clock         ; GCLK10           ; --                        ;
+; reset                                                                                          ; PIN_M20              ; 48      ; Async. clear, Sync. clear ; no     ; --                   ; --               ; --                        ;
+; rx:inst1|inst10                                                                                ; LABCELL_X88_Y36_N12  ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
+; rx:inst1|inst3                                                                                 ; LABCELL_X88_Y36_N24  ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
+; rx:inst1|inst4                                                                                 ; MLABCELL_X87_Y37_N48 ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
+; rx:inst1|inst5                                                                                 ; LABCELL_X88_Y36_N45  ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
+; rx:inst1|inst6                                                                                 ; LABCELL_X88_Y36_N0   ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
+; rx:inst1|inst7                                                                                 ; LABCELL_X88_Y36_N54  ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
+; rx:inst1|inst8                                                                                 ; LABCELL_X88_Y36_N9   ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
+; rx:inst1|inst9                                                                                 ; LABCELL_X88_Y36_N48  ; 1       ; Clock                     ; no     ; --                   ; --               ; --                        ;
+; rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|_~0    ; LABCELL_X88_Y36_N18  ; 3       ; Clock enable              ; no     ; --                   ; --               ; --                        ;
+; rx:inst1|rx_fsm:inst|clear_bit_index~0                                                         ; LABCELL_X88_Y36_N21  ; 3       ; Sync. clear               ; no     ; --                   ; --               ; --                        ;
+; tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|_~0 ; LABCELL_X88_Y37_N24  ; 3       ; Clock enable              ; no     ; --                   ; --               ; --                        ;
+; tx:inst8|tx_fsm:b2v_inst|fstate.START~0                                                        ; MLABCELL_X87_Y37_N57 ; 1       ; Clock enable              ; no     ; --                   ; --               ; --                        ;
+; tx:inst8|tx_fsm:b2v_inst|tx_state_start~0                                                      ; LABCELL_X88_Y37_N54  ; 3       ; Sync. clear               ; no     ; --                   ; --               ; --                        ;
+; tx:inst8|tx_reg_clk                                                                            ; LABCELL_X88_Y37_N39  ; 8       ; Clock                     ; no     ; --                   ; --               ; --                        ;
 +------------------------------------------------------------------------------------------------+----------------------+---------+---------------------------+--------+----------------------+------------------+---------------------------+
 
 
@@ -1143,7 +1156,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------+----------+---------+----------------------+------------------+---------------------------+
 ; Name ; Location ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +------+----------+---------+----------------------+------------------+---------------------------+
-; clk  ; PIN_M16  ; 30      ; Global Clock         ; GCLK10           ; --                        ;
+; clk  ; PIN_M16  ; 31      ; Global Clock         ; GCLK10           ; --                        ;
 +------+----------+---------+----------------------+------------------+---------------------------+
 
 
@@ -1152,10 +1165,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------------------------------+------------------------+
 ; Routing Resource Type        ; Usage                  ;
 +------------------------------+------------------------+
-; Block interconnects          ; 92 / 374,484 ( < 1 % ) ;
-; C12 interconnects            ; 10 / 16,664 ( < 1 % )  ;
-; C2 interconnects             ; 41 / 155,012 ( < 1 % ) ;
-; C4 interconnects             ; 41 / 72,600 ( < 1 % )  ;
+; Block interconnects          ; 94 / 374,484 ( < 1 % ) ;
+; C12 interconnects            ; 24 / 16,664 ( < 1 % )  ;
+; C2 interconnects             ; 36 / 155,012 ( < 1 % ) ;
+; C4 interconnects             ; 29 / 72,600 ( < 1 % )  ;
 ; DQS bus muxes                ; 0 / 30 ( 0 % )         ;
 ; DQS-18 I/O buses             ; 0 / 30 ( 0 % )         ;
 ; DQS-9 I/O buses              ; 0 / 30 ( 0 % )         ;
@@ -1164,11 +1177,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Horizontal periphery clocks  ; 0 / 72 ( 0 % )         ;
 ; Local interconnects          ; 31 / 112,960 ( < 1 % ) ;
 ; Quadrant clocks              ; 0 / 88 ( 0 % )         ;
-; R14 interconnects            ; 11 / 15,868 ( < 1 % )  ;
-; R14/C12 interconnect drivers ; 16 / 27,256 ( < 1 % )  ;
-; R3 interconnects             ; 46 / 169,296 ( < 1 % ) ;
-; R6 interconnects             ; 50 / 330,800 ( < 1 % ) ;
-; Spine clocks                 ; 1 / 480 ( < 1 % )      ;
+; R14 interconnects            ; 20 / 15,868 ( < 1 % )  ;
+; R14/C12 interconnect drivers ; 34 / 27,256 ( < 1 % )  ;
+; R3 interconnects             ; 51 / 169,296 ( < 1 % ) ;
+; R6 interconnects             ; 47 / 330,800 ( < 1 % ) ;
+; Spine clocks                 ; 2 / 480 ( < 1 % )      ;
 ; Wire stub REs                ; 0 / 20,834 ( 0 % )     ;
 +------------------------------+------------------------+
 
@@ -1228,9 +1241,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+--------------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+-----------+-----------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
 ; Pin/Rules          ; IO_000001    ; IO_000002    ; IO_000003    ; IO_000004    ; IO_000005    ; IO_000006 ; IO_000007    ; IO_000008    ; IO_000009 ; IO_000010 ; IO_000011    ; IO_000012    ; IO_000013    ; IO_000014    ; IO_000015    ; IO_000018    ; IO_000019    ; IO_000020    ; IO_000021    ; IO_000022    ; IO_000023    ; IO_000024    ; IO_000026    ; IO_000027    ; IO_000045    ; IO_000046    ; IO_000047    ; IO_000034    ;
 +--------------------+--------------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+-----------+-----------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
-; Total Pass         ; 0            ; 0            ; 0            ; 0            ; 0            ; 20        ; 0            ; 0            ; 20        ; 20        ; 0            ; 9            ; 0            ; 0            ; 0            ; 0            ; 9            ; 0            ; 0            ; 0            ; 0            ; 9            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ;
+; Total Pass         ; 0            ; 0            ; 0            ; 0            ; 0            ; 21        ; 0            ; 0            ; 21        ; 21        ; 0            ; 9            ; 0            ; 0            ; 0            ; 0            ; 9            ; 0            ; 0            ; 0            ; 0            ; 9            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ;
 ; Total Unchecked    ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ; 0         ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ;
-; Total Inapplicable ; 20           ; 20           ; 20           ; 20           ; 20           ; 0         ; 20           ; 20           ; 0         ; 0         ; 20           ; 11           ; 20           ; 20           ; 20           ; 20           ; 11           ; 20           ; 20           ; 20           ; 20           ; 11           ; 20           ; 20           ; 20           ; 20           ; 20           ; 20           ;
+; Total Inapplicable ; 21           ; 21           ; 21           ; 21           ; 21           ; 0         ; 21           ; 21           ; 0         ; 0         ; 21           ; 12           ; 21           ; 21           ; 21           ; 21           ; 12           ; 21           ; 21           ; 21           ; 21           ; 12           ; 21           ; 21           ; 21           ; 21           ; 21           ; 21           ;
 ; Total Fail         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ; 0         ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ;
 ; tx_serial          ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; data_out[7]        ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
@@ -1244,6 +1257,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; reset              ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; clk                ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; data_ready         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
+; noise              ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; data_in[5]         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; data_in[7]         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; data_in[4]         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
@@ -1303,12 +1317,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------------+----------------------+-------------------+
 ; Source Clock(s)          ; Destination Clock(s) ; Delay Added in ns ;
 +--------------------------+----------------------+-------------------+
-; I/O                      ; clk                  ; 29.8              ;
-; data_ready,clk,reset,I/O ; reset                ; 10.2              ;
-; clk,I/O                  ; clk                  ; 7.8               ;
-; data_ready,reset         ; clk,reset,I/O        ; 2.9               ;
-; clk                      ; clk                  ; 2.4               ;
-; I/O                      ; reset,I/O            ; 1.8               ;
+; I/O                      ; clk                  ; 29.1              ;
+; data_ready,clk,reset,I/O ; reset                ; 11.2              ;
+; clk,I/O                  ; clk                  ; 7.1               ;
+; data_ready,reset         ; clk,reset,I/O        ; 3.9               ;
+; I/O                      ; reset                ; 1.9               ;
+; clk                      ; clk                  ; 1.6               ;
 +--------------------------+----------------------+-------------------+
 Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
 This will disable optimization of problematic paths and expose them for further analysis using the Timing Analyzer.
@@ -1319,28 +1333,28 @@ This will disable optimization of problematic paths and expose them for further 
 +---------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------+
 ; Source Register                                                                                               ; Destination Register                                                                                          ; Delay Added in ns ;
 +---------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------+
-; reset                                                                                                         ; rx:inst1|inst29                                                                                               ; 3.240             ;
-; data_ready                                                                                                    ; tx:inst8|tx_fsm:b2v_inst|fstate.START                                                                         ; 3.173             ;
-; tx:inst8|tx_reg[5]                                                                                            ; rx:inst1|inst29                                                                                               ; 2.302             ;
-; tx:inst8|tx_reg[7]                                                                                            ; rx:inst1|inst29                                                                                               ; 2.258             ;
-; tx:inst8|tx_reg[1]                                                                                            ; rx:inst1|inst29                                                                                               ; 1.956             ;
-; tx:inst8|tx_reg[3]                                                                                            ; rx:inst1|inst29                                                                                               ; 1.935             ;
-; tx:inst8|tx_reg[6]                                                                                            ; rx:inst1|inst29                                                                                               ; 1.767             ;
-; tx:inst8|tx_reg[4]                                                                                            ; rx:inst1|inst29                                                                                               ; 1.709             ;
-; tx:inst8|tx_reg[2]                                                                                            ; rx:inst1|inst29                                                                                               ; 1.519             ;
-; tx:inst8|tx_reg[0]                                                                                            ; rx:inst1|inst29                                                                                               ; 1.519             ;
-; tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[2] ; rx:inst1|inst29                                                                                               ; 1.519             ;
-; tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[1] ; rx:inst1|inst29                                                                                               ; 1.519             ;
-; tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[0] ; rx:inst1|inst29                                                                                               ; 1.519             ;
-; rx:inst1|rx_fsm:inst|fstate.IDLE                                                                              ; rx:inst1|rx_fsm:inst|fstate.START                                                                             ; 1.498             ;
-; tx:inst8|tx_fsm:b2v_inst|fstate.START                                                                         ; rx:inst1|inst29                                                                                               ; 1.486             ;
-; tx:inst8|tx_fsm:b2v_inst|fstate.DATA                                                                          ; rx:inst1|inst29                                                                                               ; 1.486             ;
-; baud_gen_:inst|baud_tick                                                                                      ; tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[0] ; 1.346             ;
-; rx:inst1|rx_fsm:inst|fstate.DATA                                                                              ; rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[2]    ; 1.297             ;
-; rx:inst1|rx_fsm:inst|fstate.START                                                                             ; rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[2]    ; 1.297             ;
-; rx:inst1|rx_fsm:inst|fstate.STOP                                                                              ; rx:inst1|rx_fsm:inst|fstate.IDLE                                                                              ; 0.868             ;
-; tx:inst8|tx_fsm:b2v_inst|fstate.STOP                                                                          ; tx:inst8|tx_fsm:b2v_inst|fstate.IDLE                                                                          ; 0.201             ;
-; tx:inst8|tx_fsm:b2v_inst|fstate.IDLE                                                                          ; tx:inst8|tx_fsm:b2v_inst|fstate.START                                                                         ; 0.191             ;
+; reset                                                                                                         ; rx:inst1|inst31                                                                                               ; 3.860             ;
+; data_ready                                                                                                    ; tx:inst8|tx_fsm:b2v_inst|fstate.IDLE                                                                          ; 3.150             ;
+; tx:inst8|tx_reg[5]                                                                                            ; rx:inst1|inst31                                                                                               ; 2.949             ;
+; tx:inst8|tx_reg[7]                                                                                            ; rx:inst1|inst31                                                                                               ; 2.923             ;
+; tx:inst8|tx_reg[1]                                                                                            ; rx:inst1|inst31                                                                                               ; 2.642             ;
+; tx:inst8|tx_reg[3]                                                                                            ; rx:inst1|inst31                                                                                               ; 2.608             ;
+; tx:inst8|tx_reg[6]                                                                                            ; rx:inst1|inst31                                                                                               ; 2.444             ;
+; tx:inst8|tx_reg[4]                                                                                            ; rx:inst1|inst31                                                                                               ; 2.406             ;
+; tx:inst8|tx_reg[2]                                                                                            ; rx:inst1|inst31                                                                                               ; 2.129             ;
+; tx:inst8|tx_reg[0]                                                                                            ; rx:inst1|inst31                                                                                               ; 2.121             ;
+; tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[2] ; rx:inst1|inst31                                                                                               ; 2.095             ;
+; tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[1] ; rx:inst1|inst31                                                                                               ; 2.095             ;
+; tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[0] ; rx:inst1|inst31                                                                                               ; 2.095             ;
+; noise                                                                                                         ; rx:inst1|inst31                                                                                               ; 1.974             ;
+; tx:inst8|tx_fsm:b2v_inst|fstate.START                                                                         ; rx:inst1|inst31                                                                                               ; 1.974             ;
+; tx:inst8|tx_fsm:b2v_inst|fstate.DATA                                                                          ; rx:inst1|inst31                                                                                               ; 1.974             ;
+; baud_gen_:inst|baud_tick                                                                                      ; tx:inst8|lpm_counter_3:b2v_inst1|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[0] ; 1.305             ;
+; tx:inst8|tx_fsm:b2v_inst|fstate.IDLE                                                                          ; tx:inst8|tx_fsm:b2v_inst|fstate.START                                                                         ; 1.263             ;
+; rx:inst1|rx_fsm:inst|fstate.DATA                                                                              ; rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[2]    ; 1.124             ;
+; rx:inst1|rx_fsm:inst|fstate.START                                                                             ; rx:inst1|lpm_counter_3:inst26|lpm_counter:LPM_COUNTER_component|cntr_83j:auto_generated|counter_reg_bit[2]    ; 1.124             ;
+; tx:inst8|tx_fsm:b2v_inst|fstate.STOP                                                                          ; tx:inst8|tx_fsm:b2v_inst|fstate.IDLE                                                                          ; 0.263             ;
+; rx:inst1|rx_fsm:inst|fstate.STOP                                                                              ; rx:inst1|rx_fsm:inst|fstate.IDLE                                                                              ; 0.064             ;
 +---------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------+
 Note: This table only shows the top 22 path(s) that have the largest delay added for hold.
 
@@ -1349,14 +1363,14 @@ Note: This table only shows the top 22 path(s) that have the largest delay added
 ; Fitter Messages ;
 +-----------------+
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
 Info (119006): Selected device 5CGXFC7C7F23C8 for design "uart"
 Info (21076): High junction temperature operating condition is not set. Assuming a default value of '85'.
 Info (21076): Low junction temperature operating condition is not set. Assuming a default value of '0'.
 Info (171003): Fitter is performing an Auto Fit compilation, which may decrease Fitter effort to reduce compilation time
 Warning (292013): Feature LogicLock is only available with a valid subscription license. You can purchase a software subscription to gain full access to this feature.
 Warning (15714): Some pins have incomplete I/O assignments. Refer to the I/O Assignment Warnings report for details
-Critical Warning (169085): No exact pin location assignment(s) for 20 pins of 20 total pins. For the list of pins please refer to the I/O Assignment Warnings table in the fitter report.
+Critical Warning (169085): No exact pin location assignment(s) for 21 pins of 21 total pins. For the list of pins please refer to the I/O Assignment Warnings table in the fitter report.
 Info (184020): Starting Fitter periphery placement operations
 Info (11191): Automatically promoted 1 clock (1 global)
     Info (11162): clk~inputCLKENA0 with 28 fanout uses global clock CLKCTRL_G10
@@ -1369,36 +1383,36 @@ Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Tim
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:08
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:12
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
-Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:06
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:09
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
-Info (170192): Fitter placement operations ending: elapsed time is 00:00:03
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:02
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 0% of the available device resources
-    Info (170196): Router estimated peak interconnect usage is 1% of the available device resources in the region that extends from location X78_Y35 to location X89_Y45
+    Info (170196): Router estimated peak interconnect usage is 0% of the available device resources in the region that extends from location X78_Y35 to location X89_Y45
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
-Info (11888): Total time spent on timing analysis during the Fitter is 0.56 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.53 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:06
-Info (144001): Generated suppressed messages file D:/Projects/dc-UART/uart.fit.smsg
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:13
+Info (144001): Generated suppressed messages file C:/github/digitalsystem_teamproject/DC-uart-project/uart.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 6981 megabytes
-    Info: Processing ended: Mon Jun 01 13:18:19 2026
-    Info: Elapsed time: 00:00:42
-    Info: Total CPU time (on all processors): 00:01:45
+    Info: Peak virtual memory: 7248 megabytes
+    Info: Processing ended: Tue Jun 09 13:00:43 2026
+    Info: Elapsed time: 00:01:00
+    Info: Total CPU time (on all processors): 00:01:54
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in D:/Projects/dc-UART/uart.fit.smsg.
+The suppressed messages can be found in C:/github/digitalsystem_teamproject/DC-uart-project/uart.fit.smsg.
 
 

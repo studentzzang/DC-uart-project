@@ -1,12 +1,12 @@
 /*<simulation_settings>
-<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off uart -c uart --vector_source="D:/Projects/dc-UART/Waveform.vwf" --testbench_file="D:/Projects/dc-UART/simulation/qsim/Waveform.vwf.vt"</ftestbench_cmd>
-<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off uart -c uart --vector_source="D:/Projects/dc-UART/Waveform.vwf" --testbench_file="D:/Projects/dc-UART/simulation/qsim/Waveform.vwf.vt"</ttestbench_cmd>
-<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="D:/Projects/dc-UART/simulation/qsim/" uart -c uart</fnetlist_cmd>
-<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="D:/Projects/dc-UART/simulation/qsim/" uart -c uart</tnetlist_cmd>
+<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off uart -c uart --vector_source="C:/github/digitalsystem_teamproject/DC-uart-project/Waveform1.vwf" --testbench_file="C:/github/digitalsystem_teamproject/DC-uart-project/simulation/qsim/Waveform1.vwf.vt"</ftestbench_cmd>
+<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off uart -c uart --vector_source="C:/github/digitalsystem_teamproject/DC-uart-project/Waveform1.vwf" --testbench_file="C:/github/digitalsystem_teamproject/DC-uart-project/simulation/qsim/Waveform1.vwf.vt"</ttestbench_cmd>
+<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="C:/github/digitalsystem_teamproject/DC-uart-project/simulation/qsim/" uart -c uart</fnetlist_cmd>
+<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="C:/github/digitalsystem_teamproject/DC-uart-project/simulation/qsim/" uart -c uart</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
 vlog -work work uart.vo
-vlog -work work Waveform.vwf.vt
+vlog -work work Waveform1.vwf.vt
 vsim -novopt -c -t 1ps -L cyclonev_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.top_vlg_vec_tst
 vcd file -direction uart.msim.vcd
 vcd add -internal top_vlg_vec_tst/*
@@ -20,12 +20,11 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
-
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
 vlog -work work uart.vo
-vlog -work work Waveform.vwf.vt
+vlog -work work Waveform1.vwf.vt
 vsim -novopt -c -t 1ps -L cyclonev_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.top_vlg_vec_tst
 vcd file -direction uart.msim.vcd
 vcd add -internal top_vlg_vec_tst/*
@@ -39,7 +38,6 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
-
 </modelsim_script_timing>
 <hdl_lang>verilog</hdl_lang>
 </simulation_settings>*/
